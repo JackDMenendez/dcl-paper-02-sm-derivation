@@ -1,0 +1,102 @@
+% introduction.tex (Paper II)
+% Frames the central claim (Eq. (137) of Paper I) and includes the
+% audit table (Table \ref{tab:audit}) so the reader sees the
+% PASS/STUB decomposition before any dependent claim.
+
+\label{sec:introduction}
+
+Paper~I (\emph{Geometry First}) established the bipartite octahedral
+causal lattice $\mathcal{T}_\diamond^3$ with the unity constraint
+$\mathcal{A}=1$ as a discrete substrate from which the Dirac equation,
+the Born rule, hydrogen quantization at four significant figures,
+and the structural form of the induced gauge action are derived.
+The paper closes (§15) with a precise central conjecture, repeated
+here as the anchor of Paper~II:
+%
+\begin{equation}
+\label{eq:automorphism_conjecture}
+\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1)
+\;=\; SO(3,1) \times SU(3) \times SU(2) \times U(1).
+\end{equation}
+%
+Both sides are precise finite-dimensional Lie algebras with real
+dimension $18 = 6 + 8 + 3 + 1$.  The match is more than dimensional:
+the structure constants of the lattice's automorphism algebra must
+reproduce those of the right-hand side factor by factor.  Either the
+automorphism calculation closes the equality (and the Standard Model
+gauge group is derived from a single conservation axiom on a discrete
+substrate), or it does not (and Paper~II is a precise statement of
+the obstruction).  Both outcomes are concrete results.
+
+\subsection{Status of the conjecture entering Paper~II}
+\label{subsec:status_at_entry}
+
+Paper~I's v1.0 release supplies six computational scaffolding
+scripts (\texttt{src/utilities/automorphism\_*.py},
+\texttt{tick\_rule\_*.py}) that establish the load-bearing
+sub-claims of Eq.~\eqref{eq:automorphism_conjecture}.  On the
+existing per-site amplitude $\mathbb{C}^2 = (\psi_R, \psi_L)$ the
+direct product $SO(3,1) \times U(1)$ (dim 7) is verified, and the
+proposed per-site $SU(2)$ generators on this carrier are confirmed
+to coincide with the Lorentz rotation subgroup --- so
+$SU(2)_W$ and $SU(3)$ require structural extensions of the per-site
+amplitude.  On the extended amplitude
+$\mathbb{C}^{12} = \mathbb{C}^2 \otimes \mathbb{C}^2 \otimes
+\mathbb{C}^3$ the four conjecture factors commute pairwise (dim 18
+verified), the bipartite tick rule extends consistently
+($\mathcal{A}=1$, parity, and $SU(2)_W \times SU(3)$ all preserved),
+and the bipartite Wilson plaquette $V_1, -V_2, -V_1, V_2$ is
+gauge-invariant.  The audit table (Table~\ref{tab:audit}) records
+each sub-claim with its supporting script.
+
+%% The audit table is included immediately after the status section
+%% so the reader meets it before any claim that depends on a status
+%% entry.
+\input{sections/audit_table}
+
+\subsection{Open subproblems}
+\label{subsec:open_subproblems}
+
+What Paper~II takes up:
+
+\begin{enumerate}
+\item \textbf{Exact equality vs containment} in
+$\mathrm{Aut}_\text{ext}$.  The verified statement is
+$\supseteq$; the conjecture asserts $=$.  Whether the extended
+structure admits additional symmetries beyond the four-factor
+product is a finite Lie-algebra enumeration question constrained by
+commutation with the established factors.
+
+\item \textbf{SM-chirality coupling alignment.}  The Standard Model's
+$SU(2)_W$ couples only to left-handed fermion doublets; right-handed
+fermions are $SU(2)_W$ singlets.  Whether the framework's bipartite
+RGB/CMY parity is the SM's chirality projector, and whether the
+proposed $SU(2)_W$ on the per-site weak-isospin $\mathbb{C}^2$
+couples asymmetrically to $\psi_R$ versus $\psi_L$ as required by
+the SM, is the load-bearing structural-alignment problem.
+
+\item \textbf{Explicit $1/g^2$ prefactor} for the $SU(2)_W$ and
+$SU(3)$ Wilson actions on the bipartite octahedral lattice.  The
+existing $U(1)$ induced-gauge-action calculation (Paper~I
+Appendix~B) supplies the template; the non-abelian generalisation
+goes through with matrix-valued link variables.
+\end{enumerate}
+
+\subsection{Scope and outcomes}
+\label{subsec:scope}
+
+Paper~II's scope is precisely the three subproblems above.  All
+other open questions noted in Paper~I --- the Farey-sequence mass
+spectrum (Paper~I follow-on \#3), the Veneziano connection
+(\#3), the proton-interior structure (\#16 dependency), plasma /
+gradient ionization (\#1), and the like --- are out of scope and
+deferred to subsequent papers in the series.
+
+The paper has two viable terminal states.  If the three
+subproblems resolve in the same direction, the conjecture closes and
+the Standard Model gauge group is derived; the paper publishes that
+derivation.  If any subproblem fails, the paper publishes a precise
+statement of the obstruction and the framework's verified scope
+(\emph{relativistic Hilbert-space + gravity + Born-rule structures}
+plus $SO(3,1) \times U(1)$ on the existing per-site $\mathbb{C}^2$,
+per Paper~I) is restated unchanged.

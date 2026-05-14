@@ -1,0 +1,163 @@
+% ============================================================
+% audit_table.tex (Paper II)
+%
+% Maps Paper II's claims to the supporting derivations and to the
+% sympy verification scripts in src/utilities/.
+%
+% The central claim is the conjecture stated in Paper~I as Eq.~(137):
+%   Aut(T_diamond, A=1) = SO(3,1) x SU(3) x SU(2) x U(1)
+% (real dim 18 = 6+8+3+1).  Paper II's task is to close this row by
+% showing the four established sub-claims plus the three open
+% sub-claims combine to the equality.
+%
+% Status semantics (paste into the abstract or front-matter as well):
+%   PASS  -- derivation complete or verification confirms the claim.
+%   PART  -- mechanism demonstrated, full quantitative match pending.
+%   STUB  -- analytical result with no numerical confirmation yet,
+%            or planned calculation not yet done.
+%   FAIL  -- tested and disconfirmed.
+%
+% Use \texttt{} for code/script names and file paths inside cells.
+% ============================================================
+
+\label{tab:audit}
+
+{\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{0.95}
+\begin{longtable}{@{}p{3.2cm}p{3.6cm}p{3.4cm}p{3.8cm}p{1.0cm}@{}}
+\caption{\small System audit: Paper~II claims mapped to supporting
+derivations and sympy verification scripts.  Status semantics
+(\texttt{PASS} / \texttt{PART} / \texttt{STUB} / \texttt{FAIL}) per
+the front-matter.  The central claim is the bottom row;
+its status is the conjunction of the rows above.}
+\label{tab:audit_caption} \\
+\hline
+\textbf{Claim} & \textbf{Mechanism} & \textbf{Continuum / formal limit} & \textbf{Evidence} & \textbf{Status} \\
+\hline
+\endfirsthead
+
+\multicolumn{5}{l}{\textit{(Table~\ref{tab:audit}, continued from previous page)}} \\
+\hline
+\textbf{Claim} & \textbf{Mechanism} & \textbf{Continuum / formal limit} & \textbf{Evidence} & \textbf{Status} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{5}{r}{\textit{(continued on next page)}} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+% ── Established factors ─────────────────────────────────────────────
+Discrete spatial $\mathrm{Aut}(\Gamma, \mathbf{V})$ has order 48
+    & Enumeration of basis-preserving linear maps on
+      $\{\pm\mathbf{V}_1, \pm\mathbf{V}_2, \pm\mathbf{V}_3\}$
+    & Cubic point group $B_3 \cong O_h$;
+      12 elements orthogonal in $\mathbb{R}^3$
+    & \texttt{automorphism\_discrete.py} (sympy)
+    & \texttt{PASS} \\
+
+RGB sublattice symmetry contributes only $\mathbb{Z}_3 \subset SU(3)$
+    & Cyclic shift of the three RGB basis vectors generates a
+      $\mathbb{Z}_3$ subgroup
+    & Abelian; cannot generate non-abelian $SU(3)$ on its own
+    & \texttt{automorphism\_rgb\_su3.py} (sympy)
+    & \texttt{PASS} \\
+
+$SO(3,1) \times U(1)$ acts on the existing $\mathbb{C}^2 = (\psi_R, \psi_L)$
+    & Lorentz from $O_h$-averaged Dirac (Paper~I §6); $U(1)$
+      from the per-site phase oscillator
+    & Real dim $6 + 1 = 7$, direct product on the existing
+      per-site amplitude
+    & \texttt{automorphism\_direct\_product.py} (sympy);
+      verifies $[\mathfrak{so}(3,1), \mathfrak{u}(1)] = 0$ and that
+      the proposed per-site $SU(2)$ generators are the same matrices
+      as the Lorentz rotation subgroup
+    & \texttt{PASS} \\
+
+Direct-product structure on extended $\mathbb{C}^{12}$
+    & Per-site $\mathbb{C}^2 \otimes \mathbb{C}^2 \otimes \mathbb{C}^3$
+      with the four factors acting on disjoint tensor slots
+    & Real dim $6 + 8 + 3 + 1 = 18$;
+      $\mathfrak{so}(3,1) \oplus \mathfrak{su}(3) \oplus
+       \mathfrak{su}(2) \oplus \mathfrak{u}(1)$ commutes pairwise
+    & \texttt{automorphism\_direct\_product\_extended.py} (sympy)
+    & \texttt{PASS} \\
+
+Tick-rule consistency on $\mathbb{C}^{12}$
+    & Trivial tensor extension
+      $T_\text{ext} = T_\text{chirality} \otimes I_2 \otimes I_3$
+      of the bipartite tick rule
+    & Preserves $\mathcal{A}=1$, bipartite parity, and the global
+      $SU(2)_W \times SU(3)$ symmetries
+    & \texttt{tick\_rule\_extended\_consistency.py} (sympy);
+      four checks pass
+    & \texttt{PASS} \\
+
+Wilson plaquette gauge invariance
+    & Bipartite Wilson plaquette
+      $V_1, -V_2, -V_1, V_2$ (smallest non-trivial closed loop;
+      no triangular plaquettes since $V_1 + V_2 + V_3 \neq 0$)
+    & $\mathrm{Tr}(W) = 2\cos(a_1 + a_2 + a_3 + a_4)$
+      gauge-invariant by cyclic property
+    & \texttt{tick\_rule\_gauge\_invariance.py} (sympy);
+      $U(1)$ explicit, $SU(2)$ sample, general non-abelian by
+      $V V^\dagger = I$
+    & \texttt{PASS} \\
+
+\hline
+% ── Open sub-claims ─────────────────────────────────────────────────
+Exact equality vs containment in $\mathrm{Aut}_\text{ext}$
+    & Established: $\supseteq$ (the four conjecture factors).
+      Conjectured: $=$ (no additional symmetries beyond the
+      four-factor product)
+    & Constrained by commutation with the established factors;
+      tractable by Lie-algebra enumeration on the extended
+      generators
+    & Open follow-on calculation;
+      strategy in
+      \nolinkurl{notes/lie_algebra_proof_sketch.md}
+    & \texttt{STUB} \\
+
+SM-chirality coupling alignment
+    & (a) Whether bipartite RGB/CMY parity is the same
+      $\mathbb{Z}_2$ as the SM's chirality projector;
+      (b) whether the proposed $SU(2)_W$ couples asymmetrically
+      to $\psi_R$ vs $\psi_L$ as required by the SM
+    & SM left-handed doublets / right-handed singlets;
+      empirically required, no fitting freedom
+    & Open structural-alignment problem; the load-bearing
+      question that decides whether Paper~II derives the SM
+      gauge group or characterises the obstruction
+    & \texttt{STUB} \\
+
+Explicit $1/g^2$ prefactor for $SU(2)_W$, $SU(3)$ Wilson actions
+    & Generalisation of the Wilson-action template
+      $S_W = (1/g^2)\sum_p (1 - \tfrac{1}{N}\mathrm{Re}\,\mathrm{Tr}\,W_p)$
+      to non-abelian link variables
+    & Continuum-limit identification with SM gauge-boson
+      dynamics; the Sakharov-style induced-action calculation
+      (Paper~I Appendix B) generalises with matrix-valued links
+    & Open follow-on calculation;
+      Paper~I's induced gauge-action appendix supplies the $U(1)$
+      template
+    & \texttt{STUB} \\
+
+\hline
+% ── Central claim ───────────────────────────────────────────────────
+\textbf{Eq.~(137) of Paper~I:}
+$\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1) = SO(3,1) \times SU(3) \times SU(2) \times U(1)$
+    & Conjunction of the four established factors above plus the
+      three open sub-claims; structure constants must match factor
+      by factor, not just dimensions
+    & Standard Model gauge group plus Lorentz, derived from a
+      single conservation axiom on a discrete substrate
+    & Resolves favourably iff the three open sub-claims resolve
+      favourably; characterises the obstruction otherwise
+    & \texttt{STUB} \\
+
+\hline
+\end{longtable}
+}

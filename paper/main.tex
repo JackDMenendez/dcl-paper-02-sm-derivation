@@ -1,0 +1,133 @@
+\documentclass[12pt, letterpaper]{article}
+
+%% Build from the paper/ directory:
+%%   cd paper && pdflatex main.tex
+%% or use the root build system:
+%%   make paper          (from repo root)
+%%   ./build.sh paper    (POSIX)
+%%   build.cmd paper     (Windows cmd)
+
+\input{macros/packages}
+\input{macros/commands}
+
+%% Page geometry (also set here as a fallback in case the package path fails)
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+
+%% ---------------------------------------------------------------
+%% TITLE PAGE
+%% ---------------------------------------------------------------
+
+\title{Geometry Forces Physics:\\
+       A Lie-Algebra Derivation of the Standard Model Gauge Group\\
+       from a Single Conservation Law%
+       \thanks{Version 0.1-DRAFT.
+       Paper~II of the A=1 Discrete Causal Lattice series; the
+       direct continuation of \emph{Geometry First} (Paper~I,
+       \href{https://doi.org/10.5281/zenodo.20078529}{DOI:
+       10.5281/zenodo.20078529}), addressing the central open
+       conjecture of that paper:
+       Eq.~(137), $\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1)
+       = SO(3,1) \times SU(3) \times SU(2) \times U(1)$.
+       %% Fill in at release time:
+       %% \href{https://doi.org/10.5281/zenodo.XXXXXXXX}%
+       %%      {DOI: 10.5281/zenodo.XXXXXXXX}.
+       %% \href{https://github.com/USER/REPO}%
+       %%      {GitHub: USER/REPO}.
+       Pre-release draft; DOI to be assigned.}}
+\author{Jack Menendez\\
+        \small Eugene, OR\\
+        \small ORCID: \href{https://orcid.org/0009-0003-1166-307X}{0009-0003-1166-307X}\\
+        \small \href{mailto:jackdmenendez@gmail.com}{jackdmenendez@gmail.com}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+%% ---------------------------------------------------------------
+%% FRONT-MATTER NOTICES
+%% ---------------------------------------------------------------
+\noindent\textbf{License.}  Paper text and figures: Creative Commons
+Attribution 4.0 (CC BY 4.0).  Source code in the companion
+repository: MIT License.
+
+\medskip
+\noindent\textbf{Data availability.}  Numerical experiments, data
+files, and the LaTeX source for this paper will be made publicly
+available at the GitHub repository
+\nolinkurl{github.com/JackDMenendez/dcl-paper-02-sm-derivation}
+when the v1.0 release is cut.  The Lie-algebra scaffolding scripts
+\texttt{automorphism\_*.py} and \texttt{tick\_rule\_*.py} were
+introduced in Paper~I (the \emph{Geometry First} v1.0 release at
+\href{https://doi.org/10.5281/zenodo.20078529}%
+     {\nolinkurl{doi:10.5281/zenodo.20078529}}) and are reproduced
+here as the evidence base for the automorphism conjecture.
+%% At release time, point to the tag and the Zenodo DOI:
+%% The exact commit corresponding to this release is the vX.Y tag,
+%% archived at
+%% \href{https://doi.org/10.5281/zenodo.XXXXXXXX}%
+%%      {\nolinkurl{doi:10.5281/zenodo.XXXXXXXX}}.
+
+\medskip
+\noindent\textbf{Keywords.}  Standard Model gauge group; automorphism
+algebra; bipartite causal lattice; SU(3); SU(2); U(1); SO(3,1);
+direct product; Lie algebra; symbolic verification.
+
+\newpage
+
+\begin{abstract}
+    \input{sections/abstract}
+\end{abstract}
+
+%% ---------------------------------------------------------------
+%% RELEASE NOTES (only at release time)
+%% ---------------------------------------------------------------
+%% \bigskip
+%% \noindent\textbf{Release notes for vX.Y (since vX.Y-1).}
+%% \begin{itemize}
+%% \item Item 1.
+%% \item Item 2.
+%% \end{itemize}
+
+%% \emph{Status legend used throughout.}  \texttt{PASS} / \texttt{PART}
+%% / \texttt{STUB} / \texttt{FAIL} -- see Table~\ref{tab:audit}.
+
+\newpage
+\tableofcontents
+\newpage
+
+%% ============================================================
+%% PART I: <name>
+%% ============================================================
+\section{Introduction}
+\input{sections/introduction}
+
+\section{A Section Showing the Patterns}
+\input{sections/section_template}
+
+%% Add more \section{...} \input{sections/...} blocks as needed.
+%% Group with comment dividers (e.g., "PART II: DYNAMICS") to keep
+%% main.tex skimmable as the paper grows.
+
+\section{Conclusion}
+\input{sections/conclusion}
+
+\section*{Acknowledgements}
+\input{sections/acknowledgements}
+
+%% ============================================================
+%% APPENDICES
+%% ============================================================
+\appendix
+
+\section{Code and Data}
+\input{sections/code_and_data}
+
+\section{Reproducibility Quickstart}
+\input{sections/reproducibility}
+
+%% ============================================================
+\bibliographystyle{unsrt}
+\bibliography{paper-bib/references}
+
+\end{document}

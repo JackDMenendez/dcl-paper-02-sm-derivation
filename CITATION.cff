@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Geometry Forces Physics: A Lie-Algebra Derivation of the Standard Model Gauge Group from a Single Conservation Law"
+authors:
+  - family-names: Menendez
+    given-names: Jack
+    orcid: "https://orcid.org/0009-0003-1166-307X"
+    affiliation: "Independent Scholar (Eugene, OR)"
+version: v0.1-DRAFT
+date-released: 2026-05-08
+# At release time, fill in the Zenodo DOI assigned for this version:
+# doi: 10.5281/zenodo.XXXXXXXX
+repository-code: "https://github.com/JackDMenendez/dcl-paper-02-sm-derivation"
+license: MIT
+references:
+  - type: article
+    title: "Geometry First: Quantum Mechanics, Gravity, and the Origin of the Standard Model from a Single Conservation Law"
+    authors:
+      - family-names: Menendez
+        given-names: Jack
+    doi: 10.5281/zenodo.20078529
+    year: 2026
+    notes: "Paper I of the A=1 Discrete Causal Lattice series. Paper II takes up Eq. (137), the central open conjecture stated in Paper I."
