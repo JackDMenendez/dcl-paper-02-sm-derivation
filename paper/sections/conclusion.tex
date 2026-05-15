@@ -1,5 +1,370 @@
 % conclusion.tex
+%
+% Phase 5 synthesis (v1.0).  The conclusion is structured as:
+%   - subsec:results_summary         -- what each phase established
+%   - subsec:terminal_characterisation -- the framework's terminal prediction
+%   - subsec:quantitative_predictions  -- the testable numbers
+%   - subsec:methodological           -- substrate-first, debt to measurement
+%   - subsec:open_directions          -- follow-on papers and open questions
 
-\placeholder{Summarise what was established, what is partial, and what
-the natural next paper / experiment would be. Avoid rehashing the
-introduction --- the conclusion is for what changed by the end.}
+\label{sec:conclusion}
+
+\subsection{What Phase~1 through Phase~4 established}
+\label{subsec:results_summary}
+
+Eq.~\eqref{eq:automorphism_conjecture} of Paper~I is settled to
+\texttt{PART} (characterisation outcome).  The four phases of the
+work plan (\nolinkurl{notes/work_plan.md}) close as follows.
+
+\paragraph{Phase~1 -- Chirality alignment (\texttt{PART}).}  Under
+Branch~A SU(3) and the existing bipartite tick rule, the unique
+linear bipartite parity is $P = \sigma_x \otimes I_2 \otimes I_3$.
+It anticommutes with $\gamma_5 = \sigma_z \otimes I_2 \otimes I_3$,
+swaps the SM's $\psi_L \leftrightarrow \psi_R$, and commutes with
+every proposed $SU(2)_W$ generator.  The lattice's bipartite
+$\mathbb{Z}_2$ and the SM's chirality $\mathbb{Z}_2$ are therefore
+orthogonal Bloch involutions on the chirality $\mathbb{C}^2$:
+spatial parity, not chirality projection.  Symbolically verified
+by \nolinkurl{src/utilities/chirality_parity_alignment.py}.
+
+\paragraph{Phase~1.5 -- Modified tick rule for SM $CP$ (\texttt{FAIL}).}
+The natural antilinear modification
+$T_\text{ext}^B = is\,I_{12} + c\,(\sigma_x \otimes I_2 \otimes C) \circ K$
+that would make Branch~B SU(3) ($\mathbf{3} \oplus \bar{\mathbf{3}}$) a
+global symmetry requires the colour matrix $C$ to anticommute with
+every Gell-Mann generator.  No non-zero $C$ does: anticommutation
+with $\lambda_3$ leaves only $C_{12}, C_{21}, C_{33}$ unconstrained,
+and anticommutation with $\lambda_8$ kills those.  The lattice
+cannot incorporate SM-style $CP$ as a discrete symmetry of any
+natural tick modification.  Symbolically verified by
+\nolinkurl{src/utilities/tick_rule_cp_modified.py}; the
+representation-theoretic origin is that $\mathbf{3}$ and
+$\bar{\mathbf{3}}$ are inequivalent irreps of SU(3).
+
+\paragraph{Phase~2 -- Non-abelian $SU(3)$ from $\mathbb{C}^3$ memory (\texttt{PASS}).}
+The natural rotate-toward-$|j\rangle$ colour-memory tick rule
+($X_1 = \lambda_1 + \lambda_4$ for $j = 1$, with $S_3$ conjugates)
+closes under Lie-bracket closure to the full $\mathfrak{su}(3)$.
+Restricted candidates (diagonal-only, single-off-diagonal) yield
+strict subalgebras (Cartan $\mathfrak{h}$ or one $\mathfrak{su}(2)$
+subalgebra).  The framework's $\mathfrak{su}(3)$ factor is
+\emph{dynamically generated} by the lattice for any natural
+real-symmetric colour-memory tick rule; the discrete RGB
+$\mathbb{Z}_3$ of \nolinkurl{automorphism_rgb_su3.py} is recovered as
+the abelian-Cartan corner of this larger structure.  Symbolically
+verified by \nolinkurl{src/utilities/su3_generation_from_colour_memory.py}.
+
+\paragraph{Phase~3 -- Containment vs equality on $\mathrm{Aut}_\text{ext}$ (\texttt{PART}).}
+The discrete-Hermitian centralizer of the bipartite tick rule on
+$\mathbb{C}^{12}$ is
+\begin{equation}
+\label{eq:su6_su6_u1}
+\mathfrak{Aut}_{\text{centralizer}} \;=\; \mathfrak{su}(6)_+ \oplus \mathfrak{su}(6)_- \oplus \mathfrak{u}(1),
+\qquad \dim = 35 + 35 + 1 = 71,
+\end{equation}
+with the two $\mathfrak{su}(6)$ factors acting on the $\pm 1$
+chirality eigenspaces and $J_1$ as the central $\mathfrak{u}(1)$.
+The SM gauge subalgebra $\mathfrak{su}(3) \oplus \mathfrak{su}(2)
+\oplus \langle J_1 \rangle$ (dim 12 in $\mathfrak{su}(12)$) embeds
+diagonally via the $\mathbf{6} = (\mathbf{3}, \mathbf{2})$
+branching; the 59 ``extras'' decompose under $SU(3) \times SU(2)$
+as
+\begin{equation}
+\label{eq:extras_decomp}
+\text{59 extras} \;=\; 48 \times (\mathbf{8}, \mathbf{3})_{\text{leptoquark}}
+\;+\; 11 \times \text{chirality-}\sigma_x\text{ shadow SM}.
+\end{equation}
+Bracket-structure verification
+(\nolinkurl{aut_centralizer_extras_commutators.py}):
+$[\text{extras}, \text{SM}] \subseteq \text{extras}$ (0 of 708
+brackets land in SM); $[\text{extras}, \text{extras}]$ has 226 of
+1711 brackets in SM, so the extras are an SM-module but not a Lie
+ideal --- exactly the algebraic shape of a left-right symmetric
+broken gauge symmetry pattern.  Symbolically verified by
+\nolinkurl{src/utilities/automorphism_centralizer_extended.py}.
+
+\paragraph{Phase~4 -- Wilson $1/g^2$ for $SU(2)_W$, $SU(3)$ (\texttt{PART}).}
+Paper~I's bipartite-plaquette Q-tensor (eigenvalues
+$\{4, 4, 16\}$) is inherited unchanged for non-abelian gauge
+groups; the SU(N) trace identity introduces only a global
+$T_F = 1/2$ factor.  Spectator-factor counting on the per-site
+$\mathbb{C}^{12}$ gives the framework's quantitative gauge-coupling
+prediction:
+\begin{equation}
+\label{eq:lattice_scale_ratios}
+\frac{1}{g_1^2} : \frac{1}{g_2^2} : \frac{1}{g_3^2} \;=\; 12 : 3 : 2 \quad \text{at the lattice scale } 1/a,
+\end{equation}
+equivalently $g_1^2 : g_2^2 : g_3^2 = 1 : 4 : 6$, and the sharp
+ratio
+\begin{equation}
+\label{eq:g3_over_g2}
+g_3^2 / g_2^2 = 3/2 \quad \text{at the lattice scale,}
+\end{equation}
+independent of the universal one-loop prefactor $c$ (which
+Paper~I and Paper~II both leave open as the explicit
+$-\mathrm{Tr}\,\ln D_\text{lat}[U]$ calculation).  Symbolically
+verified by \nolinkurl{src/utilities/induced_gauge_action_nonabelian.py}.
+
+\subsection{The framework's terminal characterisation}
+\label{subsec:terminal_characterisation}
+
+The conjunction of Phase~1 through Phase~4 settles the conjecture's
+central row to \texttt{PART} with a precise structural reading.
+Eq.~\eqref{eq:automorphism_conjecture} holds as containment
+\begin{equation}
+\label{eq:containment_again}
+\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1)
+\;\supseteq\;
+SO(3,1) \times SU(3) \times SU(2) \times U(1),
+\end{equation}
+where the right-hand side is the \emph{factor-product-irreducible
+subalgebra} of the lattice's discrete-Hermitian automorphism
+centralizer of Eq.~\eqref{eq:su6_su6_u1}.  Equality $=$ does
+\emph{not} hold at the discrete level: the centralizer is 71-dim,
+not 18-dim; the SM gauge group is exactly the projection that
+respects the tensor-factor decomposition
+$\mathbb{C}^{12} = \mathbb{C}^2_\text{chir} \otimes
+\mathbb{C}^2_\text{iso} \otimes \mathbb{C}^3_\text{col}$.
+
+The framework's terminal prediction:
+
+\begin{itemize}
+\item The lattice's natural symmetry at the discrete tick scale
+is the left-right symmetric algebra
+$\mathfrak{su}(6)_+ \oplus \mathfrak{su}(6)_- \oplus \mathfrak{u}(1)$
+of Eq.~\eqref{eq:su6_su6_u1}, with the bipartite parity acting as
+the $L \leftrightarrow R$ exchange.  This is the algebraic shape
+of a left-right symmetric grand unification, derived from the
+$\mathcal{A}=1$ constraint on the bipartite octahedral lattice
+rather than postulated.
+
+\item The SM gauge group $SU(3) \times SU(2) \times U(1)$ is the
+factor-product subalgebra of this larger structure, recovered
+under the (interpretive) restriction that gauge invariance respects
+the tensor decomposition.  The 59 ``extras''
+(Eq.~\eqref{eq:extras_decomp}) are coset generators that
+transform as $(\mathbf{8}, \mathbf{3})$ leptoquark-flavoured plus
+chirality-shadow SM under the SM adjoint action.
+
+\item The lattice's bipartite parity is intrinsically linear
+(\emph{spatial} parity), and the proposed $SU(2)_W$ couples
+\emph{vector-like} to matter, not chirally.  The SM's chirality
+and $CP$ violation are not derivable from the framework at the
+discrete level --- they are external choices that the SM's
+Lagrangian formalism imposes by separating kinetic and mass terms.
+The framework's mass mechanism (mass-as-clock-density,
+\nolinkurl{notes/mass_chirality_coupling.md}) is structurally
+incompatible with chiral gauge coupling.
+
+\item Gravity is a scalar clock-density field on the flat
+bipartite lattice (Paper~I~§7), not a curved spacetime metric.
+Spacetime torsion --- the antisymmetric part of the affine
+connection in Einstein-Cartan theory --- is therefore not a
+separate ingredient the framework requires; its conventional
+motivation (coupling Dirac spin to curved gravity) is moot
+because the framework provides the Dirac structure intrinsically
+through the bipartite tick rule's chirality oscillation, without
+ever invoking a spin connection (\nolinkurl{notes/no_spacetime_torsion.md}).
+\end{itemize}
+
+\subsection{Quantitative predictions}
+\label{subsec:quantitative_predictions}
+
+Three quantitative predictions emerge from the Phase~1-4 work:
+
+\paragraph{Gauge-coupling ratio at the lattice scale.}
+Eq.~\eqref{eq:g3_over_g2}: $g_3^2 / g_2^2 = 3/2$ at $1/a$.  The SM
+measured ratio at $M_Z$ is $g_3^2/g_2^2 \approx 3.3$; the
+factor-of-$\sim 2$ shift is consistent with RG running over many
+energy decades (asymptotic freedom of $g_3$, slow running of
+$g_2$).  The framework does not yet fix the lattice scale $1/a$ from
+first principles, so the prediction is a ratio at an unknown UV
+scale; a follow-on paper would extract $1/a$ either from the
+explicit one-loop prefactor calculation or from another framework
+observable.
+
+\paragraph{Anisotropic photon dispersion along $(1, 1, -1)$ (Paper~I); structural extension to non-abelian.}
+Paper~I~§6 / \nolinkurl{induced_gauge_action.tex} established
+gauge-sector birefringence aligned with the optical axis
+$\mathbf{V}_1 + \mathbf{V}_2 + \mathbf{V}_3 = (1, 1, -1)$ for the
+abelian photon, derived from the bipartite-plaquette Q-tensor
+with eigenvalues $\{4, 4, 16\}$.  Phase~4's non-abelian
+generalisation inherits the same Q-tensor unchanged, so the
+non-abelian gauge bosons ($W^\pm$, $Z$, gluons) inherit the same
+direction-dependent kinetic structure as a structural corollary
+of the bipartite geometry.  We flag this as a structural
+consequence, not as an independent quantitative prediction
+verified in this paper.
+
+\paragraph{Anisotropic decoherence in the colour-weak sector (hypothesis).}
+A structural hypothesis (\nolinkurl{notes/extras_as_a1_accounting.md},
+\texttt{DRAFT}): the 59 extras of Eq.~\eqref{eq:extras_decomp} are
+the algebraic bookkeeping channels through which $\mathcal{A}=1$
+tracks probability during what an SM observer identifies as
+decoherence.  Decoherence, in this reading, is the algebraic
+projection from the full 71-dim centralizer onto the SM-gauge-
+invariant 12-dim subalgebra; the ``lost coherence'' resides in
+the 59 extras directions.  The
+$(\mathbf{8}, \mathbf{3})$ representation content of the
+leptoquark-flavoured extras predicts colour-octet weak-triplet
+anisotropy in decoherence rates --- a specific testable departure
+from continuum decoherence theory.  Verification requires the
+quantitative follow-on calculation sketched in
+\nolinkurl{notes/extras_as_a1_accounting.md}; this paper does not
+execute it.
+
+\subsection{Methodological reflections}
+\label{subsec:methodological}
+
+The framework's contribution is sharper than ``a derivation of the
+SM gauge group from a discrete substrate.''  Paper~II identifies
+\emph{precisely which} features of the Standard Model are geometric
+consequences of $\mathcal{A}=1$ on $\mathcal{T}_\diamond^3$ and
+\emph{which are not}.
+
+\paragraph{Geometric:} the Lie algebra structure
+$\mathfrak{so}(3,1) \oplus \mathfrak{su}(3) \oplus \mathfrak{su}(2)
+\oplus \mathfrak{u}(1)$ (dim 18) embedded in a larger left-right
+symmetric algebra (dim 71); the bipartite plaquette gauge
+invariance and the Q-tensor with eigenvalues $\{4, 4, 16\}$; the
+discrete spatial $O_h$ point group (order 48); the colour
+$\mathfrak{su}(3)$ generated dynamically from the
+$\mathbb{C}^3$ memory.
+
+\paragraph{Not geometric (external SM choices):} chirality (the SM
+selects $\sigma_z$ as the chirality axis where the lattice has
+$\sigma_x$ as bipartite parity --- orthogonal Bloch involutions);
+$CP$ violation (no antilinear modification of the lattice tick
+rule admits a Branch~B $CP$); the Higgs mechanism separating
+kinetic and mass terms (the lattice's mass \emph{is} the kinetic
+mechanism, via the chirality-mixing $\cos(\delta\phi/2)$
+amplitude); the factor-product gauge invariance (the lattice
+admits 59 factor-mixing operators that the SM forbids by
+construction).
+
+\paragraph{The substrate-first approach.}  The framework begins
+from a single conservation axiom on a discrete substrate and
+works out what physics follows.  This is different from
+constructing a model around observed phenomena and fitting
+parameters; the framework's predictions are derived from the
+lattice geometry without post-hoc parameter fitting.  Paper~I
+(\href{https://doi.org/10.5281/zenodo.20078529}{DOI:
+10.5281/zenodo.20078529}; see its audit table for the PASS rows)
+demonstrated this by deriving the Dirac equation, the Born rule,
+hydrogen quantization at four significant figures, and the
+structural form of the induced gauge action.  Paper~II continues
+the programme, identifying the Lie-algebra-level features that
+the substrate produces and the Lagrangian-level features it does
+not.
+
+\paragraph{The debt to measurement.}  That the framework's
+derivations land where measurement has spent a century pinning
+the answers down is not a coincidence --- it is the prerequisite.
+A century of accurate, well-tested physics is what makes
+substrate-first derivation feasible in the first place: there
+must be something firm to land on.  The framework's contribution
+is not to replace conventional physics but to identify which of
+its features are geometric consequences of a single conservation
+law and which are not.  Both readings honour what the testing
+community established; the framework reads the established answers
+as emergent rather than postulated, but it has no answers to
+offer about features the established answers have not already
+pinned down (\nolinkurl{notes/debt_to_measurement.md}).
+
+\paragraph{The audit-table convention.}  The audit-table discipline
+inherited from Paper~I (Section~\ref{subsec:audit_convention}) is
+what makes documentation of emergence credible rather than
+aspirational.  Every claim of the paper traces to an artifact:
+a sympy-verified statement in \nolinkurl{src/utilities/}, a
+derivation in the text, or a measured value cited from the
+literature.  Drift between drafts is mechanically detectable;
+negative results stay visible (Phase~1.5's \texttt{FAIL} row on
+SM-style $CP$ is part of the paper's contribution, not an
+embarrassment to be elided); the canonical record is the table,
+not the prose.  The convention is a small mechanical change with a
+substantial accountability shift, and we hope it is useful to
+other first-principles theoretical proposals.
+
+\subsection{Open directions and follow-on papers}
+\label{subsec:open_directions}
+
+Several follow-on calculations are scoped but not executed in
+this paper.
+
+\paragraph{The universal one-loop prefactor $c$.}  Paper~I left
+the explicit $-\mathrm{Tr}\,\ln D_\text{lat}[U]$ calculation as a
+``paper-length follow-on''; Paper~II inherits this open item.
+Closing it would fix the absolute scale of $1/g^2(1/a)$, enabling a
+quantitative RG-running check against the measured
+$g_i^2(M_Z)$ values.
+
+\paragraph{The lattice scale $1/a$.}  The framework's lattice-scale
+predictions assume a UV cutoff that is not yet fixed from first
+principles.  Possible inputs: the Planck scale, the hydrogen
+quantization scale, or the framework's induced gravitational
+coupling.  Fixing $1/a$ converts the ratio prediction
+$g_3^2/g_2^2 = 3/2$ into a quantitative test against measured
+couplings at any energy scale via RG running.
+
+\paragraph{The decoherence calculation.}  The structural
+hypothesis captured in \nolinkurl{extras_as_a1_accounting.md}
+converts the 59 extras into a predictive structure for
+anisotropic decoherence rates.  A follow-on script
+\nolinkurl{decoherence_as_projection.py} (sketched in
+the note) would compute the rate of probability flow from
+SM-projected to extras-projected wavefunctions as a function of
+the tick rule's $\delta\phi$ and the initial coherence,
+converting the qualitative hypothesis into a quantitative
+prediction.
+
+\paragraph{The symmetry-breaking mechanism.}  The 71-dim
+centralizer at the lattice scale reduces to the SM's 12-dim
+gauge group at observable energies.  By analogy with standard GUT
+breaking, the 59 extras would correspond to massive gauge bosons
+that decouple at lower energies.  Identifying the framework's
+breaking mechanism --- whether it is Higgs-analogous, decoherence-
+driven via the algebraic projection of
+\nolinkurl{notes/extras_as_a1_accounting.md}, or geometric in
+some other sense --- is the natural next paper in the series.
+
+\paragraph{Follow-on papers in the catalogue.}  The downstream
+papers indexed in
+\nolinkurl{external/dcl/notes/follow_on_implications.md} that depend
+on Paper~II's colour machinery include item~\#16's proton-
+interior study, item~\#3's Farey-sequence mass spectrum, and
+items \#13 (Operation Algebra of the DCL) and \#14 (Balanced
+Equations and Birefringent Channels) on which the framework's
+notational and algebraic infrastructure rests.  Paper~II's
+results enter those papers as imported infrastructure: the SU(3)
+representation content of colour-memory amplitudes, the
+left-right symmetric extension, and the quantitative
+gauge-coupling ratios at the lattice scale.
+
+\subsection{Closing}
+\label{subsec:closing}
+
+Eq.~\eqref{eq:automorphism_conjecture} of Paper~I asked whether the Standard Model gauge group
+plus Lorentz emerges from a single conservation axiom on the
+bipartite octahedral causal lattice.  The answer, after four
+phases of work: yes as containment, with a precise structural
+characterisation of the gap to equality.  The framework realises
+a left-right symmetric algebra $\mathfrak{su}(6) \oplus
+\mathfrak{su}(6) \oplus \mathfrak{u}(1)$ at the lattice scale,
+with the SM gauge group as its factor-product projection.  The
+framework's quantitative prediction $g_3^2/g_2^2 = 3/2$ at the
+lattice scale, the bipartite-plaquette birefringence aligned with
+the $(1, 1, -1)$ optical axis, and the anisotropic decoherence
+hypothesis are the testable consequences this work hands to
+experiment.
+
+What the framework derives is the Lie-algebra structure of the SM
+gauge group from substrate geometry; what it does not derive is
+the SM's chirality, $CP$ violation, or Higgs mechanism.  Both
+readings are concrete contributions: the geometric features are
+recovered without parameter fitting, and the non-geometric
+features are identified as external choices in the SM's
+Lagrangian formulation that the substrate does not impose.  The
+discrete causal lattice with $\mathcal{A}=1$ does not reach the
+full Standard Model, but it reaches the maximal structure a
+substrate-first derivation can produce, and it identifies the
+external inputs the SM requires beyond the substrate.

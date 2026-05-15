@@ -169,7 +169,13 @@ Exact equality vs containment in $\mathrm{Aut}_\text{ext}$
       additional constraint
     & \nolinkurl{automorphism_centralizer_extended.py} (sympy);
       143 $\mathfrak{su}(12)$ generators enumerated, exactly 71
-      commute, 12 are conjecture-aligned and 59 are factor-mixings
+      commute, 12 are conjecture-aligned and 59 are factor-mixings.
+      Bracket structure verified by
+      \nolinkurl{aut_centralizer_extras_commutators.py} (sympy):
+      $[\text{extras}, \text{SM}] \subseteq \text{extras}$
+      (708 brackets, 0 in SM, 452 in extras);
+      $[\text{extras}, \text{extras}]$ has 226/1711 brackets in SM
+      (extras is SM-module, not Lie ideal --- broken-symmetry shape)
     & \texttt{PART} \\
 
 SM-chirality coupling alignment
@@ -239,14 +245,34 @@ Explicit $1/g^2$ prefactor for $SU(2)_W$, $SU(3)$ Wilson actions
 % ── Central claim ───────────────────────────────────────────────────
 \textbf{Eq.~(137) of Paper~I:}
 $\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1) = SO(3,1) \times SU(3) \times SU(2) \times U(1)$
-    & Conjunction of the four established factors above plus the
-      three open sub-claims; structure constants must match factor
-      by factor, not just dimensions
+    & Containment $\supseteq$ established (18-dim direct sum
+      verified as a subalgebra of the lattice's centralizer);
+      strict equality $=$ does \emph{not} hold at the discrete
+      level (the centralizer is $\mathfrak{su}(6) \oplus
+      \mathfrak{su}(6) \oplus \mathfrak{u}(1)$, dim 71, with the
+      SM 12-dim algebra as its factor-product-irreducible
+      subalgebra).  The SM gauge group is recovered as the
+      \emph{factor-product projection} of the lattice's
+      $\mathcal{A}=1$ symmetry algebra, not as its full
+      automorphism group
     & Standard Model gauge group plus Lorentz, derived from a
-      single conservation axiom on a discrete substrate
-    & Resolves favourably iff the three open sub-claims resolve
-      favourably; characterises the obstruction otherwise
-    & \texttt{STUB} \\
+      single conservation axiom on a discrete substrate as a
+      \emph{characterisation}: the SM emerges as the
+      factor-product-effective subalgebra of a larger
+      lattice-level symmetry, with the 59 ``extras'' carrying a
+      specific representation content $(\mathbf{8}, \mathbf{3})$
+      under $SU(3) \times SU(2)$ that gives the framework its
+      quantitative prediction $g_3^2/g_2^2 = 3/2$ at the lattice
+      scale.  Chirality and $CP$ structure NOT recovered (Phase~1
+      Route~(a) and Phase~1.5 Route~(b))
+    & Conjunction of all sub-claims above: 8 PASS (containment +
+      structural foundations) + 3 PART (chirality alignment,
+      equality vs containment, $1/g^2$ ratio) + 1 FAIL (SM-$CP$
+      from antilinear modification).  Notes:
+      \nolinkurl{aut_centralizer_enumeration.md},
+      \nolinkurl{mass_chirality_coupling.md},
+      \nolinkurl{induced_gauge_action_nonabelian.md}
+    & \texttt{PART} \\
 
 \hline
 \end{longtable}

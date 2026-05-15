@@ -1,31 +1,36 @@
 % abstract.tex
-This is Paper~II of the A=1 Discrete Causal Lattice series. The
-central thesis is to prove (or characterise the obstruction to)
-Eq.~(137) of Paper~I: that the automorphism group of the bipartite
+% Paper II v1.0 abstract.  Reflects the terminal characterisation
+% outcome after Phases 1-4 close.
+This is Paper~II of the A=1 Discrete Causal Lattice series.  We take
+up the central open conjecture of Paper~I (\emph{Geometry First},
+Eq.~(137)): that the automorphism algebra of the bipartite
 octahedral causal lattice $\mathcal{T}_\diamond^3$ under the unity
 constraint $\mathcal{A}=1$ is the Standard Model gauge group plus
 Lorentz, $SO(3,1) \times SU(3) \times SU(2) \times U(1)$, with real
-dimension $18 = 6+8+3+1$.  We establish on the existing per-site
-$\mathbb{C}^2 = (\psi_R, \psi_L)$ amplitude that $SO(3,1) \times U(1)$
-acts as a dim-7 sub-product (verified symbolically), that the proposed
-per-site $SU(2)$ generators on this carrier are not independent of
-the Lorentz rotations, and that the RGB sublattice contributes only
-$\mathbb{Z}_3 \subset SU(3)$.  We extend the framework to the per-site
-amplitude $\mathbb{C}^{12} = \mathbb{C}^2 \otimes \mathbb{C}^2 \otimes
-\mathbb{C}^3$ (chirality $\otimes$ weak isospin $\otimes$ colour),
-verify that the four conjecture factors commute pairwise on this
-carrier (dim 18), verify that a trivial tensor extension of the
-bipartite tick rule preserves $\mathcal{A}=1$ and the global
-$SU(2)_W \times SU(3)$ symmetries, and verify that the bipartite
-Wilson plaquette $V_1, -V_2, -V_1, V_2$ is gauge-invariant.  The
-remaining open subproblems --- exact equality versus containment in
-$\mathrm{Aut}_\text{ext}$, SM-chirality coupling alignment, and the
-$1/g^2$ prefactor for the non-abelian Wilson actions --- are stated
-as the substance of the paper.  The paper closes with either a
-derivation of the SM gauge group from a single conservation axiom on
-a discrete substrate, or a precise statement of the obstruction; both
-outcomes are concrete results.
-
-\placeholder{(Trim and tighten as the paper develops; the audit table
-in Section~\ref{sec:introduction} carries the canonical PASS/STUB
-status for each sub-claim.)}
+dimension $18 = 6+8+3+1$.  The result is a precise
+characterisation: containment $\supseteq$ holds, equality $=$
+does not.  The lattice's discrete-Hermitian centralizer of the
+bipartite tick rule on the extended per-site amplitude
+$\mathbb{C}^{12} = \mathbb{C}^2 \otimes \mathbb{C}^2 \otimes
+\mathbb{C}^3$ is the left-right symmetric algebra $\mathfrak{su}(6)
+\oplus \mathfrak{su}(6) \oplus \mathfrak{u}(1)$ of real dimension
+71; the SM gauge group is recovered as its factor-product
+projection.  The remaining 59 generators form a coset module that
+transforms as $(\mathbf{8}, \mathbf{3})$ leptoquark-flavoured plus
+chirality-shadow SM under the SM adjoint action.  The framework's
+quantitative prediction $g_3^2 / g_2^2 = 3/2$ at the lattice
+scale follows from spectator-factor counting and is independent
+of the universal one-loop prefactor inherited from Paper~I.  The
+SM's chirality and $CP$ violation are not derivable from the
+substrate at the discrete level: bipartite parity is spatial
+parity (orthogonal Bloch involution to $\gamma_5$), and no natural
+antilinear modification of the tick rule admits Branch~B SU(3)
+($\mathbf{3} \oplus \bar{\mathbf{3}}$).  The paper's contribution
+is to identify which features of the Standard Model are geometric
+consequences of $\mathcal{A}=1$ on $\mathcal{T}_\diamond^3$ (the
+Lie algebra structure; the bipartite-plaquette gauge invariance;
+the non-abelian colour algebra dynamically generated) and which
+are not (chirality, $CP$, the Higgs mechanism's separation of
+kinetic and mass terms).  All claims are symbolically verified by
+sympy scripts in \nolinkurl{src/utilities/} and tagged in the
+audit table (Table~\ref{tab:audit}).
