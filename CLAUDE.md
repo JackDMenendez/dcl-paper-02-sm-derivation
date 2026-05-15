@@ -335,11 +335,23 @@ mklink /J external\research C:\dev\physics-research
   global symmetry of a trivial colour extension.
 - `notes/aut_centralizer_enumeration.md` -- Phase 3: the discrete-
   Hermitian centralizer of the bipartite tick rule on $\mathbb{C}^{12}$
-  has dim 71 in $\mathfrak{su}(12)$, strictly larger than Eq.~(137)'s
-  18-dim algebra.  The conjecture's $\supseteq$ is confirmed (PART);
-  equality $=$ requires imposing the SM's factor-product gauge
-  invariance, which the 59 ``extra'' factor-mixing generators
-  explicitly violate.
+  is structurally $\mathfrak{su}(6)_+ \oplus \mathfrak{su}(6)_- \oplus
+  \mathfrak{u}(1)$ (dim 71), with the two $\mathfrak{su}(6)$ factors
+  on the $\pm 1$ chirality eigenspaces and $J_1$ as the central
+  $\mathfrak{u}(1)$.  Under $SU(3) \times SU(2)$ branching, the
+  59 extras decompose as $(\mathbf{8}, \mathbf{3})$ (leptoquark-
+  flavoured) plus chirality-$\sigma_x$ shadow SM.  Conjecture
+  $\supseteq$ confirmed (PART); equality $=$ requires factor-product
+  gauge invariance.
+- `notes/aut_centralizer_extras_commutators.md` -- Phase 3 extension:
+  bracket structure of the 59 extras vs the 12 SM generators in the
+  centralizer.  708 + 1711 brackets classified.
+  $[\text{extras}, \text{SM}]$: 0/708 land in SM (extras is
+  SM-invariant module).  $[\text{extras}, \text{extras}]$: 226/1711
+  land in SM or mixed (extras is NOT a Lie ideal).  Algebraic shape
+  of a broken-symmetry pattern $G' = SU(6) \times SU(6) \times U(1)
+  \to G = \mathrm{SM}$, with 59 ``broken'' generators as coset
+  module.
 - `notes/induced_gauge_action_nonabelian.md` -- Phase 4: non-abelian
   generalisation of Paper~I's bipartite-plaquette induced action.
   Q-tensor (eigenvalues $\{4, 4, 16\}$) inherited from Paper~I

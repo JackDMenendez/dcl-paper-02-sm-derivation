@@ -355,6 +355,48 @@ Lorentz emergence from $O_h$-averaging, others) reduce the 71-dim
 centralizer to the conjecture's 18 is the open follow-up.  This
 could become a Phase 3.5 if pursued.
 
+### Phase 3 extension (2026-05-15) -- SU(6)$\oplus$SU(6)$\oplus$U(1) identification and bracket structure
+
+Sharpened the Phase 3 result by identifying the 71-dim centralizer
+explicitly as $\mathfrak{su}(6)_+ \oplus \mathfrak{su}(6)_- \oplus
+\mathfrak{u}(1)$, with the two $\mathfrak{su}(6)$ factors acting on
+the $\pm 1$ chirality eigenspaces and the $\mathfrak{u}(1)$ central
+(= $J_1$).  Under the $\mathbf{6} = (\mathbf{3}, \mathbf{2})$ branching,
+$\mathfrak{su}(6)$ decomposes under $SU(3) \times SU(2)$ as
+$\mathbf{35} = (\mathbf{8}, \mathbf{1}) \oplus (\mathbf{1}, \mathbf{3})
+\oplus (\mathbf{8}, \mathbf{3})$; the 11-dim SM gauge subset and
+the 24 "leptoquark-flavoured" extras correspond to these irreps.
+
+`src/utilities/aut_centralizer_extras_commutators.py` computes the
+708 brackets $[E, T]$ (extras × SM) and 1711 brackets
+$[E_i, E_j]$ (extras × extras) and classifies each as zero / in SM /
+in extras / mixed.  Results:
+
+- $[\text{extras}, \text{SM}]$ counts: 256 zero, 0 in SM, 452 in
+  extras, 0 mixed.  The 59-dim extras subspace is INVARIANT under
+  the SM adjoint action -- SM never bracket-produces SM from extras.
+- $[\text{extras}, \text{extras}]$ counts: 339 zero, 178 in SM, 1146
+  in extras, 48 mixed.  Extras is NOT a Lie ideal; brackets within
+  extras hit both the SM subalgebra and back to extras, exactly
+  matching the $SU(3) \times SU(2)$ branching of the
+  $\mathfrak{su}(6)$ adjoint.
+
+Structural reading: the 71-dim centralizer is a simple semisimple
+Lie algebra ($\mathfrak{su}(6) \oplus \mathfrak{su}(6) \oplus
+\mathfrak{u}(1)$) with the SM 12-dim subalgebra embedded as a
+non-normal subalgebra and the 59-dim extras as an SM-module
+complement that hits both SM and extras under self-bracketing.
+This is the algebraic shape of a *broken-symmetry pattern* with
+$G' \to G$ where $G' = SU(6) \times SU(6) \times U(1)$ and $G$ = SM.
+
+Captured in `notes/aut_centralizer_enumeration.md` (sharpened) and
+`notes/aut_centralizer_extras_commutators.md` (the bracket
+analysis).  Two narrative framings queued for Paper~II's
+conclusion: (a) high-energy unification (extras as massive
+GUT-style gauge bosons that decouple at low energy); (b)
+decoherence on the discrete walk (extras as dephasing operators
+that lose coherence over macroscopic distances).
+
 ---
 
 ## Phase 4 -- Wilson $1/g^2$ prefactors for $SU(2)_W$, $SU(3)$ -- **PART (2026-05-15)**
