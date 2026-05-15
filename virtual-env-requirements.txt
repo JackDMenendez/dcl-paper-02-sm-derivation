@@ -1,8 +1,14 @@
 numpy
 matplotlib
 pytest
+sympy
 
 # Pin specific versions in a separate file (e.g. requirements.lock.txt)
 # once the environment is stable.  Add other dependencies as the project
-# develops -- e.g. scipy, sympy, networkx, pandas, seaborn -- but keep
-# this file minimal so a fresh clone can install quickly.
+# develops -- e.g. scipy, networkx, pandas, seaborn -- but keep this
+# file minimal so a fresh clone can install quickly.
+#
+# sympy is load-bearing for src/utilities/automorphism_*.py and
+# tick_rule_*.py (every script imports Matrix, eye, sqrt, simplify,
+# conjugate, Rational, ...); the audit table treats their printed
+# output as the operational PASS evidence, so a fresh clone needs it.

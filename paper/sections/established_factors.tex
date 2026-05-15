@@ -1,0 +1,371 @@
+% established_factors.tex (Paper II)
+% Structural prose for the six PASS rows of audit_table.tex.  Each
+% subsection takes one PASS row and explains what the script's output
+% means structurally -- i.e. WHY the verified statement is the right
+% statement, not just THAT it is verified.  The closing subsection
+% (\autoref{subsec:established_necessity_vs_sufficiency}) collects the
+% six rows into the statement "established containment $\supseteq$"
+% and names the gap to "equality $=$" that the open subproblems
+% (\autoref{subsec:open_subproblems}) close.
+
+\label{sec:established_factors}
+
+The audit table (Table~\ref{tab:audit}) records six PASS rows of
+Eq.~\eqref{eq:automorphism_conjecture}.  Each is a sympy-verified
+statement on the bipartite octahedral lattice
+$\mathcal{T}_\diamond^3$.  This section explains what the six rows
+mean structurally and how they combine into the containment
+$\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1) \supseteq SO(3,1)
+\times SU(3) \times SU(2) \times U(1)$ on the extended per-site
+amplitude $\mathbb{C}^{12} = \mathbb{C}^2 \otimes \mathbb{C}^2
+\otimes \mathbb{C}^3$.  The closing subsection
+(\autoref{subsec:established_necessity_vs_sufficiency}) states the
+gap between the verified containment and the conjectured equality;
+that gap is the substance of Paper~II's three open subproblems
+(\autoref{subsec:open_subproblems}).
+
+\subsection{Discrete spatial automorphisms: $|\mathrm{Aut}_\text{discrete}(\Gamma, \mathbf{V})| = 48$}
+\label{subsec:discrete_spatial}
+
+The basis $\mathbf{V} = \{\pm\mathbf{V}_1, \pm\mathbf{V}_2,
+\pm\mathbf{V}_3\}$ of the bipartite octahedral lattice has six
+elements.  The linear maps $A \in GL(3,\mathbb{R})$ permuting
+$\mathbf{V}$ as a set are parametrised by a permutation $\sigma \in
+S_3$ of $(\mathbf{V}_1, \mathbf{V}_2, \mathbf{V}_3)$ together with
+independent signs $s \in \{\pm 1\}^3$ on each basis vector.  This
+gives $|S_3| \cdot |\mathbb{Z}_2^3| = 6 \cdot 8 = 48$ distinct
+candidates, all of which preserve $\mathbf{V}$ as a set.  The script
+\nolinkurl{automorphism_discrete.py} enumerates the 48 candidates,
+verifies each preserves $\mathbf{V}$, checks closure under matrix
+multiplication, and confirms that exactly 12 of the 48 elements
+satisfy $A^\top A = I$ in the standard inner product on
+$\mathbb{R}^3$.
+
+The resulting group is the hyperoctahedral group
+$B_3 \cong \mathbb{Z}_2 \wr S_3$, abstractly the cubic point group
+$O_h$.  The realisation on $\mathbb{R}^3$ in the $\mathbf{V}$-basis
+is not, however, the standard cubic-symmetry orthogonal
+representation: only the 12-element orthogonal subgroup is metric-
+preserving, while the remaining 36 elements are linear shears that
+permute the basis labels at the cost of distorting angles.
+
+Structurally, the full 48-element group is the relevant discrete
+spatial symmetry for the framework: the bipartite tick rule treats
+the RGB and CMY labels symmetrically and does not single out the
+standard metric.  The 12-element orthogonal subgroup is the
+metric-preserving part --- the genuine crystallographic point
+symmetry of $\mathcal{T}_\diamond^3$ in the standard
+$\mathbb{R}^3$ embedding --- and the standard metric is restored
+in the continuum limit by the $O_h$-averaging argument of
+Paper~I~§6 that produces $SO(3,1)$.  No piece of the 48 is
+discarded; the non-orthogonal piece is the discrete record of the
+fact that the lattice does not commit to a Euclidean metric at the
+microscale.
+
+\subsection{The RGB sublattice contributes only $\mathbb{Z}_3 \subset SU(3)$}
+\label{subsec:rgb_z3_obstruction}
+
+The discrete RGB symmetry $S_3$ of $(\mathbf{V}_1, \mathbf{V}_2,
+\mathbf{V}_3)$ embeds in $U(3)$ as the six permutation matrices on
+the kinetic-step weight space $(\alpha_1, \alpha_2, \alpha_3) \in
+\mathbb{C}^3$.  Within $U(3)$, the determinant separates the six
+permutations: the three even permutations have $\det = +1$ and lie
+in $SU(3)$ as the alternating subgroup $A_3 \cong \mathbb{Z}_3$;
+the three transpositions have $\det = -1$ and lie in $U(3) \setminus
+SU(3)$.  The script \nolinkurl{automorphism_rgb_su3.py} verifies the
+embedding and the determinant split explicitly.
+
+This is the load-bearing structural observation that forces the
+per-site $\mathbb{C}^3$ extension.  The conjecture's $SU(3)$ factor
+has real dimension 8 and is non-abelian; $\mathbb{Z}_3$ is finite
+and abelian; closure under multiplication does not extend a finite
+abelian discrete group to a continuous non-abelian Lie group, and
+the commutator $[A, B] = AB - BA$ on the three $\mathbb{Z}_3$
+matrices either vanishes or lands back in $\mathbb{Z}_3$, so the
+Lie algebra generated is itself abelian.  An $\mathfrak{su}(3)$
+factor cannot be a Lie-theoretic continuation of the framework's
+existing discrete colour symmetry.  It must come from an additional
+per-site internal index that the existing $\mathbb{C}^2 = (\psi_R,
+\psi_L)$ amplitude does not carry.
+
+The natural candidate is a per-site $\mathbb{C}^3$ ``colour-memory''
+amplitude $(c_1, c_2, c_3)$ where component $c_j$ records the
+amplitude that the wavefunction's most recent RGB tick was along
+$\mathbf{V}_j$.  The eight Gell-Mann generators
+$\{\lambda_a/2\}_{a=1\ldots 8}$ acting on this $\mathbb{C}^3$
+supply $\mathfrak{su}(3)$ by definition; the framework's
+contribution is identifying this $\mathbb{C}^3$ as the
+\emph{minimal} per-site internal extension the conjecture's
+$SU(3)$ factor needs.  The existing $\mathbb{Z}_3$ remains as the
+discrete subgroup of $SU(3)$ that permutes the colour basis ---
+not refuted but recovered as a finite subgroup of the larger
+continuous symmetry.
+
+\subsection{$SO(3,1) \times U(1)$ on the existing per-site $\mathbb{C}^2$: dim 7}
+\label{subsec:lorentz_u1_on_C2}
+
+Four candidate Lie-algebra factors of the conjecture admit
+generators on the existing per-site chirality amplitude
+$\mathbb{C}^2 = (\psi_R, \psi_L)$: the Lorentz rotations
+$J_a = \tfrac{1}{2}\sigma_a$, the Lorentz boosts $K_a =
+\tfrac{i}{2}\sigma_a$, a proposed per-site $SU(2)$ with generators
+$T_a = \tfrac{1}{2}\sigma_a$, and the per-site $U(1)$ phase
+generator $Q = i I_2$.  The script
+\nolinkurl{automorphism_direct_product.py} verifies that
+$\mathfrak{so}(3,1)$ closes correctly on $(J_a, K_a)$ (the standard
+Weyl-spinor relations $[J_a, J_b] = i\epsilon_{abc}J_c$,
+$[K_a, K_b] = -i\epsilon_{abc}J_c$, $[J_a, K_b] = i\epsilon_{abc}
+K_c$) and that $Q$ commutes with every generator.  So
+$\mathfrak{so}(3,1) \oplus \mathfrak{u}(1)$ acts as a direct sum
+on $\mathbb{C}^2$, with total real dimension $6 + 1 = 7$.
+
+The script also verifies the literal matrix identity $T_a = J_a$
+for every $a \in \{1, 2, 3\}$.  The proposed per-site $SU(2)$
+generators on the chirality $\mathbb{C}^2$ are not just isomorphic
+to the Lorentz rotation generators --- they are the same matrices.
+As subgroups of $GL(2, \mathbb{C})$, the proposed per-site $SU(2)$
+on this carrier is the Lorentz rotation subgroup of $SO(3,1)$.  A
+direct-product decomposition $SO(3,1) \times SU(2)$ on the
+existing $\mathbb{C}^2$ would double-count the rotations.
+
+This is the second load-bearing structural observation, and it
+parallels the $\mathbb{Z}_3 \subset SU(3)$ finding: the
+conjecture's $SU(2)$ factor, like its $SU(3)$ factor, cannot be a
+direct continuation of the framework's existing structure.  An
+independent per-site $\mathbb{C}^2$ internal index --- naturally
+identified with weak isospin --- is required for $SU(2)_W$ to
+contribute a separate factor.  Without that extension the
+framework's verified per-site carrier supports only $SO(3,1)
+\times U(1)$ at dim 7, half the conjecture's dim 18.
+
+\subsection{Direct-product structure on the extended $\mathbb{C}^{12}$: dim 18}
+\label{subsec:direct_product_C12}
+
+The previous two subsections identified the minimal per-site
+extension required by the conjecture: the per-site amplitude
+\begin{equation}
+\label{eq:c12_amplitude}
+\psi[\text{chir}, \text{iso}, \text{col}] \in
+\mathbb{C}^2_\text{chir} \otimes \mathbb{C}^2_\text{iso} \otimes
+\mathbb{C}^3_\text{col} \;\cong\; \mathbb{C}^{12},
+\end{equation}
+with the four conjecture factors acting on disjoint tensor slots:
+\begin{align*}
+SO(3,1):\;\;& J_a \otimes I_2 \otimes I_3,\quad
+              K_a \otimes I_2 \otimes I_3,\\
+SU(2)_W:\;\; & I_2 \otimes \tfrac{1}{2}\sigma_a \otimes I_3,\\
+SU(3):\;\;   & I_2 \otimes I_2 \otimes \tfrac{1}{2}\lambda_a,\\
+U(1):\;\;    & i\,I_{12}.
+\end{align*}
+The script \nolinkurl{automorphism_direct_product_extended.py}
+verifies the within-factor commutation relations
+($\mathfrak{so}(3,1)$, $\mathfrak{su}(2)$, $\mathfrak{su}(3)$ all
+close correctly) and the pairwise commutation
+$[\mathfrak{so}(3,1), \mathfrak{su}(2)] = [\mathfrak{so}(3,1),
+\mathfrak{su}(3)] = [\mathfrak{su}(2), \mathfrak{su}(3)] = 0$ by
+the tensor identity $[A \otimes I, I \otimes B] = 0$.  The
+$\mathfrak{u}(1)$ generator $i I_{12}$ is central and commutes with
+everything.
+
+This establishes the direct-sum Lie algebra
+\begin{equation}
+\label{eq:direct_sum_18}
+\mathfrak{so}(3,1) \oplus \mathfrak{su}(3) \oplus
+\mathfrak{su}(2) \oplus \mathfrak{u}(1)
+\;\subseteq\; \mathfrak{aut}(\mathcal{T}_\diamond^3,
+\mathcal{A}=1)
+\end{equation}
+on the extended $\mathbb{C}^{12}$ carrier, with real dimension
+$6 + 8 + 3 + 1 = 18$.  Both the dimension and the direct-sum
+structure of the right-hand side of
+Eq.~\eqref{eq:automorphism_conjecture} are now realised on the
+extended amplitude.  What remains for the conjecture's
+\emph{equality} is the question of whether the inclusion in
+\eqref{eq:direct_sum_18} is proper --- whether the extended
+$\mathrm{Aut}_\text{ext}$ admits any generator beyond the
+direct-sum 18-dimensional Lie algebra constructed here.  That is
+the open subproblem of
+\autoref{subsec:open_subproblems}, item (i).
+
+\subsection{Tick-rule consistency on the extended $\mathbb{C}^{12}$}
+\label{subsec:tick_rule_consistency}
+
+The bipartite chirality tick operator
+\[
+T_\text{chir} = \begin{pmatrix}
+  i\sin(\delta\phi/2) & \cos(\delta\phi/2) \\
+  \cos(\delta\phi/2)  & i\sin(\delta\phi/2)
+\end{pmatrix}
+\]
+on $\mathbb{C}^2 = (\psi_R, \psi_L)$ is unitary and preserves
+$\mathcal{A} = 1$ per Paper~I.  The natural extension to the
+$\mathbb{C}^{12}$ carrier of
+Eq.~\eqref{eq:c12_amplitude} is the trivial tensor extension
+\begin{equation}
+\label{eq:trivial_tensor_extension}
+T_\text{ext} \;=\; T_\text{chir} \otimes I_2 \otimes I_3,
+\end{equation}
+acting as the existing tick rule on chirality and as the identity
+on isospin and colour.  The script
+\nolinkurl{tick_rule_extended_consistency.py} verifies four
+structural properties:
+
+\begin{enumerate}
+\item \textbf{Unitarity}: $T_\text{ext}^\dagger T_\text{ext} = I_{12}$,
+so $\mathcal{A}=1$ on $\mathbb{C}^{12}$ follows from $\mathcal{A}=1$
+on the chirality $\mathbb{C}^2$ by linearity.
+\item \textbf{Global $SU(2)_W$ commutativity}: $[T_\text{ext}, I_2
+\otimes \tfrac{1}{2}\sigma_a \otimes I_3] = 0$ for $a = 1, 2, 3$.
+\item \textbf{Global $SU(3)$ commutativity}: $[T_\text{ext}, I_2
+\otimes I_2 \otimes \tfrac{1}{2}\lambda_a] = 0$ for $a = 1, \ldots, 8$.
+\item \textbf{Bipartite parity}: with parity operator $P_\text{ext}
+= \sigma_x \otimes I_2 \otimes I_3$, the identity $P_\text{ext}
+T_\text{ext} P_\text{ext} = T_\text{ext}$ holds --- the chirality
+parity that exchanges $\psi_R \leftrightarrow \psi_L$ is a
+symmetry of the extended tick rule, and the isospin and colour
+factors are parity-singlets in the trivial extension.
+\end{enumerate}
+
+The structural reading: the trivial tensor extension does no harm
+to the framework's existing invariants.  $\mathcal{A}=1$, bipartite
+parity, and the global $SU(2)_W \times SU(3)$ symmetry all
+survive.  What this does \emph{not} establish is that the trivial
+extension has physical content beyond six independent copies of the
+existing chirality dynamics.  Promoting the global $SU(2)_W \times
+SU(3)$ symmetry to a local gauge symmetry --- and identifying the
+chirality-asymmetric coupling that the Standard Model demands --- is
+the substance of the open subproblems in
+\autoref{subsec:open_subproblems}, items (ii)--(iii).  The
+established content here is precisely that the global symmetry is
+\emph{available}; the gauge dynamics that turns it into physics is
+the open work.
+
+\subsection{Wilson plaquette gauge invariance on the bipartite lattice}
+\label{subsec:wilson_plaquette}
+
+Gauging the global $SU(2)_W \times SU(3)$ of
+\autoref{subsec:tick_rule_consistency} introduces link variables
+$U_i(x) \in G = U(1) \times SU(2)_W \times SU(3)$ on each
+basis-vector edge, transforming as
+\[
+\psi(x) \to V(x)\psi(x),\qquad
+U_i(x) \to V(x)\, U_i(x)\, V^\dagger(x + \mathbf{V}_i)
+\]
+under a local gauge transformation $V(x) \in G$.  The link-dressed
+matter bilinear
+\[
+\psi^\dagger(x)\, U_i(x)\, \psi(x + \mathbf{V}_i)
+\]
+is gauge-invariant by direct substitution; the script
+\nolinkurl{tick_rule_gauge_invariance.py} verifies this explicitly
+for $U(1)$ and by sample check for $SU(2)$ link variables, with the
+general non-abelian case (including $SU(3)$) following from
+$V V^\dagger = I$.
+
+The smallest closed gauge-invariant loop is structurally distinctive
+on the bipartite octahedral lattice.  The three RGB basis vectors
+satisfy $\mathbf{V}_1 + \mathbf{V}_2 + \mathbf{V}_3 = (1, 1, -1)
+\neq 0$, so there are no triangular plaquettes; the smallest
+closed loop respecting the RGB/CMY alternation is the four-link
+``bipartite plaquette''
+\[
+x \to x + \mathbf{V}_1 \to x + \mathbf{V}_1 - \mathbf{V}_2 \to
+x - \mathbf{V}_2 \to x,
+\]
+traversing the basis vectors in the cyclic order $\mathbf{V}_1,
+-\mathbf{V}_2, -\mathbf{V}_1, \mathbf{V}_2$.  The plaquette variable
+$W_p = U_1(x)\, U_{-2}(x + \mathbf{V}_1)\, U_{-1}(x + \mathbf{V}_1
+- \mathbf{V}_2)\, U_2(x - \mathbf{V}_2)$ has gauge-invariant trace
+by the cyclic property of $\mathrm{Tr}$ --- the gauge
+transformations $V(x), V(x + \mathbf{V}_1), V(x + \mathbf{V}_1 -
+\mathbf{V}_2), V(x - \mathbf{V}_2)$ at the four vertices cycle and
+cancel.  This holds for any $SU(N)$ gauge group, in particular for
+the $SU(2)_W$ and $SU(3)$ of the conjecture.
+
+The Wilson action template
+\begin{equation}
+\label{eq:wilson_action_template}
+S_W \;=\; \frac{1}{g^2} \sum_p \left(1 - \frac{1}{N}
+\mathrm{Re}\,\mathrm{Tr}\, W_p\right)
+\end{equation}
+is therefore gauge-invariant on the bipartite octahedral lattice
+by inspection.  The framework's existing $U(1)$ induced-action
+calculation (Paper~I, Appendix~B) is the worked example of how the
+bare coupling $1/g^2$ is extracted at the lattice scale; the
+template \eqref{eq:wilson_action_template} extends to $SU(2)_W$ and
+$SU(3)$ with matrix-valued link variables and no other structural
+change.  Computing the explicit $1/g^2(a)$ prefactor for the
+non-abelian cases is the substance of the open subproblem of
+\autoref{subsec:open_subproblems}, item (iii).
+
+\subsection{Necessity vs sufficiency: established containment $\supseteq$, conjectured equality $=$}
+\label{subsec:established_necessity_vs_sufficiency}
+
+The six PASS rows combine as follows.
+\autoref{subsec:discrete_spatial} establishes the discrete spatial
+backbone $O_h$.  \autoref{subsec:rgb_z3_obstruction} and
+\autoref{subsec:lorentz_u1_on_C2} together force the per-site
+internal extension $\mathbb{C}^2_\text{iso} \otimes
+\mathbb{C}^3_\text{col}$: $SU(2)_W$ cannot share the chirality
+$\mathbb{C}^2$ with $SO(3,1)$ rotations, and $SU(3)$ cannot be a
+Lie-theoretic continuation of the discrete RGB symmetry.
+\autoref{subsec:direct_product_C12} verifies that the extended
+$\mathbb{C}^{12}$ carrier supports the four conjecture factors as
+a direct-sum 18-dimensional Lie algebra with the structure
+constants of $\mathfrak{so}(3,1) \oplus \mathfrak{su}(3) \oplus
+\mathfrak{su}(2) \oplus \mathfrak{u}(1)$.
+\autoref{subsec:tick_rule_consistency} verifies that the bipartite
+tick rule extends consistently to $\mathbb{C}^{12}$ as a global
+symmetry of the dynamics.  \autoref{subsec:wilson_plaquette}
+verifies that the global symmetry can be promoted to a local gauge
+symmetry with a gauge-invariant Wilson plaquette on the smallest
+non-trivial closed loop the bipartite lattice admits; the explicit
+$1/g^2$ prefactor that turns the gauge-invariant plaquette into a
+full Wilson action remains open (item (iii) below).
+
+The conjunction is the inclusion of
+Eq.~\eqref{eq:direct_sum_18}: the conjecture's right-hand side is
+contained in the lattice's automorphism algebra,
+\begin{equation}
+\label{eq:established_containment}
+\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1)
+\;\supseteq\;
+SO(3,1) \times SU(3) \times SU(2) \times U(1),
+\end{equation}
+with both sides finite-dimensional Lie groups of real dimension
+$\geq 18$ on the extended $\mathbb{C}^{12}$ carrier.
+
+The containment in \eqref{eq:established_containment} is necessary
+but not sufficient for the conjectured equality
+\eqref{eq:automorphism_conjecture}.  Three structural questions
+remain open, in the order they enter the equality:
+\begin{enumerate}
+\item \emph{Equality vs proper containment in
+$\mathrm{Aut}_\text{ext}$}: whether the extended automorphism
+algebra admits any generator beyond the 18 already constructed.
+This is a finite Lie-algebra enumeration question constrained by
+commutation with the established factors.
+
+\item \emph{Chirality coupling alignment}: whether the framework's
+bipartite parity (the RGB/CMY $\mathbb{Z}_2$) is the SM's chirality
+projector, and whether the proposed $SU(2)_W$ on the isospin
+$\mathbb{C}^2$ couples to $\psi_R$ and $\psi_L$ asymmetrically as
+the Standard Model demands.  The trivial tensor extension
+\eqref{eq:trivial_tensor_extension} is symmetric in $\psi_R$ vs
+$\psi_L$; the Standard Model is not.
+
+\item \emph{Explicit $1/g^2$ prefactors for the non-abelian Wilson
+actions}: generalising Paper~I's $U(1)$ induced-gauge-action
+calculation to $SU(2)_W$ and $SU(3)$ with matrix-valued links, and
+checking the resulting bare couplings against the measured
+Standard-Model values at the lattice scale.
+\end{enumerate}
+These three questions are the substance of
+\autoref{subsec:open_subproblems}.  Their joint resolution decides
+between the conjecture's two terminal states: equality (Paper~II
+publishes the derivation of the SM gauge group) or precise
+characterisation of the obstruction (Paper~II publishes the
+framework's verified scope plus the structural reason the equality
+fails).  Both are concrete results; the established containment
+\eqref{eq:established_containment} is what makes either of them
+publishable.

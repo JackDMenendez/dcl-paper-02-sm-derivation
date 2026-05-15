@@ -222,6 +222,60 @@ authoritative reference -- the seeded prose names Paper~I sections
 (§15, Appendix~B, Eq.~(137)) explicitly so the reader can navigate
 the published artifact without the local dcl checkout.
 
+**Notable Paper~I notes** (read these before starting a new line of
+work that overlaps the framework's broader programme):
+
+- `external/dcl/notes/follow_on_implications.md` -- catalogue of
+  follow-on paper seeds. **Paper~II is item #16** ("Standard Model
+  Gauge Derivation: Extended-Amplitude Direct-Product Construction"),
+  so the catalogue's framing of this paper -- the three open
+  subproblems, the per-site $\mathbb{C}^{12}$ extension, the
+  dependency graph to other follow-ons -- is the authoritative
+  upstream scoping document. Other items relevant to Paper~II's
+  vicinity: #3 (SM masses / Farey / Veneziano), #13 (Operation
+  Algebra of the Discrete Causal Lattice), #14 (Balanced Equations
+  and Birefringent Channels), and items that depend on Paper~II's
+  colour machinery (proton internals among them).
+
+---
+
+## Cross-references to physics-research (notation / formalization)
+
+A parallel formalization effort -- standardised notation, the
+algebra/topology of the framework, and the balanced $\mathcal{A}=1$
+equation system -- lives in the physics-research repo, exposed as a
+Windows directory junction:
+
+```text
+external/research  ->  C:\dev\physics-research
+```
+
+Highlights:
+
+- `external/research/Notes/balanced_equations/` -- the symbol-meaning
+  catalogues (`symbol-meaning-{3,4,5,6}.csv`) and
+  `Diagrammatic_Map.md` for the balanced $\mathcal{A}=1$ equation
+  system. Upstream parent for any reaction-style equation produced
+  in Paper~II that conserves $\mathcal{A}=1$ across both sides.
+- `external/research/Notes/color_and_emergent_forces.md`,
+  `lattice_as_inference_engine.md`, and the rest of the topical
+  notes alongside -- the formalization effort's working surface for
+  notation, algebra, and topology of the framework.
+
+**Upstream flow rule.** Findings during Paper~II work that touch
+notation, algebra, topology, or balanced $\mathcal{A}=1$ equations
+should be captured as notes in this repo's `notes/` directory (per
+`notes/README.md`) so they can flow upstream to physics-research's
+Notes/. A short stub is better than no stub; expand later if the
+finding grows.
+
+To (re)create the junction on a fresh clone (Windows):
+
+```bat
+mkdir external
+mklink /J external\research C:\dev\physics-research
+```
+
 ---
 
 ## Notes Index
@@ -230,5 +284,9 @@ the published artifact without the local dcl checkout.
 - `notes/lie_algebra_proof_sketch.md` -- starter note pointing at
   Paper~I's working proof sketch
   (`external/dcl/notes/lie_algebra_automorphism_proof_sketch.md`).
+- `notes/work_plan.md` -- phased plan for closing the four open
+  audit rows; identifies decision points where outcomes route the
+  paper toward different framings (derivation / obstruction /
+  characterisation).
 
 (List additional notes here as they accumulate.)

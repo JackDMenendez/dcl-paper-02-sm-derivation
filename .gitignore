@@ -27,6 +27,8 @@ data/*.err
 .claude/settings.local.json
 
 # LaTeX intermediates (the main PDF lives in build/, promoted to stage/)
+# Stray PDFs built inside paper/ (e.g. pdflatex without -output-directory)
+paper/*.pdf
 *.aux
 *.bbl
 *.blg

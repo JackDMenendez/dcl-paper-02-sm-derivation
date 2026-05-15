@@ -5,11 +5,15 @@
 MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 CURRENT_DIR := $(dir $(MKFILE_PATH))
 
-# Virtual environment (used by the full-stack template; harmless here).
-VENV := $(RELATIVE_PATH).venv
+# Virtual environment. The MSYS2 UCRT64 venv this project uses has the
+# Unix layout (bin/, not Scripts/), so we detect which directory the
+# interpreter lives in. Override VENV on the command line if you have
+# a venv at a different path: `make VENV=.venv env`.
+VENV := $(RELATIVE_PATH).venv-ucrt64
 ARGS ?= -u
-PYTHON = "$(VENV)/Scripts/python" $(ARGS)
-PIP = "$(VENV)/Scripts/pip.exe"
+VENV_BIN := $(if $(wildcard $(VENV)/Scripts/python.exe),Scripts,bin)
+PYTHON = "$(VENV)/$(VENV_BIN)/python" $(ARGS)
+PIP = "$(VENV)/$(VENV_BIN)/pip"
 
 # Build directories.
 build_dir := $(RELATIVE_PATH)build

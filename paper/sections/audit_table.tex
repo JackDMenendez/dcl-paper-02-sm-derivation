@@ -56,14 +56,14 @@ Discrete spatial $\mathrm{Aut}(\Gamma, \mathbf{V})$ has order 48
       $\{\pm\mathbf{V}_1, \pm\mathbf{V}_2, \pm\mathbf{V}_3\}$
     & Cubic point group $B_3 \cong O_h$;
       12 elements orthogonal in $\mathbb{R}^3$
-    & \texttt{automorphism\_discrete.py} (sympy)
+    & \nolinkurl{automorphism_discrete.py} (sympy)
     & \texttt{PASS} \\
 
 RGB sublattice symmetry contributes only $\mathbb{Z}_3 \subset SU(3)$
     & Cyclic shift of the three RGB basis vectors generates a
       $\mathbb{Z}_3$ subgroup
     & Abelian; cannot generate non-abelian $SU(3)$ on its own
-    & \texttt{automorphism\_rgb\_su3.py} (sympy)
+    & \nolinkurl{automorphism_rgb_su3.py} (sympy)
     & \texttt{PASS} \\
 
 $SO(3,1) \times U(1)$ acts on the existing $\mathbb{C}^2 = (\psi_R, \psi_L)$
@@ -71,7 +71,7 @@ $SO(3,1) \times U(1)$ acts on the existing $\mathbb{C}^2 = (\psi_R, \psi_L)$
       from the per-site phase oscillator
     & Real dim $6 + 1 = 7$, direct product on the existing
       per-site amplitude
-    & \texttt{automorphism\_direct\_product.py} (sympy);
+    & \nolinkurl{automorphism_direct_product.py} (sympy);
       verifies $[\mathfrak{so}(3,1), \mathfrak{u}(1)] = 0$ and that
       the proposed per-site $SU(2)$ generators are the same matrices
       as the Lorentz rotation subgroup
@@ -83,7 +83,7 @@ Direct-product structure on extended $\mathbb{C}^{12}$
     & Real dim $6 + 8 + 3 + 1 = 18$;
       $\mathfrak{so}(3,1) \oplus \mathfrak{su}(3) \oplus
        \mathfrak{su}(2) \oplus \mathfrak{u}(1)$ commutes pairwise
-    & \texttt{automorphism\_direct\_product\_extended.py} (sympy)
+    & \nolinkurl{automorphism_direct_product_extended.py} (sympy)
     & \texttt{PASS} \\
 
 Tick-rule consistency on $\mathbb{C}^{12}$
@@ -92,7 +92,7 @@ Tick-rule consistency on $\mathbb{C}^{12}$
       of the bipartite tick rule
     & Preserves $\mathcal{A}=1$, bipartite parity, and the global
       $SU(2)_W \times SU(3)$ symmetries
-    & \texttt{tick\_rule\_extended\_consistency.py} (sympy);
+    & \nolinkurl{tick_rule_extended_consistency.py} (sympy);
       four checks pass
     & \texttt{PASS} \\
 
@@ -102,7 +102,7 @@ Wilson plaquette gauge invariance
       no triangular plaquettes since $V_1 + V_2 + V_3 \neq 0$)
     & $\mathrm{Tr}(W) = 2\cos(a_1 + a_2 + a_3 + a_4)$
       gauge-invariant by cyclic property
-    & \texttt{tick\_rule\_gauge\_invariance.py} (sympy);
+    & \nolinkurl{tick_rule_gauge_invariance.py} (sympy);
       $U(1)$ explicit, $SU(2)$ sample, general non-abelian by
       $V V^\dagger = I$
     & \texttt{PASS} \\
