@@ -307,5 +307,13 @@ mklink /J external\research C:\dev\physics-research
   kinematic feature -- the bipartite tick is chirality-mixing as the
   kinetic mechanism, and every gauge structure consistent with the
   lattice preserves the clock density.
+- `notes/debt_to_measurement.md` -- the substrate-first programme's
+  methodological precondition: derivation is feasible only because
+  measurement-based physics established accurate targets to derive.
+  The surface argument (humble, symbiotic relationship between
+  substrate-first and measurement-based work) is stable; the deeper
+  question about the human perspective on the universe (what makes
+  both routes converge?) is intentionally left open for foundations
+  follow-up.
 
 (List additional notes here as they accumulate.)
