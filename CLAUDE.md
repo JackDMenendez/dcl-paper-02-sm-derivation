@@ -288,5 +288,24 @@ mklink /J external\research C:\dev\physics-research
   audit rows; identifies decision points where outcomes route the
   paper toward different framings (derivation / obstruction /
   characterisation).
+- `notes/su3_branch_consistency.md` -- Phase~1 sub-task 0: only the
+  $\mathbf{3} \oplus \mathbf{3}$ SU(3) interpretation admits the
+  existing tick rule as a global symmetry (PASS).
+- `notes/chirality_alignment.md` -- Phase~1 Route (a): the unique
+  linear bipartite parity is $\sigma_x \otimes I_2 \otimes I_3$;
+  bipartite $\mathbb{Z}_2$ and SM chirality $\mathbb{Z}_2$ are
+  orthogonal Bloch involutions on the chirality $\mathbb{C}^2$
+  (CHARACTERISATION).
+- `notes/cp_modification_obstruction.md` -- Phase~1.5 Route (b): no
+  natural antilinear modification of the tick rule admits Branch~B
+  SU(3) or SM-style $CP$ (FAIL); reduces to anticommutation
+  $\{\lambda_a, C\} = 0$ for every Gell-Mann, which has only the
+  trivial solution.
+- `notes/mass_chirality_coupling.md` -- structural-insight synthesis:
+  mass-as-clock-density (Paper~I), vector-like $SU(2)_W$ (Phase~1a),
+  and the absence of $CP$ (Phase~1.5) are three projections of one
+  kinematic feature -- the bipartite tick is chirality-mixing as the
+  kinetic mechanism, and every gauge structure consistent with the
+  lattice preserves the clock density.
 
 (List additional notes here as they accumulate.)
