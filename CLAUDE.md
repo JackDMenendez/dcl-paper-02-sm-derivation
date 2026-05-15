@@ -315,5 +315,14 @@ mklink /J external\research C:\dev\physics-research
   question about the human perspective on the universe (what makes
   both routes converge?) is intentionally left open for foundations
   follow-up.
+- `notes/no_spacetime_torsion.md` -- Paper~I's gravity-as-clock-density
+  account replaces curved spacetime with a scalar density field on
+  the flat bipartite lattice; spacetime torsion (and the entire
+  Riemann-Cartan apparatus: Christoffel symbols, spin connection,
+  vierbein) is therefore not needed.  The note records why,
+  including the observation that Einstein-Cartan's motivation
+  (coupling Dirac fermions to curved gravity through a torsionful
+  spin connection) is moot because the framework provides the Dirac
+  structure intrinsically through the bipartite tick rule.
 
 (List additional notes here as they accumulate.)
