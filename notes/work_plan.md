@@ -107,7 +107,7 @@ Phase 0).
 
 ---
 
-## Phase 1 -- Chirality alignment (load-bearing decision)
+## Phase 1 -- Chirality alignment (load-bearing decision) -- **CHARACTERISATION (2026-05-15)**
 
 **Goal.** Resolve audit-table STUB row "SM-chirality coupling
 alignment." Question: does the bipartite RGB/CMY parity coincide with
@@ -131,7 +131,7 @@ This sub-task splits Phase 1 into two routes (see `route_a` and
 `route_b` below), only one of which is required for paper
 publication; both are possible.
 
-### Route (a) -- Linear bipartite parity on the existing tick rule
+### Route (a) -- Linear bipartite parity on the existing tick rule -- **PART (2026-05-15)**
 
 **Output.**
 
@@ -154,6 +154,19 @@ the lattice predicts that the SM's chirality is built on a different
 $\mathbb{Z}_2$ than the lattice's bipartition. Routes the paper
 toward "precise obstruction" or "characterisation" rather than
 "derivation."
+
+**Resolution (2026-05-15).** Closed as CHARACTERISATION.
+`chirality_parity_alignment.py` tests 5 candidates; only $M = \pm I_3$
+survive global SU(3) commutativity (by Schur on the irreducible
+$\mathbf{3}$), and they are projectively equivalent. The unique
+viable bipartite parity is $P = \sigma_x \otimes I_2 \otimes I_3$,
+satisfying: (i) $P^2 = I$ (involution), (ii) $P \gamma_5 P^{-1} =
+-\gamma_5$ (anticommutes with SM chirality), (iii) $P P_L^{SM}
+P^{-1} = P_R^{SM}$ (swaps L $\leftrightarrow$ R --- spatial parity,
+not chirality projection), (iv) $P\, T_a^W\, P^{-1} = T_a^W$
+(vector-like SU(2)\_W coupling). Captured in
+`notes/chirality_alignment.md`. Audit row "SM-chirality coupling
+alignment" updated STUB $\to$ PART.
 
 ### Route (b) -- Modified tick rule with built-in discrete $CP$ (Phase 1.5) -- **FAIL (2026-05-15)**
 
