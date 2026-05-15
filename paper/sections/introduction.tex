@@ -5,13 +5,22 @@
 
 \label{sec:introduction}
 
-Paper~I (\emph{Geometry First}) established the bipartite octahedral
-causal lattice $\mathcal{T}_\diamond^3$ with the unity constraint
-$\mathcal{A}=1$ as a discrete substrate from which the Dirac equation,
-the Born rule, hydrogen quantization at four significant figures,
-and the structural form of the induced gauge action are derived.
-The paper closes (§15) with a precise central conjecture, repeated
-here as the anchor of Paper~II:
+\paragraph{Programme.}  The A=1 Discrete Causal Lattice series
+begins from a single conservation axiom on a discrete substrate
+(the unity constraint $\mathcal{A}=1$ on the bipartite octahedral
+lattice $\mathcal{T}_\diamond^3$) and works out what physics
+follows.  Paper~I (\emph{Geometry First},
+\href{https://doi.org/10.5281/zenodo.20078529}%
+     {DOI: 10.5281/zenodo.20078529})
+established the substrate and derived the Dirac equation, the Born
+rule, hydrogen quantization at four significant figures, and the
+structural form of the induced gauge action --- without post-hoc
+parameter fitting; the audit table of Paper~I records each
+derivation against its supporting experiment.  Reading the present
+paper without Paper~I in hand is possible but unrewarding.
+
+Paper~II takes up the central open conjecture of Paper~I
+(§15, Eq.~(137)):
 %
 \begin{equation}
 \label{eq:automorphism_conjecture}
@@ -27,6 +36,49 @@ automorphism calculation closes the equality (and the Standard Model
 gauge group is derived from a single conservation axiom on a discrete
 substrate), or it does not (and Paper~II is a precise statement of
 the obstruction).  Both outcomes are concrete results.
+
+\subsection{Continuing Paper~I's audit-table convention}
+\label{subsec:audit_convention}
+
+Paper~II continues the audit-table convention established in
+Paper~I: every claim of the paper appears as a row in
+Table~\ref{tab:audit} with a status tag (\texttt{PASS} /
+\texttt{PART} / \texttt{STUB} / \texttt{FAIL}) and a pointer to
+the evidence backing it.  Paper~I's table mapped predicted
+physical phenomena to numerical experiments and tracked
+quantitative match against measurement; Paper~II adapts the
+convention to a derivation paper, mapping structural sub-claims of
+Eq.~\eqref{eq:automorphism_conjecture} to symbolic-verification
+scripts in \nolinkurl{src/utilities/} and tracking whether the
+relevant Lie-algebra statement is symbolically verified, partially
+established, conjectural, or disconfirmed.  In both papers, prose defers to the table; the
+table is the canonical record.
+
+Three operational consequences of the convention bear directly on
+how the present paper is read:
+
+\begin{itemize}
+\item \emph{Reproducibility.}  Each \texttt{PASS} row carries a
+sympy-verified statement reproducible from the repository.  A
+reader who doubts a claim can run the corresponding script and
+either confirm the row or report a bug.  Prose fluency is
+decoupled from claim verification.
+
+\item \emph{Negative results stay visible.}  A \texttt{FAIL} row
+is part of the paper's contribution, not an embarrassment to be
+elided.  The structural impossibility of SM-style $CP$ as a
+discrete symmetry of the lattice tick rule
+(\nolinkurl{tick_rule_cp_modified.py}, a \texttt{FAIL} row in
+Table~\ref{tab:audit}) is precisely this kind of result.
+
+\item \emph{Drift prevention.}  A prose claim that overstates a
+sub-claim's status is mechanically detectable by comparing the
+prose to the table's status tag.  Paper~II's prose was reviewed
+against Table~\ref{tab:audit} on this standard before each commit.
+\end{itemize}
+
+Readers may wish to navigate Table~\ref{tab:audit} first and use
+it as a structural index to the rest of the paper.
 
 \subsection{Status of the conjecture entering Paper~II}
 \label{subsec:status_at_entry}
@@ -68,13 +120,24 @@ structure admits additional symmetries beyond the four-factor
 product is a finite Lie-algebra enumeration question constrained by
 commutation with the established factors.
 
-\item \textbf{SM-chirality coupling alignment.}  The Standard Model's
-$SU(2)_W$ couples only to left-handed fermion doublets; right-handed
-fermions are $SU(2)_W$ singlets.  Whether the framework's bipartite
-RGB/CMY parity is the SM's chirality projector, and whether the
-proposed $SU(2)_W$ on the per-site weak-isospin $\mathbb{C}^2$
-couples asymmetrically to $\psi_R$ versus $\psi_L$ as required by
-the SM, is the load-bearing structural-alignment problem.
+\item \textbf{SM-chirality coupling alignment} --- partially
+resolved during the present work.  The Standard Model's $SU(2)_W$
+couples only to left-handed fermion doublets; right-handed fermions
+are $SU(2)_W$ singlets.  Whether the framework's bipartite RGB/CMY
+parity is the SM's chirality projector, and whether the proposed
+$SU(2)_W$ couples asymmetrically to $\psi_R$ versus $\psi_L$ as
+required by the SM, was the load-bearing structural-alignment
+problem entering Paper~II.  Phase~1 of the present work establishes
+that the bipartite parity is precisely spatial parity (not chirality
+projection) and that the proposed $SU(2)_W$ couples vector-like
+(not chirally); Phase~1.5 rules out the natural antilinear
+tick-rule modification that might have recovered SM-style $CP$.
+The remaining alignment question --- whether SM chirality can be
+recovered by some further structural enrichment of the lattice ---
+is open but no longer load-bearing for Eq.~\eqref{eq:automorphism_conjecture}
+itself, whose Lie-algebra statement is consistent with the
+characterisation obtained.  See Section~\ref{sec:established_factors}
+and Table~\ref{tab:audit}.
 
 \item \textbf{Explicit $1/g^2$ prefactor} for the $SU(2)_W$ and
 $SU(3)$ Wilson actions on the bipartite octahedral lattice.  The
