@@ -289,7 +289,7 @@ added with status PASS.
 
 ---
 
-## Phase 3 -- Containment vs equality on $\mathrm{Aut}_\text{ext}$
+## Phase 3 -- Containment vs equality on $\mathrm{Aut}_\text{ext}$ -- **PART (2026-05-15)**
 
 **Goal.** Resolve audit STUB row "Exact equality vs containment in
 $\mathrm{Aut}_\text{ext}$." Enumerate the full Lie algebra of
@@ -314,6 +314,46 @@ and Phase 2 outcomes.
 
 **Risk.** Highest practical-engineering risk (compute scale). Lowest
 framing risk (any answer is informative).
+
+**Resolution (2026-05-15).** Closed as PART.
+`src/utilities/automorphism_centralizer_extended.py` enumerates the
+143 tensor-product generators of $\mathfrak{su}(12)$ and verifies
+that **71** of them commute with the bipartite tick rule (equivalently,
+$\dim(\mathfrak{u}(6) \oplus \mathfrak{u}(6)) - 1 = 71$ from a direct
+eigenspace calculation).  Of the 14 Hermitian generators of Eq.~(137),
+12 lie in this centralizer ($J_1$, 3 $SU(2)_W$, 8 $SU(3)_c$); the
+remaining 2 ($J_2, J_3$ from $\mathfrak{so}(3,1)$'s rotation
+subgroup) are continuum-emergent (do not commute with the discrete
+$\sigma_x \otimes I_2 \otimes I_3$).
+
+The 71 - 12 = 59 "extra" generators in the centralizer split as:
+
+- 24 isospin-colour mixings ($I_2 \otimes \sigma_a \otimes \lambda_b$);
+- 3 chirality-$\sigma_x$ + isospin ($\sigma_x \otimes \sigma_a \otimes I_3$);
+- 8 chirality-$\sigma_x$ + colour ($\sigma_x \otimes I_2 \otimes \lambda_a$);
+- 24 chirality-$\sigma_x$ + isospin-colour ($\sigma_x \otimes \sigma_a \otimes \lambda_b$).
+
+All 59 are *factor-mixing* operators -- they couple tensor factors
+that Eq.~(137)'s direct-product structure treats as independent.
+None are SM-gauge-invariant: each one couples factors that the
+SM's gauge structure forbids by construction.
+
+Structural reading: the lattice's discrete tick rule admits a
+71-dim algebra of per-site automorphisms; the SM's 18-dim
+gauge + Lorentz structure is the factor-product-irreducible
+sub-algebra.  **Eq.~(137) holds as equality $=$ if and only if
+the factor-product gauge invariance of the SM is imposed as an
+additional constraint** beyond tick-rule commutativity.  The
+lattice does not single this out by itself.
+
+Captured in `notes/aut_centralizer_enumeration.md`; audit-table row
+updated STUB $\to$ PART.
+
+**Open follow-up.** Identifying which natural continuum-emergent
+constraints (basis-permutation $S_3$ on the colour $\mathbb{C}^3$,
+Lorentz emergence from $O_h$-averaging, others) reduce the 71-dim
+centralizer to the conjecture's 18 is the open follow-up.  This
+could become a Phase 3.5 if pursued.
 
 ---
 

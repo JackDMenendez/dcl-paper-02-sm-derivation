@@ -149,16 +149,27 @@ Non-abelian $SU(3)$ from the $\mathbb{C}^3$ colour memory
 \hline
 % ── Open sub-claims ─────────────────────────────────────────────────
 Exact equality vs containment in $\mathrm{Aut}_\text{ext}$
-    & Established: $\supseteq$ (the four conjecture factors).
-      Conjectured: $=$ (no additional symmetries beyond the
-      four-factor product)
-    & Constrained by commutation with the established factors;
-      tractable by Lie-algebra enumeration on the extended
-      generators
-    & Open follow-on calculation;
-      strategy in
-      \nolinkurl{notes/lie_algebra_proof_sketch.md}
-    & \texttt{STUB} \\
+    & The discrete-Hermitian centralizer of the bipartite tick
+      rule on $\mathbb{C}^{12}$ (= operators $X$ commuting with
+      $\sigma_x \otimes I_2 \otimes I_3$) has dimension 71 in
+      $\mathfrak{su}(12)$, equivalently $\mathfrak{u}(6) \oplus
+      \mathfrak{u}(6) - 1$.  Of the 14 Hermitian generators of
+      Eq.~(137), exactly 12 ($J_1$, 3 $SU(2)_W$, 8 $SU(3)_c$)
+      lie in the centralizer; the remaining 2 ($J_2, J_3$ of the
+      Lorentz rotations) are continuum-emergent
+    & 59 extra generators commute with the tick rule but are
+      \emph{factor-mixing} operators -- couplings like
+      $I_2 \otimes \sigma_a \otimes \lambda_b$ (isospin-colour mixing,
+      24 generators), $\sigma_x \otimes \sigma_a \otimes I_3$
+      (3), $\sigma_x \otimes I_2 \otimes \lambda_a$ (8), and
+      $\sigma_x \otimes \sigma_a \otimes \lambda_b$ (24).
+      These violate the SM's factor-product gauge invariance.
+      Equality $=$ in Eq.~(137) holds iff the factor-product
+      structure is imposed as an additional constraint
+    & \nolinkurl{automorphism_centralizer_extended.py} (sympy);
+      143 $\mathfrak{su}(12)$ generators enumerated, exactly 71
+      commute, 12 are conjecture-aligned and 59 are factor-mixings
+    & \texttt{PART} \\
 
 SM-chirality coupling alignment
     & Under Branch~A SU(3) and the existing tick rule, the unique
