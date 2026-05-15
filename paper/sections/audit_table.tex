@@ -154,13 +154,33 @@ SM-chirality coupling alignment
       empirically required; framework provides instead a vector-like
       $SU(2)$ coupling and a spatial-parity $\mathbb{Z}_2$ that is
       orthogonal to (not equal to) the SM's chirality $\mathbb{Z}_2$.
-      Open: whether a modified (partially antilinear) tick rule
-      admits the SM chirality structure (Phase~1.5, Route~b)
+      The follow-on question (whether a modified antilinear tick
+      rule admits SM chirality / $CP$) is settled negatively below
     & \nolinkurl{chirality_parity_alignment.py} (sympy);
       5 candidates tested, unique survivor $M = I_3$ (and its
       projective equivalent $-I_3$); all 8 structural identities
       verified
     & \texttt{PART} \\
+
+Modified tick rule for Branch~B SU(3) compatibility
+    & Ansatz $T_\text{ext}^B = is \cdot I_{12} + c \cdot (\sigma_x
+      \otimes I_2 \otimes C) \circ K$ with $K$ global complex
+      conjugation: requires the colour matrix $C$ to anticommute with
+      every Gell-Mann generator $\lambda_a$
+    & No non-zero $C$ exists: anticommutation with $\lambda_3$
+      restricts $C$ to entries $C_{12}, C_{21}, C_{33}$;
+      anticommutation with $\lambda_8$ then forces those to zero.
+      Representation-theoretically: $\mathbf{3}$ and $\bar{\mathbf{3}}$
+      of SU(3) are inequivalent irreps; the unique antilinear
+      intertwiner is global colour conjugation, which does not
+      satisfy the chirality-dependent commutativity Branch~B
+      demands.  Lattice cannot incorporate SM-style $CP$ as a
+      discrete symmetry of any natural tick modification
+    & \nolinkurl{tick_rule_cp_modified.py} (sympy);
+      9 candidates tested, all fail; structural proof via
+      $\lambda_3, \lambda_8$ anticommutation;
+      isospin entanglement does not relax the colour constraint
+    & \texttt{FAIL} \\
 
 Explicit $1/g^2$ prefactor for $SU(2)_W$, $SU(3)$ Wilson actions
     & Generalisation of the Wilson-action template

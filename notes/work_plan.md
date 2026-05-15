@@ -155,7 +155,7 @@ $\mathbb{Z}_2$ than the lattice's bipartition. Routes the paper
 toward "precise obstruction" or "characterisation" rather than
 "derivation."
 
-### Route (b) -- Modified tick rule with built-in discrete $CP$ (Phase 1.5)
+### Route (b) -- Modified tick rule with built-in discrete $CP$ (Phase 1.5) -- **FAIL (2026-05-15)**
 
 **Goal.** Construct a modified bipartite tick rule that includes an
 explicit colour conjugation on chirality-flipping steps, making
@@ -165,25 +165,32 @@ chirality-alignment test becomes meaningful in the SM-$CP$ sense
 (test whether $P_L$ is extractable from $P_{CP}$ under the
 $\mathcal{A}=1$ constraint).
 
-**Output.**
+**Resolution (2026-05-15).** Closed as a definitive NEGATIVE.
+`src/utilities/tick_rule_cp_modified.py` (FAIL) tests the natural
+ansatz $T_\text{ext}^B = is \cdot I_{12} + c \cdot (\sigma_x \otimes
+I_2 \otimes C) \circ K$ with $K$ global complex conjugation, and
+finds no non-zero $C$ admits Branch~B SU(3) as a global symmetry.
+The condition reduces to anticommutation $\{\lambda_a, C\} = 0$ for
+every Gell-Mann; the surviving entries after $\lambda_3$ ($C_{12},
+C_{21}, C_{33}$) get killed by $\lambda_8$. Robustness checked
+against isospin entanglement (decoupled from the colour constraint)
+and unitarity (preserved automatically by antilinear operators).
+Representation-theoretic origin: $\mathbf{3}$ and $\bar{\mathbf{3}}$
+are inequivalent SU(3) irreps; the unique antilinear intertwiner
+(global $K$) does not satisfy Branch~B's chirality-dependent
+commutativity. Captured in `notes/cp_modification_obstruction.md`;
+audit-table row "Modified tick rule for Branch~B SU(3)
+compatibility" added with status FAIL.
 
-- A new script `src/utilities/tick_rule_cp_modified.py` (or similar)
-  that defines the modified tick rule $T_\text{ext}^B$, verifies
-  $\mathcal{A}=1$ preservation on $\mathbb{C}^{12}$, and re-establishes
-  the existing PASS-row invariants (bipartite parity, global
-  symmetries) on the modified rule.
-- If (and only if) the above passes: an extension of
-  `chirality_parity_alignment.py` (or a separate
-  `chirality_parity_alignment_cp.py`) that runs the antilinear-$P$
-  candidate suite against the modified tick rule.
-- An audit-table row "Tick-rule consistency on modified $\mathbb{C}^{12}$"
-  with status reflecting the outcome.
-
-**Risk.** The modified tick rule may not preserve $\mathcal{A}=1$, in
-which case Route~(b) returns a negative result (the lattice does not
-admit the $CP$-compatible extension). That negative is itself
-publishable -- it provides the structural reason *why* the framework
-cannot incorporate SM-style $CP$ at the lattice level.
+**Structural consequence.** The framework's bipartite parity is
+intrinsically LINEAR (spatial parity, no charge-conjugation
+component); the lattice cannot incorporate SM-style $CP$ as a
+discrete symmetry of any natural tick modification. Combined with
+Route~(a)'s characterisation result, Phase~1's terminal state is:
+the framework realises a parity-conserving Lie group structure
+$SO(3,1) \times SU(3) \times SU(2) \times U(1)$; the SM's chirality
+and $CP$ violation are external choices, not geometric consequences
+of the discrete causal lattice.
 
 **Sequencing.** Route~(a) lands first (smaller load, no audit-row
 reopen). Route~(b) is taken up only after Route~(a)'s result is
