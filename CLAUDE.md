@@ -352,6 +352,18 @@ mklink /J external\research C:\dev\physics-research
   of a broken-symmetry pattern $G' = SU(6) \times SU(6) \times U(1)
   \to G = \mathrm{SM}$, with 59 ``broken'' generators as coset
   module.
+- `notes/extras_as_a1_accounting.md` (DRAFT) -- structural
+  hypothesis: the 59 extras are the algebraic bookkeeping channels
+  through which probability flows during what an SM observer
+  identifies as "decoherence."  Decoherence as algebraic
+  projection from the full 71-dim centralizer onto the
+  SM-gauge-invariant 12-dim subalgebra, with the "lost coherence"
+  residing in the 59 extras directions.  Lindblad operators
+  derived from algebra rather than imported phenomenologically.
+  Predictive direction: anisotropic decoherence rates with specific
+  $(\mathbf{8}, \mathbf{3})$ structure.  Follow-up script
+  (`decoherence_as_projection.py`) sketched but not yet
+  implemented.
 - `notes/induced_gauge_action_nonabelian.md` -- Phase 4: non-abelian
   generalisation of Paper~I's bipartite-plaquette induced action.
   Q-tensor (eigenvalues $\{4, 4, 16\}$) inherited from Paper~I
