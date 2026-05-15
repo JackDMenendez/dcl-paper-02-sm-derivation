@@ -229,7 +229,7 @@ class is no longer "anything goes."
 
 ---
 
-## Phase 2 -- Non-abelian $SU(3)$ generation from $\mathbb{C}^3$ memory
+## Phase 2 -- Non-abelian $SU(3)$ generation from $\mathbb{C}^3$ memory -- **PASS (2026-05-15)**
 
 **Goal.** Resolve the question implicit in audit row "RGB symmetry
 $\subset \mathbb{Z}_3 \subset SU(3)$" -- *given* the per-site
@@ -254,6 +254,38 @@ rank. Each routes differently.
 **Risk.** Medium. This is the place where "the conjecture might be
 wrong because the lattice cannot produce non-abelian colour" lives.
 Tractable to settle in either direction.
+
+**Resolution (2026-05-15).** Closed as PASS.
+`src/utilities/su3_generation_from_colour_memory.py` surveys 8
+candidate $X_1 = -i \log U_1$ for the colour-memory tick rule.  Each
+candidate's $S_3$ orbit $\{X_1, X_2, X_3\}$ is closed under Lie
+brackets and the resulting subalgebra identified.  Three structural
+cases:
+
+- *Diagonal-only* (e.g.\ $X_1 = \lambda_8$): closure dim 2 = Cartan
+  subalgebra of $\mathfrak{su}(3)$, the continuous closure of the
+  discrete RGB $\mathbb{Z}_3$ of `automorphism_rgb_su3.py`.
+- *Single off-diagonal* (real or imaginary, e.g.\ $X_1 = \lambda_1$
+  or $\lambda_2$): closure dim 3 = one $\mathfrak{su}(2)$
+  subalgebra of $\mathfrak{su}(3)$.
+- *Real-symmetric two-plane (`rotate-toward-$|j\rangle$' coherent
+  mixing, $X_1 = \lambda_1 + \lambda_4$)*, or *any* mixed candidate
+  containing real-symmetric off-diagonal content (e.g.\
+  $\lambda_8 + \lambda_1$): closure dim 8 = full $\mathfrak{su}(3)$.
+
+The natural physical reading of "colour memory" --- a coherent
+rotation of amplitude from the other components toward
+$|j\rangle$ via real-symmetric generators --- produces the full
+$\mathfrak{su}(3)$ as a dynamically-generated algebra of the
+lattice, not merely as a global symmetry of a trivial colour
+extension.  The framework's robustness result: any natural
+real-symmetric off-diagonal candidate closes to full
+$\mathfrak{su}(3)$; only highly restricted (purely diagonal or
+purely imaginary antisymmetric) readings yield strict subalgebras.
+
+Captured in `notes/su3_generation_from_colour_memory.md`;
+audit-table row "Non-abelian $SU(3)$ from $\mathbb{C}^3$ memory"
+added with status PASS.
 
 ---
 

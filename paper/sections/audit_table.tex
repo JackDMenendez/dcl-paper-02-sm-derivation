@@ -125,6 +125,27 @@ SU(3) representation branch consistency
       5/8 Branch~B obstruct
     & \texttt{PASS} \\
 
+Non-abelian $SU(3)$ from the $\mathbb{C}^3$ colour memory
+    & The colour-memory tick rule applies $U_j$ on $\mathbb{C}^3$ on
+      a tick along $\mathbf{V}_j$; the $S_3$ orbit $\{X_j = -i\log U_j\}$
+      closes under Lie brackets to a subalgebra of $\mathfrak{su}(3)$.
+      The natural ``rotate toward $|j\rangle$'' reading
+      ($X_1 = \lambda_1 + \lambda_4$ for $j=1$) and any
+      mixed Cartan-plus-real-off-diagonal candidate generate the
+      full $\mathfrak{su}(3)$
+    & Degenerate cases (purely diagonal Cartan only, or purely
+      imaginary antisymmetric off-diagonals) yield strict
+      subalgebras: $\mathfrak{h}$ (Cartan, dim 2) or
+      $\mathfrak{su}(2)$ (dim 3) respectively.
+      The discrete RGB $\mathbb{Z}_3$ of
+      \nolinkurl{automorphism_rgb_su3.py} is recovered as
+      the abelian-Cartan corner.  The $\mathfrak{su}(3)$ factor of
+      Eq.~(137) is dynamically generated, not merely admitted
+    & \nolinkurl{su3_generation_from_colour_memory.py} (sympy);
+      8 candidate $X_1$'s surveyed, closure dimensions
+      $\{0, 2, 2, 3, 3, 3, 8, 8\}$
+    & \texttt{PASS} \\
+
 \hline
 % ── Open sub-claims ─────────────────────────────────────────────────
 Exact equality vs containment in $\mathrm{Aut}_\text{ext}$
