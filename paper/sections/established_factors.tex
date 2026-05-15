@@ -1,19 +1,21 @@
 % established_factors.tex (Paper II)
-% Structural prose for the six PASS rows of audit_table.tex.  Each
+% Structural prose for the PASS rows of audit_table.tex.  Each
 % subsection takes one PASS row and explains what the script's output
 % means structurally -- i.e. WHY the verified statement is the right
 % statement, not just THAT it is verified.  The closing subsection
 % (\autoref{subsec:established_necessity_vs_sufficiency}) collects the
-% six rows into the statement "established containment $\supseteq$"
+% rows into the statement "established containment $\supseteq$"
 % and names the gap to "equality $=$" that the open subproblems
 % (\autoref{subsec:open_subproblems}) close.
 
 \label{sec:established_factors}
 
-The audit table (Table~\ref{tab:audit}) records six PASS rows of
-Eq.~\eqref{eq:automorphism_conjecture}.  Each is a sympy-verified
-statement on the bipartite octahedral lattice
-$\mathcal{T}_\diamond^3$.  This section explains what the six rows
+The audit table (Table~\ref{tab:audit}) records the PASS rows
+establishing sub-claims of Eq.~\eqref{eq:automorphism_conjecture},
+together with one structural-consistency row (SU(3) representation
+branch) that narrows the interpretation of the colour factor.  Each
+is a sympy-verified statement on the bipartite octahedral lattice
+$\mathcal{T}_\diamond^3$.  This section explains what these rows
 mean structurally and how they combine into the containment
 $\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1) \supseteq SO(3,1)
 \times SU(3) \times SU(2) \times U(1)$ on the extended per-site
@@ -301,7 +303,11 @@ non-abelian cases is the substance of the open subproblem of
 \subsection{Necessity vs sufficiency: established containment $\supseteq$, conjectured equality $=$}
 \label{subsec:established_necessity_vs_sufficiency}
 
-The six PASS rows combine as follows.
+The six PASS sub-claims of
+Eq.~\eqref{eq:automorphism_conjecture} combine as follows; the
+seventh PASS row (SU(3) representation branch consistency) narrows
+the colour interpretation that the combination assumes (see
+\nolinkurl{notes/su3_branch_consistency.md}).
 \autoref{subsec:discrete_spatial} establishes the discrete spatial
 backbone $O_h$.  \autoref{subsec:rgb_z3_obstruction} and
 \autoref{subsec:lorentz_u1_on_C2} together force the per-site
@@ -346,13 +352,26 @@ algebra admits any generator beyond the 18 already constructed.
 This is a finite Lie-algebra enumeration question constrained by
 commutation with the established factors.
 
-\item \emph{Chirality coupling alignment}: whether the framework's
-bipartite parity (the RGB/CMY $\mathbb{Z}_2$) is the SM's chirality
-projector, and whether the proposed $SU(2)_W$ on the isospin
-$\mathbb{C}^2$ couples to $\psi_R$ and $\psi_L$ asymmetrically as
-the Standard Model demands.  The trivial tensor extension
-\eqref{eq:trivial_tensor_extension} is symmetric in $\psi_R$ vs
-$\psi_L$; the Standard Model is not.
+\item \emph{Chirality coupling alignment} (partially resolved,
+characterisation outcome): whether the framework's bipartite parity
+(the RGB/CMY $\mathbb{Z}_2$) is the SM's chirality projector, and
+whether the proposed $SU(2)_W$ on the isospin $\mathbb{C}^2$
+couples to $\psi_R$ and $\psi_L$ asymmetrically as the Standard
+Model demands.  Under Branch~A SU(3) and the existing tick rule,
+the unique linear bipartite parity $P = \sigma_x \otimes I_2 \otimes
+I_3$ anticommutes with $\gamma_5 = \sigma_z \otimes I_2 \otimes I_3$
+and swaps $\psi_L \leftrightarrow \psi_R$ --- it IS spatial parity,
+not chirality projection.  The proposed $SU(2)_W$ commutes with $P$
+(vector-like, not the SM's chiral coupling).  The lattice's
+bipartite $\mathbb{Z}_2$ and the SM's chirality $\mathbb{Z}_2$ are
+distinct orthogonal Bloch involutions on the chirality
+$\mathbb{C}^2$.  The trivial tensor extension
+\eqref{eq:trivial_tensor_extension} therefore predicts a precise
+\emph{characterisation} of the parity / chirality relationship
+rather than an alignment or a vacuous obstruction.  Whether a
+modified (partially antilinear) tick rule admits the SM's chiral
+coupling is a separate open question, addressed in Phase~1.5 of
+the work plan.
 
 \item \emph{Explicit $1/g^2$ prefactors for the non-abelian Wilson
 actions}: generalising Paper~I's $U(1)$ induced-gauge-action

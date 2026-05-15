@@ -107,6 +107,24 @@ Wilson plaquette gauge invariance
       $V V^\dagger = I$
     & \texttt{PASS} \\
 
+SU(3) representation branch consistency
+    & Only the $\mathbf{3} \oplus \mathbf{3}$ interpretation
+      (Branch~A: $T_a = \lambda_a / 2$ on every site) commutes
+      with the bipartite tick rule
+      $T_\text{chir} \otimes I_2 \otimes I_3$; the
+      $\mathbf{3} \oplus \bar{\mathbf{3}}$ interpretation
+      (Branch~B: RGB in $\mathbf{3}$, CMY in $\bar{\mathbf{3}}$)
+      obstructs on the 5 real Gell-Manns
+      $\{\lambda_1, \lambda_3, \lambda_4, \lambda_6, \lambda_8\}$
+    & Residual factors as $[T_\text{chir}, P_R] \otimes I_2 \otimes
+      \mathrm{Re}(\lambda_a)$; forces the bipartite parity to be
+      linear under the existing tick rule (antilinear $CP$
+      candidates require modifying the tick rule itself)
+    & \nolinkurl{su3_branch_consistency.py} (sympy);
+      8/8 Branch~A commutators vanish, 3/8 Branch~B commute,
+      5/8 Branch~B obstruct
+    & \texttt{PASS} \\
+
 \hline
 % ── Open sub-claims ─────────────────────────────────────────────────
 Exact equality vs containment in $\mathrm{Aut}_\text{ext}$
@@ -122,16 +140,27 @@ Exact equality vs containment in $\mathrm{Aut}_\text{ext}$
     & \texttt{STUB} \\
 
 SM-chirality coupling alignment
-    & (a) Whether bipartite RGB/CMY parity is the same
-      $\mathbb{Z}_2$ as the SM's chirality projector;
-      (b) whether the proposed $SU(2)_W$ couples asymmetrically
-      to $\psi_R$ vs $\psi_L$ as required by the SM
-    & SM left-handed doublets / right-handed singlets;
-      empirically required, no fitting freedom
-    & Open structural-alignment problem; the load-bearing
-      question that decides whether Paper~II derives the SM
-      gauge group or characterises the obstruction
-    & \texttt{STUB} \\
+    & Under Branch~A SU(3) and the existing tick rule, the unique
+      linear bipartite parity is $P = \sigma_x \otimes I_2 \otimes I_3$
+      (by Schur on the irreducible $\mathbf{3}$).
+      $P$ anticommutes with $\gamma_5 = \sigma_z \otimes I_2 \otimes I_3$
+      and swaps the SM's $\psi_L \leftrightarrow \psi_R$ (spatial parity,
+      not chirality projection);
+      $P$ commutes with the proposed $SU(2)_W$ generators (vector-like,
+      not the SM's chiral coupling).
+      Bipartite $\mathbb{Z}_2$ and SM chirality $\mathbb{Z}_2$ are
+      orthogonal Bloch involutions on the chirality $\mathbb{C}^2$
+    & SM left-handed doublets / right-handed singlets are
+      empirically required; framework provides instead a vector-like
+      $SU(2)$ coupling and a spatial-parity $\mathbb{Z}_2$ that is
+      orthogonal to (not equal to) the SM's chirality $\mathbb{Z}_2$.
+      Open: whether a modified (partially antilinear) tick rule
+      admits the SM chirality structure (Phase~1.5, Route~b)
+    & \nolinkurl{chirality_parity_alignment.py} (sympy);
+      5 candidates tested, unique survivor $M = I_3$ (and its
+      projective equivalent $-I_3$); all 8 structural identities
+      verified
+    & \texttt{PART} \\
 
 Explicit $1/g^2$ prefactor for $SU(2)_W$, $SU(3)$ Wilson actions
     & Generalisation of the Wilson-action template

@@ -1,0 +1,123 @@
+# Chirality–parity alignment (Phase 1 Route a)
+
+**Status:** STABLE (verified by `src/utilities/chirality_parity_alignment.py`,
+2026-05-15).
+**Purpose:** Captures the structural relationship between the
+lattice's bipartite RGB/CMY parity $P$ and the Standard Model's
+chirality structure on the extended $\mathbb{C}^{12}$ amplitude,
+under the linear-$P$ / Branch-A SU(3) regime established by
+`notes/su3_branch_consistency.md`.
+**Cited by:** the audit-table row "SM-chirality coupling alignment"
+in `paper/sections/audit_table.tex` (PART). Phase 1 Route (a) of
+`notes/work_plan.md`.
+
+---
+
+## The unique viable candidate
+
+Under Branch A SU(3) (forced by `notes/su3_branch_consistency.md`),
+linear bipartite parity candidates have the form $P = \sigma_x
+\otimes I_2 \otimes M$ with $M^2 = I_3$ Hermitian unitary. The
+script enumerated five candidates ($I_3$, $\mathrm{diag}(1,1,-1)$,
+$\mathrm{diag}(1,-1,-1)$, $-I_3$, and the transposition $T_{12}$).
+By Schur's lemma applied to the irreducible $\mathbf{3}$ of SU(3),
+only $M = \pm I_3$ commutes with all eight Gell-Mann generators —
+so only these two yield a $P$ that is a global symmetry of the
+Branch-A SU(3) algebra. The two surviving candidates are
+projectively equivalent ($-I_3$ is $I_3$ times an overall phase
+$e^{i\pi}$ on colour, acting as the identity on every physical
+observable). The unique non-trivial bipartite parity is therefore
+
+$$P \;=\; \sigma_x \otimes I_2 \otimes I_3.$$
+
+## The four structural identities
+
+The script verifies, symbolically:
+
+1. $P^2 = I_{12}$ (involution).
+2. $P \gamma_5 P^{-1} = -\gamma_5$, where
+   $\gamma_5 = \sigma_z \otimes I_2 \otimes I_3$.  Bipartite parity
+   *anticommutes* with the SM chirality involution: $\sigma_x$ and
+   $\sigma_z$ are orthogonal Bloch axes on the chirality
+   $\mathbb{C}^2$.
+3. $P P_L^{SM} P^{-1} = P_R^{SM}$.  Bipartite parity *swaps* the
+   SM's left and right subspaces — it IS spatial parity in the SM
+   sense, not chirality projection.
+4. $P T_a^W P^{-1} = T_a^W$ for $a = 1, 2, 3$.  The proposed
+   $SU(2)_W$ generators *commute* with bipartite parity.  $SU(2)_W$
+   on the existing carrier is vector-like under bipartite parity;
+   the lattice does NOT have the SM's $CP$ signature, which would
+   conjugate the gauge generators.
+
+## What this means structurally
+
+The lattice's bipartite RGB/CMY parity is precisely spatial parity
+(the SM's $P$), not chirality projection (the SM's $P_L = (I -
+\gamma_5)/2$).  The lattice's bipartite $\mathbb{Z}_2$ and the SM's
+chirality $\mathbb{Z}_2$ are *distinct orthogonal Bloch involutions*
+on the same chirality $\mathbb{C}^2$ — both linear, both well-defined,
+neither derivable from the other.
+
+The proposed $SU(2)_W$ on the existing trivial tensor extension is
+vector-like.  The SM's $SU(2)_W$ couples only to left-handed
+doublets; the framework's $SU(2)_W$, as defined in
+`automorphism_direct_product_extended.py`, couples symmetrically
+to $\psi_R$ and $\psi_L$.
+
+## Outcome class
+
+**CHARACTERISATION**, not derivation and not vacuous obstruction.
+The framework predicts a specific, geometrically meaningful
+relationship between bipartite parity and SM chirality: they are
+orthogonal Bloch involutions.  This is itself a publishable
+structural result; the alternative reading "the framework fails
+to derive SM chirality" understates what the script establishes.
+
+The framework's verified Lie-algebra structure (Eq.~(137) at the
+level of $SO(3,1) \times SU(3) \times SU(2) \times U(1)$) is
+consistent with this characterisation.  What the framework does
+NOT recover under Route (a) is the SM's *chiral matter coupling* —
+the SM's specific choice that $SU(2)_W$ acts only on $\psi_L$.
+
+## Open: Phase 1.5 / Route (b)
+
+Whether a modified tick rule with explicit colour conjugation on
+chirality-flipping steps admits Branch B SU(3) ($\mathbf{3} \oplus
+\bar{\mathbf{3}}$) and yields an antilinear bipartite parity
+$P_{CP} = (\sigma_x \otimes I_2 \otimes C) \circ K$ with the SM's
+$CP$ signature is the open Route (b) question.  If $P_{CP}$ can be
+constructed and $\mathcal{A}=1$ preserved on the modified rule, and
+if the SM's $P_L$ can then be extracted from the locked $P_{CP}$
+without breaking $\mathcal{A}=1$, the SM's chiral coupling becomes
+a structural consequence of the framework rather than an external
+input.  See `notes/work_plan.md` Phase 1.5 for the route definition.
+
+## Upstream-flow tags
+
+- **Algebra:** the orthogonal-Bloch-involution relationship between
+  $\sigma_x$ (bipartite parity on chirality) and $\sigma_z$
+  ($\gamma_5$).  Two distinct $\mathbb{Z}_2$'s on the chirality
+  $\mathbb{C}^2$; their product $\sigma_x \sigma_z = -i\sigma_y$ is
+  the third Pauli rotation, suggesting a hidden $SU(2)$ relating
+  them (but $SU(2)$ on chirality IS the Lorentz rotation subgroup,
+  per `automorphism_direct_product.py`).
+- **Topology / structure of the bipartition:** RGB/CMY exchange
+  recovers as exactly the standard $\mathbb{Z}_2$ generated by
+  $\sigma_x$ on $(\psi_R, \psi_L)$; this is now an established
+  identification, not a conjecture.
+- **Balanced equations** (indirect): an $\mathcal{A}=1$-conserving
+  reaction-style equation that crosses the bipartition picks up
+  the $\sigma_x$ action on chirality components; the SU(2)_W
+  coupling enters vector-like, not chirally.
+
+## Pointers
+
+- Script: `src/utilities/chirality_parity_alignment.py` (sympy;
+  enumerates 5 candidates, classifies outcomes, prints test results
+  per candidate).
+- Audit table: `paper/sections/audit_table.tex`, row "SM-chirality
+  coupling alignment" (PART).
+- Work plan: `notes/work_plan.md`, Phase 1 Route (a).
+- Upstream branch finding: `notes/su3_branch_consistency.md`.
+- Paper section: `paper/sections/established_factors.tex` closing
+  subsection, item (ii).

@@ -114,19 +114,86 @@ alignment." Question: does the bipartite RGB/CMY parity coincide with
 the left/right chirality projector $P_L = (1 - \gamma_5) / 2$ on the
 existing $(\psi_R, \psi_L)$ amplitude?
 
+### Phase 1 sub-task 0 -- SU(3) representation branch -- **PASS (2026-05-15)**
+
+Upstream of the alignment test itself: the bipartite tick rule
+forces the colour interpretation to be Branch~A (3 $\oplus$ 3) rather
+than Branch~B (3 $\oplus$ $\bar{3}$). Established by
+`src/utilities/su3_branch_consistency.py` (PASS); captured as
+`notes/su3_branch_consistency.md` for upstream flow; audit-table
+row added. The structural consequence is that any bipartite parity
+operator $P$ acting as a symmetry of the existing tick rule must be
+*linear* (not antilinear / $CP$-like). Linear candidates are
+$P = \sigma_x \otimes I_2 \otimes M$ with $M$ a symmetric element of
+SU(3).
+
+This sub-task splits Phase 1 into two routes (see `route_a` and
+`route_b` below), only one of which is required for paper
+publication; both are possible.
+
+### Route (a) -- Linear bipartite parity on the existing tick rule
+
 **Output.**
 
 - A new symbolic verification script
-  `src/utilities/chirality_parity_alignment.py` that constructs the
-  bipartite parity operator on $\mathbb{C}^{12}$, the SM chirality
-  projector, and tests their commutator / equality on the extended
-  carrier.
+  `src/utilities/chirality_parity_alignment.py` that enumerates the
+  linear bipartite parity candidates $P = \sigma_x \otimes I_2 \otimes M$
+  ($M$ ranges over $I_3$ and the symmetric Gell-Manns
+  $\{I_3, \lambda_1, \lambda_3, \lambda_4, \lambda_6, \lambda_8\}$),
+  constructs $\gamma_5 = \sigma_z \otimes I_2 \otimes I_3$ and the
+  SU(2)\_W generators, and runs the four tests below.
 - A `notes/chirality_alignment.md` working note logging the cases
   tried.
-- An audit-table row update STUB -> PASS / PART / FAIL.
+- An audit-table row update STUB $\to$ PASS / PART / FAIL.
 
-**Exit criteria.** One of three terminal states, each with a
-different downstream consequence:
+**Predicted outcome.** Vector-like at the operator level
+($\{\sigma_x, \sigma_z\} = 0$ on the chirality factor), so the
+lattice's bipartite $\mathbb{Z}_2$ does *not* coincide with the SM's
+chirality $\mathbb{Z}_2$. This is itself a sharp structural finding:
+the lattice predicts that the SM's chirality is built on a different
+$\mathbb{Z}_2$ than the lattice's bipartition. Routes the paper
+toward "precise obstruction" or "characterisation" rather than
+"derivation."
+
+### Route (b) -- Modified tick rule with built-in discrete $CP$ (Phase 1.5)
+
+**Goal.** Construct a modified bipartite tick rule that includes an
+explicit colour conjugation on chirality-flipping steps, making
+Branch~B (3 $\oplus$ $\bar{3}$) consistent. If successful, the
+framework has a built-in discrete $CP$ symmetry and the
+chirality-alignment test becomes meaningful in the SM-$CP$ sense
+(test whether $P_L$ is extractable from $P_{CP}$ under the
+$\mathcal{A}=1$ constraint).
+
+**Output.**
+
+- A new script `src/utilities/tick_rule_cp_modified.py` (or similar)
+  that defines the modified tick rule $T_\text{ext}^B$, verifies
+  $\mathcal{A}=1$ preservation on $\mathbb{C}^{12}$, and re-establishes
+  the existing PASS-row invariants (bipartite parity, global
+  symmetries) on the modified rule.
+- If (and only if) the above passes: an extension of
+  `chirality_parity_alignment.py` (or a separate
+  `chirality_parity_alignment_cp.py`) that runs the antilinear-$P$
+  candidate suite against the modified tick rule.
+- An audit-table row "Tick-rule consistency on modified $\mathbb{C}^{12}$"
+  with status reflecting the outcome.
+
+**Risk.** The modified tick rule may not preserve $\mathcal{A}=1$, in
+which case Route~(b) returns a negative result (the lattice does not
+admit the $CP$-compatible extension). That negative is itself
+publishable -- it provides the structural reason *why* the framework
+cannot incorporate SM-style $CP$ at the lattice level.
+
+**Sequencing.** Route~(a) lands first (smaller load, no audit-row
+reopen). Route~(b) is taken up only after Route~(a)'s result is
+recorded; the paper may present both, depending on Phase~1
+outcomes.
+
+### Phase 1 overall exit criteria
+
+One of three terminal states for the alignment test (under either
+route), each with a different downstream consequence:
 
 | Outcome | Downstream |
 |---|---|
@@ -136,7 +203,9 @@ different downstream consequence:
 
 **Risk.** This is the single most likely place for a *useful*
 surprise. It is also where the framework's predictive content is
-sharpest.
+sharpest. Sub-task 0's PASS already constrains the candidate space
+(linear under Route~(a), antilinear under Route~(b)); the outcome
+class is no longer "anything goes."
 
 ---
 
