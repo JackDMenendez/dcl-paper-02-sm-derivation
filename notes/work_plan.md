@@ -357,7 +357,7 @@ could become a Phase 3.5 if pursued.
 
 ---
 
-## Phase 4 -- Wilson $1/g^2$ prefactors for $SU(2)_W$, $SU(3)$
+## Phase 4 -- Wilson $1/g^2$ prefactors for $SU(2)_W$, $SU(3)$ -- **PART (2026-05-15)**
 
 **Goal.** Resolve audit STUB row. Generalise Paper~I's
 `induced_gauge_action.tex` (where the $U(1)$ calculation was the
@@ -380,6 +380,44 @@ couplings at, say, 100 GeV -- useful as a sanity check, not a proof.
 well-defined; the question is whether the numbers are sensible.
 Mismatch with measured couplings is itself a publishable
 falsification or constraint.
+
+**Resolution (2026-05-15).** Closed as PART.
+`src/utilities/induced_gauge_action_nonabelian.py` extends Paper~I's
+bipartite-plaquette induced-action calculation to non-abelian gauge
+groups.  Key results:
+
+- The bipartite Q-tensor (eigenvalues $\{4, 4, 16\}$, trace 24)
+  is inherited from Paper~I unchanged.  Verified in sympy by
+  reproducing the Q-matrix from $\sum_{a<b}(V_a^i V_b^j F_{ij})^2$.
+- For SU(N) link variables, the trace identity
+  $\operatorname{Tr}(T^a T^b) = T_F \delta^{ab}$ (with
+  $T_F = 1/2$ in the fundamental) pulls a global factor $T_F / N$
+  outside; the Q-tensor structure is unchanged.
+- The framework's per-site amplitude
+  $\mathbb{C}^2_{\text{chir}} \otimes \mathbb{C}^2_{\text{iso}}
+   \otimes \mathbb{C}^3_{\text{col}}$ has spectator-factor
+  multiplicities $N_f^{SU(2)} = 2 \cdot 3 = 6$ and $N_f^{SU(3)}
+  = 2 \cdot 2 = 4$.
+
+The framework's first quantitative gauge-coupling prediction is
+
+$$g_3^2 / g_2^2 = 3/2 \quad \text{at the lattice scale } 1/a,$$
+
+independent of the universal one-loop prefactor $c$ (still open).
+Equivalent ratios: $g_1^2 : g_2^2 : g_3^2 = 1 : 4 : 6$ at the
+lattice scale.
+
+SM measured ratios at $M_Z$: $g_3^2/g_2^2 \approx 3.3$,
+$g_2^2/g_1^2 \approx 3.2$.  The discrepancy with the framework's
+lattice-scale prediction is consistent with the kind of RG flow
+expected over many energy decades, but the framework does not yet
+fix the lattice scale $1/a$ from first principles to make this a
+tight quantitative test.
+
+Captured in `notes/induced_gauge_action_nonabelian.md`; audit-table
+row updated STUB $\to$ PART.  Closing it to PASS requires the
+explicit one-loop $-\operatorname{Tr}\ln D_{\text{lat}}[U]$
+calculation that Paper~I and Paper~II both leave for follow-up.
 
 ---
 

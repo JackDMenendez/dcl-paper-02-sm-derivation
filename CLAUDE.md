@@ -340,5 +340,14 @@ mklink /J external\research C:\dev\physics-research
   equality $=$ requires imposing the SM's factor-product gauge
   invariance, which the 59 ``extra'' factor-mixing generators
   explicitly violate.
+- `notes/induced_gauge_action_nonabelian.md` -- Phase 4: non-abelian
+  generalisation of Paper~I's bipartite-plaquette induced action.
+  Q-tensor (eigenvalues $\{4, 4, 16\}$) inherited from Paper~I
+  unchanged; $T_F = 1/2$ trace normalisation in SU(N) fundamental.
+  Per-site spectator-factor counting yields the sharp lattice-scale
+  prediction $g_3^2 / g_2^2 = 3/2$ (equivalently $g_1^2 : g_2^2 :
+  g_3^2 = 1 : 4 : 6$), independent of the universal one-loop
+  prefactor (still open).  PART: structural form complete;
+  numerical $c$ open; ratio prediction sharply derived.
 
 (List additional notes here as they accumulate.)

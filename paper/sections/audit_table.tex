@@ -215,16 +215,24 @@ Modified tick rule for Branch~B SU(3) compatibility
     & \texttt{FAIL} \\
 
 Explicit $1/g^2$ prefactor for $SU(2)_W$, $SU(3)$ Wilson actions
-    & Generalisation of the Wilson-action template
-      $S_W = (1/g^2)\sum_p (1 - \tfrac{1}{N}\mathrm{Re}\,\mathrm{Tr}\,W_p)$
-      to non-abelian link variables
-    & Continuum-limit identification with SM gauge-boson
-      dynamics; the Sakharov-style induced-action calculation
-      (Paper~I Appendix B) generalises with matrix-valued links
-    & Open follow-on calculation;
-      Paper~I's induced gauge-action appendix supplies the $U(1)$
-      template
-    & \texttt{STUB} \\
+    & Non-abelian generalisation of Paper~I's bipartite-plaquette
+      calculation: $1 - \tfrac{1}{N}\mathrm{Re}\,\mathrm{Tr}\,W_{ab} =
+      \tfrac{a^4 T_F}{2N}(V_a^i V_b^j F^c_{ij})^2$ with $T_F = 1/2$.
+      The Q-tensor (eigenvalues $\{4, 4, 16\}$) and the
+      $O_h$-averaged Maxwell-style density are inherited from
+      Paper~I unchanged
+    & Spectator-factor counting on the per-site
+      $\mathbb{C}^2 \otimes \mathbb{C}^2 \otimes \mathbb{C}^3$
+      gives $N_f^{SU(2)} = 6$, $N_f^{SU(3)} = 4$; sharp lattice-
+      scale prediction $g_3^2/g_2^2 = 3/2$ independent of the
+      universal one-loop prefactor $c$ Paper~I left open.
+      Universal $c$ remains open (the explicit
+      $-\mathrm{Tr}\ln D_\text{lat}[U]$ calculation is a
+      paper-length follow-on for both papers)
+    & \nolinkurl{induced_gauge_action_nonabelian.py} (sympy);
+      Q-tensor verified, spectator counts derived, ratio
+      $g_1^2 : g_2^2 : g_3^2 = 1 : 4 : 6$ at lattice scale
+    & \texttt{PART} \\
 
 \hline
 % ── Central claim ───────────────────────────────────────────────────
