@@ -2,12 +2,18 @@
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{graphicx}
 \usepackage{xcolor}
+%% Tell the url package (loaded by hyperref) to allow line breaks
+%% inside URLs at hyphens (in addition to the default / and .).
+%% This prevents margin-drift on long paths like
+%% dcl-paper-02-sm-derivation that would otherwise overflow.
+\PassOptionsToPackage{hyphens}{url}
 \usepackage[
     hidelinks,
-    pdftitle={Your Paper Title},
-    pdfauthor={Author Name},
-    pdfsubject={Paper subject},
-    pdfkeywords={keyword1, keyword2, keyword3}
+    breaklinks=true,
+    pdftitle={Geometry Forces Physics: A Lie-Algebra Derivation of the SM Gauge Group},
+    pdfauthor={Jack Menendez},
+    pdfsubject={A=1 Discrete Causal Lattice; SM gauge group; Lie-algebra automorphisms},
+    pdfkeywords={Standard Model gauge group, automorphism algebra, bipartite causal lattice, SU(3), SU(2), U(1), SO(3,1), Lie algebra, symbolic verification}
 ]{hyperref}
 \usepackage{booktabs}
 \usepackage{array}

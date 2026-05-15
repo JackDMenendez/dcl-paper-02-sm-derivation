@@ -1,7 +1,158 @@
-% code_and_data.tex
+% code_and_data.tex -- Appendix A
 \label{sec:code_and_data}
 
-\placeholder{Describe what is in the companion repository: directory
-layout, how to inspect the data files, where the figure-generating
-scripts live. The aim is that a reader can reproduce or audit any claim
-in the paper from this appendix plus the linked DOI.}
+This appendix describes the companion repository
+\nolinkurl{github.com/JackDMenendez/dcl-paper-02-sm-derivation}
+(v1.0 tag), with the aim that any reader can audit or reproduce
+any claim in the paper from the repository contents.  The
+audit-table convention of Section~\ref{subsec:audit_convention}
+applies: every claim has a row in Table~\ref{tab:audit} with a
+status tag and a pointer to its supporting artifact (a script, a
+derivation, or a measured value cited from the literature).
+
+\subsection{Repository layout}
+\label{subsec:repo_layout}
+
+The repository is organised as follows.
+
+\begin{itemize}
+\item \nolinkurl{paper/} --- LaTeX source for this paper.
+  \begin{itemize}
+  \item \nolinkurl{paper/main.tex} --- the document root.
+  \item \nolinkurl{paper/sections/} --- one file per section,
+    including \nolinkurl{audit_table.tex} (the canonical
+    record of every PASS / PART / STUB / FAIL claim status).
+  \item \nolinkurl{paper/macros/} --- shared LaTeX packages and
+    commands.
+  \item \nolinkurl{paper/paper-bib/references.bib} --- the
+    bibliography source.
+  \end{itemize}
+
+\item \nolinkurl{src/utilities/} --- sympy verification scripts.
+  Thirteen scripts in total: six inherited from Paper~I (the
+  \nolinkurl{automorphism_*.py} and \nolinkurl{tick_rule_*.py}
+  files) and seven new to Paper~II that close Phases~1--4 of
+  \nolinkurl{notes/work_plan.md}.  Each script is self-contained
+  and runs from a Python virtual environment with \texttt{sympy}
+  (see Appendix~\ref{sec:reproducibility} for setup).  The output
+  of each run is the operational PASS/PART/FAIL for the
+  corresponding audit-table row; running every script is the
+  end-to-end verification of Paper~II's claims.
+
+\item \nolinkurl{notes/} --- working theoretical notes that the
+  paper either cites (via the audit table's evidence column) or
+  builds on.  At v1.0 the directory contains:
+  \begin{itemize}
+  \item \nolinkurl{work_plan.md} --- the phased plan for Phases~0
+    through 5, with resolution stanzas for each closed phase.
+  \item Per-phase findings and structural interpretations
+    (one note per closed Phase or sub-phase):
+    \begin{itemize}
+    \item \nolinkurl{su3_branch_consistency.md}
+    \item \nolinkurl{chirality_alignment.md}
+    \item \nolinkurl{cp_modification_obstruction.md}
+    \item \nolinkurl{su3_generation_from_colour_memory.md}
+    \item \nolinkurl{aut_centralizer_enumeration.md}
+    \item \nolinkurl{aut_centralizer_extras_commutators.md}
+    \item \nolinkurl{induced_gauge_action_nonabelian.md}
+    \end{itemize}
+  \item Structural-synthesis and framing notes:
+    \begin{itemize}
+    \item \nolinkurl{mass_chirality_coupling.md}
+    \item \nolinkurl{debt_to_measurement.md}
+    \item \nolinkurl{no_spacetime_torsion.md}
+    \end{itemize}
+  \item \nolinkurl{extras_as_a1_accounting.md} (\texttt{DRAFT})
+    --- the hypothesis that the 59 extras of the Phase~3
+    centralizer are the algebraic bookkeeping channels for
+    $\mathcal{A}=1$ during what an SM observer identifies as
+    decoherence.  Sketches the follow-on script
+    \nolinkurl{decoherence_as_projection.py}, deferred from v1.0.
+  \item \nolinkurl{lie_algebra_proof_sketch.md} --- a pointer to
+    Paper~I's working proof sketch
+    (\nolinkurl{external/dcl/notes/lie_algebra_automorphism_proof_sketch.md},
+    accessible via the Windows directory junction described in
+    \nolinkurl{CLAUDE.md}).
+  \end{itemize}
+
+\item \nolinkurl{release_notes/} --- per-version change logs and
+  GitHub Release bodies (see also
+  Appendix~\ref{subsec:repro_release_flow}).
+
+\item \nolinkurl{CLAUDE.md} --- working brief: project status,
+  what NOT to change, cross-references to Paper~I and the parallel
+  formalisation effort in physics-research, notes index.  This
+  file is the entry point for anyone (human or AI) returning to
+  the project.
+
+\item \nolinkurl{CITATION.cff} --- machine-readable citation
+  metadata.
+
+\item \nolinkurl{external/} --- Windows directory junctions to
+  Paper~I (\nolinkurl{external/dcl}) and the physics-research
+  formalisation effort (\nolinkurl{external/research}), gitignored
+  per \nolinkurl{.gitignore}.  On a fresh clone these need to be
+  recreated locally to follow cross-references to those
+  repositories; the seeded prose explicitly cites Paper~I's
+  Zenodo DOI~\cite{menendez2026geometry} so that a reviewer
+  without those local checkouts can still navigate the published
+  artifact.
+\end{itemize}
+
+\subsection{The audit table as canonical record}
+\label{subsec:audit_canonical}
+
+The convention introduced in Section~\ref{subsec:audit_convention}
+is the load-bearing one for code/data audit: prose claims defer
+to Table~\ref{tab:audit}, every row has a status tag, every
+status tag has a pointer to a verifiable artifact, and the table
+itself is part of the released artifact (frozen at v1.0).  A
+reader who doubts any specific claim in the paper can navigate to
+the relevant audit-table row, follow the evidence-column pointer
+to the supporting script, and re-run the script for independent
+verification.  Negative results (\texttt{FAIL} rows --- Phase~1.5
+in particular) are part of the contribution and are recorded with
+the same convention.
+
+The current v1.0 audit-table state is:
+
+\begin{itemize}
+\item Established factors (\texttt{PASS}, $8$ rows): discrete
+  spatial $\mathrm{Aut}(\Gamma, \mathbf{V}) = O_h$ of order 48;
+  RGB sublattice contributes only $\mathbb{Z}_3 \subset SU(3)$;
+  $SO(3,1) \times U(1)$ acts on the existing $\mathbb{C}^2$
+  (dim 7); direct-product structure on extended $\mathbb{C}^{12}$
+  (dim 18); tick-rule consistency on $\mathbb{C}^{12}$; bipartite
+  Wilson plaquette gauge invariance; SU(3) representation branch
+  consistency; non-abelian $SU(3)$ from $\mathbb{C}^3$ memory.
+\item Partial / characterisation (\texttt{PART}, $3$ rows):
+  SM-chirality coupling alignment, exact equality vs containment
+  in $\mathrm{Aut}_\text{ext}$, explicit $1/g^2$ prefactor for
+  the non-abelian Wilson actions.
+\item Disconfirmed (\texttt{FAIL}, $1$ row): modified tick rule
+  for Branch~B SU(3) (no antilinear modification admits SM-style
+  $CP$).
+\item Central claim (\texttt{PART}): Eq.~(137) of Paper~I --
+  containment $\supseteq$ holds; equality $=$ does not; the
+  characterisation outcome is the framework's terminal
+  prediction.
+\end{itemize}
+
+\subsection{Provenance and license}
+\label{subsec:provenance}
+
+Paper text and figures are released under the Creative Commons
+Attribution 4.0 (CC BY 4.0) licence.  Source code in the
+\nolinkurl{src/utilities/} directory is released under the MIT
+licence.  The six inherited scripts (\nolinkurl{automorphism_*.py}
+and \nolinkurl{tick_rule_*.py}) are verbatim copies of the v1.0
+versions in Paper~I~\cite{menendez2026geometry}; edits to those
+scripts in Paper~II are additive (extensions of the verification,
+not refactorings of the existing calculation) so that Paper~I's
+printed output remains the canonical reference for the original
+six rows.
+
+The complete commit history is available at the repository's
+\nolinkurl{main} branch; the v1.0 release tag pins the exact
+commit corresponding to this paper's published artifact.  Issues
+and pull requests are accepted at the GitHub repository.

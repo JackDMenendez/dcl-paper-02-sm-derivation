@@ -84,10 +84,10 @@ broken gauge symmetry pattern.  Symbolically verified by
 \nolinkurl{src/utilities/automorphism_centralizer_extended.py}.
 
 \paragraph{Phase~4 -- Wilson $1/g^2$ for $SU(2)_W$, $SU(3)$ (\texttt{PART}).}
-Paper~I's bipartite-plaquette Q-tensor (eigenvalues
-$\{4, 4, 16\}$) is inherited unchanged for non-abelian gauge
-groups; the SU(N) trace identity introduces only a global
-$T_F = 1/2$ factor.  Spectator-factor counting on the per-site
+Paper~I's bipartite-plaquette Q-tensor~\cite{wilson1974confinement}
+(eigenvalues $\{4, 4, 16\}$) is inherited unchanged for
+non-abelian gauge groups; the SU(N) trace identity introduces
+only a global $T_F = 1/2$ factor.  Spectator-factor counting on the per-site
 $\mathbb{C}^{12}$ gives the framework's quantitative gauge-coupling
 prediction:
 \begin{equation}
@@ -144,7 +144,9 @@ under the (interpretive) restriction that gauge invariance respects
 the tensor decomposition.  The 59 ``extras''
 (Eq.~\eqref{eq:extras_decomp}) are coset generators that
 transform as $(\mathbf{8}, \mathbf{3})$ leptoquark-flavoured plus
-chirality-shadow SM under the SM adjoint action.
+chirality-shadow SM under the SM adjoint action; the relevant
+$\mathfrak{su}(N)$ branching is standard
+representation theory~\cite{georgi1999lie}.
 
 \item The lattice's bipartite parity is intrinsically linear
 (\emph{spatial} parity), and the proposed $SU(2)_W$ couples
@@ -292,11 +294,13 @@ Several follow-on calculations are scoped but not executed in
 this paper.
 
 \paragraph{The universal one-loop prefactor $c$.}  Paper~I left
-the explicit $-\mathrm{Tr}\,\ln D_\text{lat}[U]$ calculation as a
-``paper-length follow-on''; Paper~II inherits this open item.
-Closing it would fix the absolute scale of $1/g^2(1/a)$, enabling a
-quantitative RG-running check against the measured
-$g_i^2(M_Z)$ values.
+the explicit $-\mathrm{Tr}\,\ln D_\text{lat}[U]$ calculation
+(the Sakharov-Zeldovich induced-action
+programme~\cite{sakharov1968vacuum} applied to the bipartite
+Dirac operator) as a ``paper-length follow-on''; Paper~II
+inherits this open item.  Closing it would fix the absolute scale
+of $1/g^2(1/a)$, enabling a quantitative RG-running check against
+the measured $g_i^2(M_Z)$ values.
 
 \paragraph{The lattice scale $1/a$.}  The framework's lattice-scale
 predictions assume a UV cutoff that is not yet fixed from first

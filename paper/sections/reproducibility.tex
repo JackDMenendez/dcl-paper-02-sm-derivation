@@ -1,17 +1,160 @@
-% reproducibility.tex
+% reproducibility.tex -- Appendix B
 \label{sec:reproducibility}
 
-\placeholder{Compact reproducibility quickstart. Goal: a reader who has
-just cloned the repository at the release tag can reproduce the
-paper's headline claim in under five minutes.
+This appendix is a compact reproducibility quickstart.  Goal: a
+reader who has just cloned the repository at the v1.0 tag can
+reproduce every audit-table row of Paper~II and rebuild this
+PDF from a fresh checkout in under ten minutes.
 
-Suggested structure:
+\subsection{Environment}
+\label{subsec:repro_environment}
+
 \begin{itemize}
-\item \textbf{Environment.} Operating system, language version, key
-      dependencies (point to the manifest file rather than re-listing).
-\item \textbf{Build the paper.} The commands needed from a fresh clone.
-\item \textbf{Verify the headline result.} A minimal snippet --- ideally
-      under ten lines --- that re-derives the central numerical claim.
-\item \textbf{Where to look next.} Pointers to the experiment scripts
-      and data files for deeper checks.
-\end{itemize}}
+\item \textbf{Operating system.}  Verified on Windows~11 (MSYS2
+  UCRT64) and any POSIX system with the equivalent toolchain.
+  No platform-specific code.
+\item \textbf{Python.}  Python~3.10 or later.  The framework's
+  symbolic verification scripts use only \texttt{sympy} (no
+  numerical-only dependencies); the dependency manifest is
+  \nolinkurl{virtual-env-requirements.txt} in the repository
+  root.
+\item \textbf{LaTeX.}  Any modern TeX distribution (TeX Live~2023+
+  or MiKTeX) with \texttt{pdflatex} and standard packages
+  (\texttt{amsmath}, \texttt{hyperref}, \texttt{longtable},
+  \texttt{caption}, \texttt{adjustbox}; see
+  \nolinkurl{paper/macros/packages.tex}).
+\item \textbf{GNU Make}~$\geq$ 4.3 (the stock Windows GNU~Make port
+  is 3.81 and too old; use the \texttt{chocolatey/make} build or
+  MSYS2's \texttt{make}).
+\end{itemize}
+
+\subsection{From fresh clone to verified paper}
+\label{subsec:repro_steps}
+
+\begin{verbatim}
+git clone https://github.com/JackDMenendez/dcl-paper-02-sm-derivation
+cd dcl-paper-02-sm-derivation
+git checkout v1.0
+
+python -m venv .venv-ucrt64
+source .venv-ucrt64/bin/activate    # POSIX / MSYS2
+# .venv-ucrt64\Scripts\activate     # Windows native cmd
+pip install -r virtual-env-requirements.txt
+
+make paper                          # rebuilds build/Paper.pdf
+\end{verbatim}
+
+The \texttt{make paper} target runs three passes of
+\texttt{pdflatex} (plus a \texttt{bibtex} pass for the
+bibliography), producing
+\nolinkurl{build/Paper.pdf} byte-equivalent to the released
+artifact archived in
+\nolinkurl{.stage/Paper_v1.0.pdf}.
+
+\subsection{Verifying every audit-table row}
+\label{subsec:repro_audit}
+
+The end-to-end verification of Paper~II's PASS / PART / FAIL
+status rows is running the thirteen scripts in
+\nolinkurl{src/utilities/}.  Each script is self-contained and
+runs as a Python module:
+
+{\scriptsize
+\begin{verbatim}
+python -m src.utilities.automorphism_discrete
+python -m src.utilities.automorphism_rgb_su3
+python -m src.utilities.automorphism_direct_product
+python -m src.utilities.automorphism_direct_product_extended
+python -m src.utilities.tick_rule_extended_consistency
+python -m src.utilities.tick_rule_gauge_invariance
+python -m src.utilities.su3_branch_consistency
+python -m src.utilities.chirality_parity_alignment
+python -m src.utilities.tick_rule_cp_modified
+python -m src.utilities.su3_generation_from_colour_memory
+python -m src.utilities.automorphism_centralizer_extended
+python -m src.utilities.aut_centralizer_extras_commutators
+python -m src.utilities.induced_gauge_action_nonabelian
+\end{verbatim}
+}
+
+All but \nolinkurl{aut_centralizer_extras_commutators.py} complete
+in seconds on a consumer-grade laptop.  The bracket-structure
+script (1711 commutators of $12\times 12$ sympy matrices) takes
+several minutes; this is the most expensive computation in the
+paper and is the load-bearing verification for the structural
+finding that the 71-dim discrete centralizer is the standard
+subalgebra-with-complement of a simple semisimple Lie algebra
+(see~\autoref{subsec:terminal_characterisation}).
+
+\subsection{Verifying the central numerical claim}
+\label{subsec:repro_central}
+
+The framework's first quantitative gauge-coupling prediction
+($g_3^2 / g_2^2 = 3/2$ at the lattice scale, Eq.~\eqref{eq:g3_over_g2})
+is derived in \nolinkurl{src/utilities/induced_gauge_action_nonabelian.py}.
+The relevant lines extract the prediction from the Q-tensor and
+the spectator-factor counting:
+
+{\scriptsize
+\begin{verbatim}
+import sympy as sp
+from sympy import Rational
+# Spectator-factor multiplicities on the per-site C^{12}:
+N_f_SU2 = 2 * 3   # chirality x colour spectators = 6
+N_f_SU3 = 2 * 2   # chirality x isospin spectators = 4
+T_F = Rational(1, 2)  # fundamental of SU(N)
+inv_g2_sq = N_f_SU2 * T_F   # = 3
+inv_g3_sq = N_f_SU3 * T_F   # = 2
+print(inv_g2_sq / inv_g3_sq)   # 3/2 (= g_3^2 / g_2^2 at lattice scale)
+\end{verbatim}
+}
+
+The full script also verifies Paper~I's Q-tensor with eigenvalues
+$\{4, 4, 16\}$, the $T_F$ trace normalisation, and the abelian
+($U(1)$) case where all 12 components of the per-site amplitude
+carry unit charge, giving $1/g_1^2 : 1/g_2^2 : 1/g_3^2 = 12 : 3 : 2$
+at the lattice scale.
+
+\subsection{Where to look next}
+\label{subsec:repro_pointers}
+
+\begin{itemize}
+\item For the per-claim verification trail: navigate from any
+  audit-table row in Table~\ref{tab:audit} to the script named in
+  its evidence column.  Run that script.
+\item For structural-interpretation context: the corresponding
+  note in \nolinkurl{notes/} contains the working derivation, the
+  representation-theoretic decomposition, and pointers to adjacent
+  notes (the upstream-flow tags at the bottom of each note name
+  the related findings).
+\item For the framework's foundational substrate:
+  Paper~I~\cite{menendez2026geometry}.  Section~5--6 of Paper~I
+  derive the Dirac structure from the bipartite tick rule;
+  Section~7 derives gravity-as-clock-density; Appendix~B
+  establishes the bipartite-plaquette Q-tensor and the
+  structural form of the induced gauge action.  Paper~II's
+  Phase~4 calculation extends Paper~I's Appendix~B unchanged to
+  the non-abelian case.
+\item For follow-on questions and open items: the catalogue at
+  \nolinkurl{external/dcl/notes/follow_on_implications.md}
+  (Paper~I repository) enumerates the planned downstream papers;
+  Paper~II is item~\#16 of that catalogue.
+\end{itemize}
+
+\subsection{Release flow (for reference)}
+\label{subsec:repro_release_flow}
+
+The release procedure for v1.0 (and subsequent versions) is
+documented in \nolinkurl{release_notes/README.md} of the
+repository.  Briefly: (i)~final commits land on \texttt{main};
+(ii)~the change log
+(\nolinkurl{release_notes/v1.0.md}) and the GitHub Release body
+(\nolinkurl{release_notes/v1.0-release-message.md}) are drafted;
+(iii)~deposit on Zenodo to receive the DOI; (iv)~commit the
+version-bump filling in the DOI in \nolinkurl{paper/main.tex},
+\nolinkurl{CITATION.cff}, and the release-notes placeholders;
+(v)~rebuild the PDF and snapshot to \nolinkurl{.stage/};
+(vi)~tag and push; (vii)~create the GitHub Release.  This appendix
+and the \nolinkurl{release_notes/README.md} parent describe the
+full reproducibility chain from a fresh clone of any tagged
+release.

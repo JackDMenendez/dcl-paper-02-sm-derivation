@@ -1,30 +1,72 @@
-% references.bib -- BibTeX bibliography for the paper.
+% references.bib -- BibTeX bibliography for Paper II.
 % Cited from main.tex as \bibliography{paper-bib/references}.
 % Style: \bibliographystyle{unsrt} (numeric, in citation order).
 
-@article{example2024,
-  author  = {Lastname, A. B. and Other, C. D.},
-  title   = {Title of the example article},
-  journal = {Journal Name},
-  year    = {2024},
+@misc{menendez2026geometry,
+  author    = {Menendez, Jack},
+  title     = {Geometry First: Quantum Mechanics, Gravity, and the
+               Origin of the Standard Model from a Single
+               Conservation Law},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {1.0},
+  doi       = {10.5281/zenodo.20078529},
+  url       = {https://doi.org/10.5281/zenodo.20078529},
+  note      = {Paper~I of the A=1 Discrete Causal Lattice series.
+               Paper~II takes up Eq.~(137), the central open
+               conjecture stated in Paper~I.},
+}
+
+@article{wilson1974confinement,
+  author  = {Wilson, Kenneth G.},
+  title   = {Confinement of quarks},
+  journal = {Physical Review D},
+  year    = {1974},
+  volume  = {10},
+  number  = {8},
+  pages   = {2445--2459},
+  doi     = {10.1103/PhysRevD.10.2445},
+  note    = {Foundational paper introducing the lattice gauge
+             theory framework, including the Wilson plaquette
+             action that Paper~II's Phase~4 generalises to the
+             bipartite octahedral lattice with matrix-valued
+             link variables.},
+}
+
+@article{sakharov1968vacuum,
+  author  = {Sakharov, Andrei D.},
+  title   = {Vacuum quantum fluctuations in curved space and the
+             theory of gravitation},
+  journal = {Soviet Physics Doklady},
+  year    = {1968},
   volume  = {12},
-  number  = {3},
-  pages   = {100--120},
-  doi     = {10.0000/example.doi},
+  pages   = {1040--1041},
+  note    = {Original proposal that the gauge action can be
+             induced by integrating out matter fields, rather
+             than postulated.  Paper~II's Phase~4 calculation is
+             Sakharov-style, extending Paper~I's Appendix~B
+             $U(1)$ case to the non-abelian gauge groups.  The
+             universal one-loop prefactor that completes the
+             induced-action programme is left open in both
+             Paper~I and Paper~II as a paper-length follow-on.},
 }
 
-@book{examplebook2023,
-  author    = {Author, X. Y.},
-  title     = {Title of the example book},
-  publisher = {Publisher},
-  year      = {2023},
-  address   = {City},
-}
-
-@misc{examplepreprint2025,
-  author       = {Author, P. Q.},
-  title        = {Title of the example preprint},
-  year         = {2025},
-  howpublished = {arXiv:2501.00000 [hep-th]},
-  url          = {https://arxiv.org/abs/2501.00000},
+@book{georgi1999lie,
+  author    = {Georgi, Howard},
+  title     = {Lie Algebras in Particle Physics: From Isospin to
+               Unified Theories},
+  publisher = {Westview Press},
+  year      = {1999},
+  edition   = {Second},
+  series    = {Frontiers in Physics},
+  isbn      = {978-0-7382-0233-4},
+  note      = {Standard reference for the $\mathfrak{su}(N)$
+               representation theory used throughout Paper~II:
+               the $\mathbf{6} = (\mathbf{3}, \mathbf{2})$
+               branching of $SU(6) \supset SU(3) \times SU(2)$
+               in Phase~3; the $\mathbf{35} = (\mathbf{8},
+               \mathbf{1}) \oplus (\mathbf{1}, \mathbf{3})
+               \oplus (\mathbf{8}, \mathbf{3})$ adjoint
+               decomposition; the Gell-Mann structure constants
+               $f_{abc}$.},
 }
