@@ -7,10 +7,8 @@ authors:
     orcid: "https://orcid.org/0009-0003-1166-307X"
     affiliation: "Independent Scholar (Eugene, OR)"
 version: v1.0
-date-released: 2026-05-17
-# doi: 10.5281/zenodo.XXXXXXXX  # to be filled in at Zenodo deposit time
-# At release time, fill in the Zenodo DOI assigned for this version:
-# doi: 10.5281/zenodo.XXXXXXXX
+date-released: 2026-05-16
+doi: 10.5281/zenodo.20240736
 repository-code: "https://github.com/JackDMenendez/dcl-paper-02-sm-derivation"
 license: MIT
 references:

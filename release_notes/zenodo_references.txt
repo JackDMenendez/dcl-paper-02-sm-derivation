@@ -1,0 +1,43 @@
+Zenodo "References" field for Paper II v1.0
+=============================================
+
+Paste the four lines below "BEGIN REFERENCES" into Zenodo's
+"References" field (one citation per line).  This is the field
+that records the bibliographic references the deposit cites, in
+plain-text citation-string form.  It is separate from the
+"Related/alternate identifiers" field (see
+zenodo_related_works.txt for that one).
+
+Order matches the paper's BibTeX bibliography (unsrt style:
+numeric, in citation order).
+
+------------------------ BEGIN REFERENCES ------------------------
+
+Menendez, J. (2026). Geometry First: Quantum Mechanics, Gravity, and the Origin of the Standard Model from a Single Conservation Law (v1.0). Zenodo. https://doi.org/10.5281/zenodo.20078529
+
+Wilson, K. G. (1974). Confinement of quarks. Physical Review D, 10(8), 2445-2459. https://doi.org/10.1103/PhysRevD.10.2445
+
+Sakharov, A. D. (1968). Vacuum quantum fluctuations in curved space and the theory of gravitation. Soviet Physics Doklady, 12, 1040-1041. [Reprinted: General Relativity and Gravitation, 32, 365-367 (2000), https://doi.org/10.1023/A:1001947813105]
+
+Georgi, H. (1999). Lie Algebras in Particle Physics: From Isospin to Unified Theories (2nd ed., Frontiers in Physics). Westview Press. ISBN 978-0-7382-0233-4
+
+------------------------- END REFERENCES -------------------------
+
+
+Notes:
+
+- Sakharov 1968 is recorded here in citation-string form (where
+  the reprint DOI in brackets is informative but not required),
+  even though it is intentionally omitted from the "Related
+  identifiers" field (where every entry should have a clean
+  resolvable identifier on its own).  This keeps Zenodo's
+  human-readable reference list aligned with the paper's
+  bibliography while keeping the machine-readable citation graph
+  clean.
+
+- The Paper I citation here is the same Zenodo deposit that is
+  ALSO recorded under "Related identifiers" with Relation =
+  Continues.  That dual presence is correct: "References" tracks
+  what the deposit cites; "Related identifiers" tracks the
+  citation-graph relations Zenodo uses for navigation.  Tooling
+  that walks one path or the other should find Paper I in both.

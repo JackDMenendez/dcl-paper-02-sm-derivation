@@ -1,0 +1,80 @@
+Zenodo "Related Works" entries for Paper II v1.0
+=================================================
+
+Paper II cites four works in its bibliography.  Three of them have
+clean resolvable identifiers (DOI or ISBN) and belong in Zenodo's
+"Related/alternate identifiers" section; each block below
+corresponds to one row.  Fields: Relation, Identifier, Scheme,
+Resource Type.
+
+The fourth, Sakharov (1968) "Vacuum quantum fluctuations in curved
+space and the theory of gravitation" (Soviet Physics Doklady
+12:1040), has no native DOI and is intentionally NOT listed here.
+It remains in the paper's BibTeX bibliography as reference [3],
+which is the authoritative scholarly record.  Zenodo's related-
+works graph is for harvesters and citation tooling; entries
+without resolvable identifiers add noise without value.
+
+The "Relation" vocabulary follows DataCite (which Zenodo uses).
+Paper I is "Continues" because Paper II is the direct continuation
+in the same series and takes up Paper I's open conjecture
+Eq.~(137).  (DataCite pairs Continues / IsContinuedBy; the active
+form Continues is what Paper II's deposit asserts about Paper I.)
+The other three are "References" because Paper II cites them for
+background / standard techniques.
+
+
+---------------------------------------------------------------
+[1] Menendez (2026) "Geometry First" -- Paper I of the series
+---------------------------------------------------------------
+Relation:       Continues
+Identifier:     10.5281/zenodo.20078529
+Scheme:         DOI
+Resource Type:  Publication
+
+
+---------------------------------------------------------------
+[2] Wilson (1974) "Confinement of quarks" -- Phys. Rev. D 10:2445
+---------------------------------------------------------------
+Relation:       References
+Identifier:     10.1103/PhysRevD.10.2445
+Scheme:         DOI
+Resource Type:  Publication / Journal article
+
+
+---------------------------------------------------------------
+[3] Georgi (1999) "Lie Algebras in Particle Physics" -- book
+---------------------------------------------------------------
+Relation:       References
+Identifier:     978-0-7382-0233-4
+Scheme:         ISBN
+Resource Type:  Publication / Book
+
+
+---------------------------------------------------------------
+Optional self-referencing entries (frequently useful)
+---------------------------------------------------------------
+If a v1.1 or later is ever deposited that supersedes v1.0, add
+to the new deposit:
+
+    Relation:       IsNewVersionOf
+    Identifier:     <v1.0 Zenodo DOI, to be assigned at deposit>
+    Scheme:         DOI
+    Resource Type:  Publication
+
+If the GitHub source archive is deposited separately (e.g. via
+Zenodo's GitHub integration), link the two with:
+
+    Relation:       IsSupplementedBy
+    Identifier:     <software DOI>
+    Scheme:         DOI
+    Resource Type:  Software
+
+Otherwise the GitHub repository URL goes in the deposit's
+"Related identifiers" with Relation = IsSupplementedBy and
+Resource Type = Software:
+
+    Relation:       IsSupplementedBy
+    Identifier:     https://github.com/JackDMenendez/dcl-paper-02-sm-derivation
+    Scheme:         URL
+    Resource Type:  Software
