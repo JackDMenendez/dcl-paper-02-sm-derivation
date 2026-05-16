@@ -1,0 +1,125 @@
+% centralizer_block_diagram.tex
+% TikZ block diagram showing the layered structure of Paper II's
+% central characterisation result:
+%
+%   per-site C^12 amplitude
+%      |
+%      v (discrete-Hermitian centralizer of the bipartite tick rule)
+%      |
+%   su(6)_+ (+) su(6)_- (+) u(1), dim 71
+%      = SM_12 (subalgebra) + extras_59 (SM-module)
+%      |
+%      v (factor-product projection)
+%      |
+%   SM gauge algebra + Lorentz (dim 18)
+
+\begin{tikzpicture}[
+    every node/.style={font=\small},
+    box/.style={
+        rectangle, draw, rounded corners=2pt,
+        align=center, inner sep=4pt, minimum height=2.4em,
+    },
+    smbox/.style={
+        box, fill=blue!8, draw=blue!50!black, thick,
+    },
+    extbox/.style={
+        box, fill=red!7, draw=red!50!black,
+    },
+    topbox/.style={
+        box, fill=gray!10, draw=gray!50!black, thick,
+        minimum width=8.5cm,
+    },
+    centbox/.style={
+        box, draw=black!70, thick,
+        minimum width=8.5cm,
+    },
+    armow/.style={
+        -{Latex[length=2.4mm,width=2.0mm]}, semithick,
+    },
+    label/.style={font=\scriptsize, align=center, gray},
+]
+
+% Layer 1: per-site amplitude
+\node[topbox] (cone) at (0, 4.4) {%
+    per-site amplitude \\
+    $\mathbb{C}^{12} \;=\; \mathbb{C}^2_\text{chir} \otimes
+     \mathbb{C}^2_\text{iso} \otimes \mathbb{C}^3_\text{col}$
+};
+
+% Layer 2: the 71-dim centralizer, decomposed
+\node[smbox, minimum width=3.5cm] (sm) at (-2.3, 2.0) {%
+    SM subalgebra \\
+    $\mathfrak{su}(3)_c \oplus \mathfrak{su}(2)_W \oplus \langle J_1 \rangle$ \\
+    \scriptsize dim 12
+};
+\node[extbox, minimum width=4.6cm] (ext) at (2.45, 2.0) {%
+    extras (SM-module, not Lie ideal) \\
+    $48 \times (\mathbf{8}, \mathbf{3})_\text{leptoquark}$ \\
+    $\;+\; 11 \times \sigma_x\text{-shadow SM}$ \\
+    \scriptsize dim 59
+};
+\node[centbox, fit={(sm) (ext)}, inner sep=8pt, fill=none] (cent) {};
+\node[anchor=south, font=\small] at (cent.north) {%
+    centralizer \;
+    $\mathfrak{su}(6)_+ \oplus \mathfrak{su}(6)_- \oplus \mathfrak{u}(1)$,\quad
+    dim 71
+};
+
+% Arrow from C^12 to centralizer (with label)
+\draw[armow] (cone) -- node[right, label] {%
+    Hermitian operators commuting \\
+    with $\sigma_x \otimes I_2 \otimes I_3$
+} (cent.north -| cone);
+
+% Layer 3: the SM gauge algebra + Lorentz
+\node[smbox, minimum width=8.5cm] (eq137) at (0, -1.3) {%
+    Eq.~(137) RHS:\quad
+    $SO(3,1) \times SU(3) \times SU(2) \times U(1)$,\quad
+    dim 18
+};
+
+% Arrow from SM subalgebra to Eq. 137 (factor-product projection)
+\draw[armow] (sm.south) -- node[left, label, xshift=-2pt] {%
+    factor-product \\ projection
+} (eq137.north -| sm);
+
+% Arrow from extras showing they're projected to zero
+\draw[armow, red!60!black, dashed] (ext.south) -- node[right, label, xshift=2pt] {%
+    projected \\ to zero
+} ($(eq137.north -| ext) + (0, 0)$);
+
+% Caption fragment showing $L \leftrightarrow R$ bipartite parity
+\node[label, anchor=west] at (cent.east) [xshift=4mm, align=left] {%
+    bipartite parity \\ $\sigma_x \otimes I_2 \otimes I_3$ \\
+    swaps \\ $\mathfrak{su}(6)_+ \leftrightarrow \mathfrak{su}(6)_-$
+};
+
+\end{tikzpicture}
+
+\caption[Block diagram: lattice centralizer and the factor-product
+projection to the SM gauge algebra.]{%
+    The framework's central result.  The per-site amplitude
+    $\mathbb{C}^{12}$ (top) admits a discrete-Hermitian
+    centralizer (the Hermitian operators commuting with the
+    bipartite tick rule's chirality factor $\sigma_x \otimes I_2
+    \otimes I_3$) that is structurally $\mathfrak{su}(6)_+ \oplus
+    \mathfrak{su}(6)_- \oplus \mathfrak{u}(1)$ of dim 71 (middle),
+    with the bipartite parity acting as the $L \leftrightarrow R$
+    exchange of the two $\mathfrak{su}(6)$ factors.  This algebra
+    decomposes as a non-normal SM gauge subalgebra (left, blue,
+    dim 12) plus a 59-dimensional SM-module of ``extras''
+    transforming as $(\mathbf{8}, \mathbf{3})$ leptoquark-flavoured
+    plus chirality-$\sigma_x$ shadow SM under the SM adjoint
+    action.  The factor-product projection (bottom arrow) sends
+    each Hermitian generator to its action on a single tensor
+    factor of $\mathbb{C}^{12}$ (chirality, isospin, or colour)
+    and the other factors to the identity; under this projection
+    the SM subalgebra maps onto Eq.~(137)'s right-hand side
+    $SO(3,1) \times SU(3) \times SU(2) \times U(1)$ (dim 18) while
+    the 59 extras project to zero.  Eq.~(137)'s equality $=$
+    is recovered when the factor-product projection is imposed
+    as an additional constraint beyond commutativity with the
+    bipartite tick rule (sufficiency established; necessity of
+    factor-product invariance as the unique additional constraint
+    is left open).}
+\label{fig:centralizer_block_diagram}

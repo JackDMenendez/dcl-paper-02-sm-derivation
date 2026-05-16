@@ -87,9 +87,17 @@ broken gauge symmetry pattern.  Symbolically verified by
 Paper~I's bipartite-plaquette Q-tensor~\cite{wilson1974confinement}
 (eigenvalues $\{4, 4, 16\}$) is inherited unchanged for
 non-abelian gauge groups; the SU(N) trace identity introduces
-only a global $T_F = 1/2$ factor.  Spectator-factor counting on the per-site
-$\mathbb{C}^{12}$ gives the framework's quantitative gauge-coupling
-prediction:
+only a global $T_F = 1/2$ factor.  Spectator-factor counting on
+the per-site $\mathbb{C}^{12}$ amplitude assigns each gauge factor
+the product of the dimensions of the tensor slots it does \emph{not}
+act on:
+\begin{align}
+N_f^{SU(2)_W} &= \dim(\mathbb{C}^2_\text{chir}) \cdot \dim(\mathbb{C}^3_\text{col}) = 2 \cdot 3 = 6, \nonumber\\
+N_f^{SU(3)_c} &= \dim(\mathbb{C}^2_\text{chir}) \cdot \dim(\mathbb{C}^2_\text{iso}) = 2 \cdot 2 = 4, \nonumber\\
+N_f^{U(1)} &= \dim(\mathbb{C}^{12}) = 12. \nonumber
+\end{align}
+Multiplying by $T_F = 1/2$ for SU(N) and unit charge-squared for
+U(1) gives the framework's quantitative gauge-coupling prediction:
 \begin{equation}
 \label{eq:lattice_scale_ratios}
 \frac{1}{g_1^2} : \frac{1}{g_2^2} : \frac{1}{g_3^2} \;=\; 12 : 3 : 2 \quad \text{at the lattice scale } 1/a,
@@ -98,7 +106,7 @@ equivalently $g_1^2 : g_2^2 : g_3^2 = 1 : 4 : 6$, and the sharp
 ratio
 \begin{equation}
 \label{eq:g3_over_g2}
-g_3^2 / g_2^2 = 3/2 \quad \text{at the lattice scale,}
+g_3^2 / g_2^2 \;=\; \frac{N_f^{SU(2)_W} \cdot T_F}{N_f^{SU(3)_c} \cdot T_F} \;=\; \frac{6 \cdot (1/2)}{4 \cdot (1/2)} \;=\; \frac{3}{2} \quad \text{at the lattice scale,}
 \end{equation}
 independent of the universal one-loop prefactor $c$ (which
 Paper~I and Paper~II both leave open as the explicit
@@ -108,8 +116,14 @@ verified by \nolinkurl{src/utilities/induced_gauge_action_nonabelian.py}.
 \subsection{The framework's terminal characterisation}
 \label{subsec:terminal_characterisation}
 
+\begin{figure}[H]
+    \centering
+    \input{figures/centralizer_block_diagram}
+\end{figure}
+
 The conjunction of Phase~1 through Phase~4 settles the conjecture's
-central row to \texttt{PART} with a precise structural reading.
+central row to \texttt{PART} with a precise structural reading
+(Fig.~\ref{fig:centralizer_block_diagram}).
 Eq.~\eqref{eq:automorphism_conjecture} holds as containment
 \begin{equation}
 \label{eq:containment_again}
@@ -138,13 +152,47 @@ of a left-right symmetric grand unification, derived from the
 $\mathcal{A}=1$ constraint on the bipartite octahedral lattice
 rather than postulated.
 
+The parallel to Pati-Salam $SU(4)_C \times SU(2)_L \times SU(2)_R$
+and its extensions is structural.  Pati-Salam postulates a
+left-right symmetric gauge group at high energy with a
+$\mathbb{Z}_2$ left-right exchange; the SM emerges by spontaneous
+breaking, with the broken generators acquiring mass.  The
+framework's $\mathfrak{su}(6) \oplus \mathfrak{su}(6) \oplus
+\mathfrak{u}(1)$ shares this shape but with different content
+(each $\mathfrak{su}(6)$ acts on $\mathbb{C}^2_\text{iso} \otimes
+\mathbb{C}^3_\text{col} = \mathbb{C}^6$ rather than on
+Pati-Salam's $SU(4)_C$ lepton-quark unification), and -- crucially
+-- it is \emph{not postulated} but rather \emph{forced} by the
+discrete bipartite geometry plus $\mathcal{A}=1$.  The fact that
+left-right symmetric grand-unification-style structure emerges
+from the substrate alone, without any gauge-group ansatz,
+suggests the lattice is the right object for this kind of
+question.  Whether the framework's specific $\mathfrak{su}(6)
+\oplus \mathfrak{su}(6) \oplus \mathfrak{u}(1)$ admits a
+phenomenological symmetry-breaking story (the 59 extras getting
+large masses, the SM emerging at observable energies) is a
+follow-on question this paper does not settle.
+
 \item The SM gauge group $SU(3) \times SU(2) \times U(1)$ is the
-factor-product subalgebra of this larger structure, recovered
-under the (interpretive) restriction that gauge invariance respects
-the tensor decomposition.  The 59 ``extras''
-(Eq.~\eqref{eq:extras_decomp}) are coset generators that
-transform as $(\mathbf{8}, \mathbf{3})$ leptoquark-flavoured plus
-chirality-shadow SM under the SM adjoint action; the relevant
+\emph{factor-product projection} of this larger structure: the
+sub-algebra obtained by restricting each Hermitian generator to
+its action on a single tensor factor of
+$\mathbb{C}^{12} = \mathbb{C}^2_\text{chir} \otimes
+\mathbb{C}^2_\text{iso} \otimes \mathbb{C}^3_\text{col}$ (or
+overall phase), setting the other factors to the identity.
+Equality $=$ in Eq.~\eqref{eq:automorphism_conjecture} is
+recovered when this factor-product gauge invariance is imposed
+as an additional constraint beyond commutativity with the
+bipartite tick rule (sufficiency established; necessity --- that
+factor-product invariance is the unique additional constraint that
+recovers equality --- is not independently verified).  The
+framework's lattice geometry admits the larger algebra naturally
+and the projection is an external interpretive restriction, not a
+structural feature of the substrate.  The 59
+``extras'' (Eq.~\eqref{eq:extras_decomp}) are the coset generators
+sent to zero by the projection; they transform as
+$(\mathbf{8}, \mathbf{3})$ leptoquark-flavoured plus
+chirality-shadow SM under the SM adjoint action.  The relevant
 $\mathfrak{su}(N)$ branching is standard
 representation theory~\cite{georgi1999lie}.
 
@@ -283,7 +331,20 @@ literature.  Drift between drafts is mechanically detectable;
 negative results stay visible (Phase~1.5's \texttt{FAIL} row on
 SM-style $CP$ is part of the paper's contribution, not an
 embarrassment to be elided); the canonical record is the table,
-not the prose.  The convention is a small mechanical change with a
+not the prose.  In the present paper, the convention prevented over-claiming at
+every phase boundary: Phase~1's chirality-orthogonal Bloch outcome
+appears in the table as the chirality-alignment \texttt{PART} row
+with the orthogonality result as its evidence, rather than as a
+\texttt{PASS} on alignment; Phase~3's finding that the
+discrete-Hermitian centralizer is 71-dim sits in the
+``equality vs containment'' \texttt{PART} row, with the
+$\mathfrak{su}(6) \oplus \mathfrak{su}(6) \oplus \mathfrak{u}(1)$
+structure in its mechanism column, rather than being rephrased
+into a $\texttt{PASS}$ that does not hold; Phase~1.5's
+ruling-out of the antilinear $CP$ extension is recorded as the
+``modified tick rule for Branch~B'' \texttt{FAIL} row -- a
+publishable structural finding rather than a deleted negative
+result.  The convention is a small mechanical change with a
 substantial accountability shift, and we hope it is useful to
 other first-principles theoretical proposals.
 
@@ -330,6 +391,30 @@ breaking mechanism --- whether it is Higgs-analogous, decoherence-
 driven via the algebraic projection of
 \nolinkurl{notes/extras_as_a1_accounting.md}, or geometric in
 some other sense --- is the natural next paper in the series.
+
+\paragraph{Roadmap to chirality.}  Phase~1's orthogonal-Bloch
+characterisation isolates the chirality question precisely.  The
+lattice has a bipartite $\mathbb{Z}_2$ generated by $\sigma_x
+\otimes I_2 \otimes I_3$ (spatial parity, swaps $L \leftrightarrow
+R$); the SM has a chirality $\mathbb{Z}_2$ generated by $\gamma_5
+= \sigma_z \otimes I_2 \otimes I_3$ (chirality projector,
+distinguishes $L$ from $R$).  These two involutions anticommute
+on the chirality $\mathbb{C}^2$ --- maximally orthogonal Bloch
+axes.  The follow-on question is sharp: \emph{what structural
+enrichment of the lattice (per-site Hilbert space, tick-rule
+modification, additional discrete symmetry) makes both
+involutions simultaneously available, with the SM's chirality
+becoming an emergent feature of the enriched substrate rather
+than an external choice?}  The Phase~1.5 ruling against
+antilinear modifications shows that one obvious route is closed;
+the open route is the structural enrichment direction.  A
+plausible next paper would investigate whether the per-site
+amplitude admits a chirality-twin extension
+$\mathbb{C}^{12} \to \mathbb{C}^{12} \oplus \mathbb{C}^{12}$ that
+makes the two $\mathbb{Z}_2$s simultaneously linear, with the
+framework's $\mathcal{A}=1$ accounting tracking the relationship
+between the two blocks.  This question is left precisely posed
+by the present paper but not answered.
 
 \paragraph{Follow-on papers in the catalogue.}  The downstream
 papers indexed in
