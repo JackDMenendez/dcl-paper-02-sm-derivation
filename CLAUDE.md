@@ -288,6 +288,14 @@ mklink /J external\research C:\dev\physics-research
   audit rows; identifies decision points where outcomes route the
   paper toward different framings (derivation / obstruction /
   characterisation).
+- `notes/arxiv_endorsement_candidates.md` -- operational note (not
+  a theoretical finding): outreach state for arXiv endorsement of
+  Paper~II.  Five candidates identified from the combined Paper~I /
+  Paper~II bibliographies (Sorkin, MacKay, 't~Hooft, Jacobson,
+  Verlinde); two-stage outreach pattern (opinion first, endorsement
+  only if Stage~1 goes well); fallback venues (HAL, *Foundations of
+  Physics*, Preprints.org) if endorsement does not land.  Sorkin
+  contacted 2026-05-16 (opinion request, not endorsement ask).
 - `notes/su3_branch_consistency.md` -- Phase~1 sub-task 0: only the
   $\mathbf{3} \oplus \mathbf{3}$ SU(3) interpretation admits the
   existing tick rule as a global symmetry (PASS).
