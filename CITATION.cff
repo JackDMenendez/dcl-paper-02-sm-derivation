@@ -6,9 +6,9 @@ authors:
     given-names: Jack
     orcid: "https://orcid.org/0009-0003-1166-307X"
     affiliation: "Independent Scholar (Eugene, OR)"
-version: v1.0
-date-released: 2026-05-16
-doi: 10.5281/zenodo.20240736
+version: v1.01
+date-released: 2026-05-19
+doi: 10.5281/zenodo.20292158
 repository-code: "https://github.com/JackDMenendez/dcl-paper-02-sm-derivation"
 license: MIT
 references:
