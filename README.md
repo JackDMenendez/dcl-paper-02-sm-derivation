@@ -29,7 +29,10 @@ A=1 Discrete Causal Lattice series.
 
 ## Status
 
-**v0.1-DRAFT** -- private working repository.
+Published at **v1.01** (Zenodo
+[doi.org/10.5281/zenodo.20292158](https://doi.org/10.5281/zenodo.20292158);
+prior v1.0
+[doi.org/10.5281/zenodo.20240736](https://doi.org/10.5281/zenodo.20240736)).
 
 What is established (sympy-verified, inherited from Paper I's
 v1.0 release):
@@ -55,22 +58,27 @@ v1.0 release):
   smallest non-trivial closed loop on the bipartite octahedral
   lattice and its trace is gauge-invariant by the cyclic property.
 
-What is open (the substance of Paper II):
+What Paper II resolves (the substance of the paper):
 
 1. **Exact equality vs containment** in $\mathrm{Aut}_\text{ext}$.
-   Verified: $\supseteq$. Conjectured: $=$. Tractable by Lie-algebra
-   enumeration on the extended generators.
-2. **SM-chirality coupling.** Whether bipartite RGB/CMY parity is
-   the SM's chirality projector, and whether the proposed $SU(2)_W$
-   on the per-site weak-isospin $\mathbb{C}^2$ couples
-   asymmetrically to $\psi_R$ vs $\psi_L$ as required by the SM.
-3. **Explicit $1/g^2$ prefactor** for the $SU(2)_W$ and $SU(3)$
-   Wilson actions on the bipartite octahedral lattice.
+   Containment $\supseteq$ holds; exact equality $=$ does **not**. The
+   dim-71 discrete-Hermitian centralizer $\mathfrak{su}(6) \oplus
+   \mathfrak{su}(6) \oplus \mathfrak{u}(1)$ is enumerated, and the SM
+   gauge algebra is recovered as its *factor-product projection*.
+2. **SM-chirality coupling.** Bipartite parity is spatial parity
+   (orthogonal Bloch involution to $\gamma_5$); chirality and $CP$
+   violation are shown **not** derivable from the discrete substrate.
+3. **Explicit $1/g^2$ prefactor** for the $SU(2)_W$ and $SU(3)$ Wilson
+   actions. The dimensionless ratio $g_3^2/g_2^2 = 3/2$ at the lattice
+   scale is derived from spectator-factor counting; the universal
+   prefactor remains open, deferred to the planned discrete-probability
+   paper.
 
-Either all three resolve favourably (and the SM gauge group is
-derived from the unity axiom on the discrete substrate), or one or
-more fail (and Paper II is a precise statement of the obstruction).
-Both outcomes are publishable.
+The result is therefore a precise characterisation rather than a clean
+identity: the Standard Model gauge structure is the
+factor-product-effective shadow of a larger, left--right-symmetric
+lattice symmetry. All claims are symbolically verified by the sympy
+scripts in `src/utilities/` and tagged in the audit table.
 
 ## Structure
 
