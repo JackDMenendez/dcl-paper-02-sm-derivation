@@ -18,6 +18,15 @@ $\dim = 6 + 8 + 3 + 1 = 18$. Paper I (*Geometry First*,
 established the framework and stated the conjecture as its central
 open question. Paper II takes up the calculation.
 
+## Paper
+
+*Geometry Forces Physics: A Lie-Algebra Derivation of the Standard
+Model Gauge Group from a Single Conservation Law* — Paper II of the
+A=1 Discrete Causal Lattice series.
+
+- Landing page: [geometryinducedphysics.org/papers/paper-02-geometry-forces-physics](https://geometryinducedphysics.org/papers/paper-02-geometry-forces-physics.html)
+- Citation (canonical, Zenodo): [doi.org/10.5281/zenodo.20292158](https://doi.org/10.5281/zenodo.20292158)
+
 ## Status
 
 **v0.1-DRAFT** -- private working repository.
