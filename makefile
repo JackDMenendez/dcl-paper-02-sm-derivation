@@ -12,10 +12,11 @@
 #   all          env -> tests -> paper -> promote          (default)
 #   env          create .venv, install requirements
 #   tests        run pytest against tests/
-#   paper        build PDF (3-pass pdflatex + bibtex)
-#   promote      copy final PDF (and any PROMOTE_FIGS) into stage/
+#   paper        build PDF (3-pass pdflatex + bibtex) into .build/
+#   promote      copy final PDF (and any PROMOTE_FIGS) into .stage/,
+#                version-stamped as <DOC_TITLE>-v<VERSION>.pdf
 #   experiments  delegate to src/experiments/makefile (see WARNING below)
-#   clean        remove build/ and stage/
+#   clean        remove .build/ (keeps .stage/, the durable archive)
 #   clean-env    also remove .venv
 #   help         print this list
 #
@@ -29,7 +30,12 @@ RELATIVE_PATH :=
 include common.mak
 
 # --- Paper ------------------------------------------------------------------
-DOC_TITLE := Paper
+# DOC_TITLE names the built PDF; VERSION stamps the durable .stage/ snapshot.
+# Bump VERSION in lockstep with CITATION.cff and the \thanks{} block in
+# paper/main.tex -- the release flow (release_notes/README.md) assumes all
+# three agree.
+DOC_TITLE := dcl-paper-02-sm-derivation
+VERSION   := 2.0
 DOC_PDF   := $(build_dir)/$(DOC_TITLE).pdf
 
 PAPER_DIR    := paper
@@ -42,8 +48,11 @@ PDFLATEX_PAPER := cd $(PAPER_DIR) && $(PDFLATEX) -output-directory=../$(build_di
 BIBTEX_PAPER   := cd $(PAPER_DIR) && $(BIBTEX) ../$(build_dir)
 
 # --- Promote ----------------------------------------------------------------
+# The staged PDF carries the version in its name, so successive releases
+# accumulate side by side in .stage/ rather than overwriting each other.
 PROMOTE_FIGS :=
-PROMOTE_PDF_TARGETS := $(stage_dir)/$(DOC_TITLE).pdf
+STAGED_PDF          := $(stage_dir)/$(DOC_TITLE)-v$(VERSION).pdf
+PROMOTE_PDF_TARGETS := $(STAGED_PDF)
 PROMOTE_FIG_TARGETS := $(addprefix $(stage_dir)/,$(PROMOTE_FIGS))
 
 # --- Tests ------------------------------------------------------------------
@@ -87,7 +96,7 @@ $(DOC_PDF): $(PAPER_INPUTS) | $(build_dir)
 # --- Promote ----------------------------------------------------------------
 promote: $(PROMOTE_PDF_TARGETS) $(PROMOTE_FIG_TARGETS)
 
-$(stage_dir)/$(DOC_TITLE).pdf: $(DOC_PDF) | $(stage_dir)
+$(STAGED_PDF): $(DOC_PDF) | $(stage_dir)
 	cp -v $< $@
 
 $(stage_dir)/%: $(figures_dir)/% | $(stage_dir)
@@ -102,7 +111,8 @@ experiments:
 
 # --- Clean ------------------------------------------------------------------
 clean:
-	-rm -rf $(build_dir) $(stage_dir)
+	-rm -rf $(build_dir)
+	@echo "Kept $(stage_dir) (durable per-version archive)."
 	@echo "================ Clean Complete ================"
 
 clean-env:

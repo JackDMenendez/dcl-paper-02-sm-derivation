@@ -1,4 +1,4 @@
-Zenodo description for Paper II v1.0
+Zenodo description for Paper II v2.0
 =====================================
 
 Paste the section below "BEGIN DESCRIPTION" into Zenodo's
@@ -6,10 +6,77 @@ Paste the section below "BEGIN DESCRIPTION" into Zenodo's
 renders it as rich text the result is still legible (no LaTeX
 escapes that would show as raw markup).
 
+If you prefer to paste rich text, zenodo_description.html in this
+directory carries the same content as HTML with headings, lists,
+and live DOI links -- the same pattern Paper I used for its v2.0
+deposit.  Keep the two in sync by hand.
+
 ----------------------- BEGIN DESCRIPTION -----------------------
 
-Paper II of the A=1 Discrete Causal Lattice series.  Direct
-continuation of Paper I, "Geometry First" (doi:10.5281/zenodo.20078529).
+Paper II of the A=1 Discrete Causal Lattice series.  Version 2.0 --
+a scientific-correction release.  Read the revision notice below
+before the abstract.  Direct continuation of Paper I, "Geometry
+First" (doi:10.5281/zenodo.20078529).
+
+----- Revision notice, July 2026 -----
+
+This paper identified the (1,1,-1) optical axis but did not follow
+its consequences through the induced gauge-sector response.
+Subsequent work shows that the original single-domain three-diagonal
+hop set yields an order-unity common-mode photon-speed anisotropy
+and is excluded as a physical vacuum construction.  Results
+depending on that specific gauge-sector realization should
+therefore be read conditionally.  See doi:10.5281/zenodo.21435952.
+
+The optical axis this architecture predicts is observable but is
+not observed.  The lattice geometry must therefore change; the
+successor architecture is not birefringent.  Paper IV
+(doi:10.5281/zenodo.21435952) gives the full account.
+
+THE A=1 CONSERVATION PRINCIPLE IS NOT FALSIFIED BY THIS RESULT.
+The failure traces to the hop-set realization -- the omission of
+the fourth cube body diagonal V_4 = (1,1,-1) -- not to the
+conservation law itself.  The Lie-algebra characterisation below
+(containment, the dimension-71 centralizer, the factor-product
+projection) is algebraic and does not depend on the hop set's
+phenomenological viability.
+
+----- Changes from the previous version -----
+
+* Three-diagonal A=1 vacuum is phenomenologically viable --
+  WITHDRAWN.  The gauge common-mode photon speed is O(1)
+  anisotropic.  Inherited from Paper I; it is the substrate on
+  which this paper's automorphism analysis is carried out.
+
+* Matter sector safe (dimension-six-suppressed) -- WITHDRAWN /
+  RETRACTED.  Referee points M1/M2, verified in Paper IV
+  (exp_05_matter_sector_order): the matter sector is also excluded
+  as constructed.  A Paper I/IV claim, listed for completeness.
+
+* Optical axis is a suppressed lattice artifact -- REVISED.  It
+  enters the gauge action at dimension four.
+
+* Bipartite-plaquette birefringence along (1,1,-1) offered as a
+  testable consequence -- REVISED.  The Q-tensor with eigenvalues
+  {4, 4, 16} is inherited from Paper I unchanged; it is the same
+  anisotropy now excluded as constructed.  The non-abelian
+  corollary stands as algebra but is not a viable physical
+  prediction of this vacuum.
+
+* Substrate geometry of the derivation -- SUPERSEDED.  The
+  three-diagonal hop set predicts an optical axis that is
+  observable but is not observed, so the lattice geometry must
+  change; the successor architecture is not birefringent.
+
+* A=1 conservation principle -- UNRESOLVED, NOT FALSIFIED by this
+  result.  The failure traces to the hop-set realization.
+
+The paper body, appendices, and figures are preserved unchanged.
+They document the reasoning that led to the falsifying result and
+are deliberately not rewritten; where the front-matter revision
+notice qualifies a body claim, THE NOTICE IS AUTHORITATIVE.  The
+audit table gains one row -- "Single-domain gauge viability",
+status FAIL.
 
 ----- Headline result -----
 
@@ -21,6 +88,16 @@ su(6) ⊕ su(6) ⊕ u(1) of dimension 71.  Containment ⊇ holds;
 equality = does not.  The framework predicts the gauge-coupling
 ratio g_3^2 / g_2^2 = 3/2 at the lattice scale from spectator-
 factor counting alone.
+
+Per the revision notice above, results depending on the specific
+gauge-sector realization are to be read conditionally -- the
+birefringence corollary among them, since it IS the excluded
+anisotropy.  The g_3^2 / g_2^2 = 3/2 ratio is a separate question,
+left open here rather than settled either way: the Q-tensor and
+the universal prefactor cancel in the ratio, so it may survive the
+no-go, but the successor geometry could change the spectator
+counting it rests on.  The algebraic characterisation is not
+affected.
 
 ----- Abstract -----
 
@@ -75,14 +152,14 @@ to its supporting sympy verification script:
   STUB = stated result with no verification yet
   FAIL = tested and disconfirmed under the stated ansatz
 
-The PASS / PART / FAIL outcomes for the central conjecture
-combine to PART: containment is established; equality requires
-the factor-product projection as an additional constraint;
-sufficiency of factor-product invariance is shown, necessity left
-open.  Two structural sub-claims are explicit FAIL rows
-(SM-chirality coupling alignment via the existing tick rule;
-SM-style CP from any natural antilinear modification of the tick
-rule) and are recorded as first-class contributions, not elided.
+The rows combine to 8 PASS, 3 PART, and 2 FAIL, and the central
+conjecture's own row is PART: containment is established;
+equality requires the factor-product projection as an additional
+constraint; sufficiency of factor-product invariance is shown,
+necessity left open.  The two FAIL rows are SM-style CP from any
+natural antilinear modification of the tick rule, and (new in
+v2.0) single-domain gauge viability.  Both are recorded as
+first-class contributions, not elided.
 
 ----- Reproducibility -----
 
@@ -116,13 +193,16 @@ Authors:
 
 Resource type:
   Publication / Working paper  (or "Preprint" if Zenodo separates
-  these; the paper is a self-published preprint with v1.0 tag.)
+  these; the paper is a self-published preprint with v2.0 tag.)
 
 Publication date:
-  2026-05-16
+  2026-07-21
 
 Version:
-  v1.0
+  v2.0
+
+DOI (reserved for this version):
+  10.5281/zenodo.21477781
 
 Keywords:
   Standard Model gauge group; automorphism algebra; bipartite
@@ -134,10 +214,27 @@ Keywords:
 Licence:
   Creative Commons Attribution 4.0 International (CC-BY-4.0)
 
+References:
+  See zenodo_references.txt (plain) or zenodo_references.html
+  (rich text) in this directory.  NEW IN v2.0: Paper IV is now the
+  first entry.
+
 Related works:
-  See zenodo_related_works.txt in this directory.
+  See zenodo_related_works.txt in this directory.  Paper IV
+  (doi:10.5281/zenodo.21435952) must be added there for v2.0.
 
 Communities (optional):
   If you have a Zenodo community for the A=1 DCL series, add it
   here so Paper I and Paper II appear together.  Otherwise leave
   blank or pick a relevant physics community.
+
+
+----- Deposit procedure reminder -----
+
+Per handoff 2026-07-18-papers-i-ii-zenodo-reversion-procedure:
+create a NEW VERSION of the existing record (own DOI, chain
+preserved).  Do NOT swap the file under the same DOI and do NOT
+open an unrelated upload.  Preserve the earlier PDF; do not
+withdraw the original.  After publishing, add a superseded-status
+metadata notice to the prior version's record pointing at this
+one and at Paper IV.

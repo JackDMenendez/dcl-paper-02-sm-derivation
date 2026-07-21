@@ -16,8 +16,12 @@ PYTHON = "$(VENV)/$(VENV_BIN)/python" $(ARGS)
 PIP = "$(VENV)/$(VENV_BIN)/pip"
 
 # Build directories.
-build_dir := $(RELATIVE_PATH)build
-stage_dir := $(RELATIVE_PATH)stage
+#   .build/  disposable working area (pdflatex intermediates + PDF).
+#   .stage/  durable per-version archive; survives `make clean`.
+# Both are dot-prefixed so they sort out of the way and match the
+# repo's on-disk layout; .gitignore must ignore both.
+build_dir := $(RELATIVE_PATH).build
+stage_dir := $(RELATIVE_PATH).stage
 data_dir := $(RELATIVE_PATH)data
 figures_dir := $(RELATIVE_PATH)figures
 

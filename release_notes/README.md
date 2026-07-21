@@ -25,14 +25,16 @@ Templates:
    version bump until the DOI is in hand -- the DOI lands in the
    `\thanks{}` block on the title page and in `CITATION.cff`.
 5. Commit the version bump (DOI included) with the change log.
-6. **Build the final PDF and snapshot it to `.stage/`.** Run
-   `make paper` (which writes `build/<DOC_TITLE>.pdf`), then
-   `cp build/<DOC_TITLE>.pdf .stage/<DOC_TITLE>_vX.Y.pdf`. `.stage/`
-   is gitignored; it is the durable per-version archive that
-   survives `make clean`, distinct from `build/` (disposable working
-   area) and `stage/` (output of `make promote`, current build
-   only). The DOI must already be in `main.tex` and `CITATION.cff`
-   before this step so the snapshot reflects the released artifact.
+6. **Build the final PDF and snapshot it to `.stage/`.** Bump
+   `VERSION` in the root `makefile` to match `CITATION.cff` and the
+   `\thanks{}` block, then run `make paper promote`. `make paper`
+   writes `.build/<DOC_TITLE>.pdf` (disposable working area, removed
+   by `make clean`); `make promote` copies it to
+   `.stage/<DOC_TITLE>-v<VERSION>.pdf`. `.stage/` is gitignored and
+   is the durable per-version archive -- it survives `make clean`, so
+   successive releases accumulate side by side. The DOI must already
+   be in `main.tex` and `CITATION.cff` before this step so the
+   snapshot reflects the released artifact.
 7. Tag `vX.Y` and push the tag.
 8. Create the GitHub Release using the `vX.Y-release-message.md` body.
 

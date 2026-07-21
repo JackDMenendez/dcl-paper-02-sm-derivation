@@ -1,30 +1,54 @@
-Zenodo "References" field for Paper II v1.0
+Zenodo "References" field for Paper II v2.0
 =============================================
 
-Paste the four lines below "BEGIN REFERENCES" into Zenodo's
+Paste the five lines below "BEGIN REFERENCES" into Zenodo's
 "References" field (one citation per line).  This is the field
 that records the bibliographic references the deposit cites, in
 plain-text citation-string form.  It is separate from the
 "Related/alternate identifiers" field (see
 zenodo_related_works.txt for that one).
 
+If you prefer to paste rich text, zenodo_references.html in this
+directory carries the same five citations as an HTML ordered list
+with live DOI links.  Zenodo's rich-text fields accept that markup
+directly; the plain-text block below remains the fallback.
+
 Order matches the paper's BibTeX bibliography (unsrt style:
-numeric, in citation order).
+numeric, in citation order) as emitted by the v2.0 build.
 
 ------------------------ BEGIN REFERENCES ------------------------
+
+Menendez, J. (2026). Optical-Axis Anisotropy on the A=1 Discrete Causal Lattice: Birefringence Cancellation and a Single-Domain No-Go (v1.0). Zenodo. https://doi.org/10.5281/zenodo.21435952
 
 Menendez, J. (2026). Geometry First: Quantum Mechanics, Gravity, and the Origin of the Standard Model from a Single Conservation Law (v1.0). Zenodo. https://doi.org/10.5281/zenodo.20078529
 
 Wilson, K. G. (1974). Confinement of quarks. Physical Review D, 10(8), 2445-2459. https://doi.org/10.1103/PhysRevD.10.2445
 
-Sakharov, A. D. (1968). Vacuum quantum fluctuations in curved space and the theory of gravitation. Soviet Physics Doklady, 12, 1040-1041. [Reprinted: General Relativity and Gravitation, 32, 365-367 (2000), https://doi.org/10.1023/A:1001947813105]
-
 Georgi, H. (1999). Lie Algebras in Particle Physics: From Isospin to Unified Theories (2nd ed., Frontiers in Physics). Westview Press. ISBN 978-0-7382-0233-4
+
+Sakharov, A. D. (1968). Vacuum quantum fluctuations in curved space and the theory of gravitation. Soviet Physics Doklady, 12, 1040-1041. [Reprinted: General Relativity and Gravitation, 32, 365-367 (2000), https://doi.org/10.1023/A:1001947813105]
 
 ------------------------- END REFERENCES -------------------------
 
 
 Notes:
+
+- NEW IN v2.0: Paper IV (Optical-Axis Anisotropy, doi:10.5281/
+  zenodo.21435952) is now the FIRST reference.  It is cited on
+  page 1, in the front-matter revision notice that precedes the
+  abstract, and it is the source of the single-domain no-go that
+  this version records.  It is also added to "Related identifiers"
+  with Relation = "Is supplemented by" / "References" -- see
+  zenodo_related_works.txt.
+
+- CITATION ORDER CHANGED at v2.0.  Because unsrt numbers entries
+  in order of first citation and the revision notice sits ahead of
+  the abstract, Paper IV takes position 1 and everything else
+  shifts down.  Georgi and Sakharov also swapped relative to v1.0.
+  The authority is the generated bibliography
+  (.build/dcl-paper-02-sm-derivation.bbl), not this file -- if the
+  two disagree after a rebuild, the .bbl wins and this file should
+  be regenerated from it.
 
 - Sakharov 1968 is recorded here in citation-string form (where
   the reprint DOI in brackets is informative but not required),

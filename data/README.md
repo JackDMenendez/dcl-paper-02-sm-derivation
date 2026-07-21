@@ -12,7 +12,7 @@ Data files produced and consumed by experiments.
 
 - Source code (lives in `src/`).
 - Figures (live in `paper/figures/` or the repo-root `figures/`).
-- Build artefacts (live in `build/`).
+- Build artefacts (live in `.build/`).
 
 ## Tracking in git
 

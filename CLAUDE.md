@@ -167,8 +167,9 @@ for exact correspondences, "approximates" for continuum limits.
 See `release_notes/README.md` for the full procedure. Same flow as
 Paper~I: deposit on Zenodo first, commit version bump after the DOI
 is in hand, build the final PDF and snapshot it to
-`.stage/<DOC_TITLE>_vX.Y.pdf` (durable per-version archive,
-gitignored), tag, push, GitHub Release. The Paper~I -> Paper~II
+`.stage/<DOC_TITLE>-v<VERSION>.pdf` (durable per-version archive,
+gitignored; `make paper promote` after bumping `VERSION` in the root
+`makefile`), tag, push, GitHub Release. The Paper~I -> Paper~II
 series identifier on the title page should be kept in sync.
 
 ---

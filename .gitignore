@@ -15,6 +15,10 @@ external/
 .idea/
 
 # Build outputs
+# .build/ is the make working area; .stage/ (ignored above) is the durable
+# per-version archive.  The undotted names are kept so that trees predating
+# the dot-prefixed layout stay ignored too.
+.build/
 build/
 stage/
 
@@ -26,7 +30,7 @@ data/*.err
 .claude/settings.json
 .claude/settings.local.json
 
-# LaTeX intermediates (the main PDF lives in build/, promoted to stage/)
+# LaTeX intermediates (the main PDF lives in .build/, promoted to .stage/)
 # Stray PDFs built inside paper/ (e.g. pdflatex without -output-directory)
 paper/*.pdf
 *.aux
@@ -58,3 +62,4 @@ coverage.xml
 # OS junk
 .DS_Store
 Thumbs.db
+.vsisolation/

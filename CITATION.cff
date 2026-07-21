@@ -6,9 +6,9 @@ authors:
     given-names: Jack
     orcid: "https://orcid.org/0009-0003-1166-307X"
     affiliation: "Independent Scholar (Eugene, OR)"
-version: v1.01
-date-released: 2026-05-19
-doi: 10.5281/zenodo.20292158
+version: v2.0
+date-released: 2026-07-21
+doi: 10.5281/zenodo.21477781
 repository-code: "https://github.com/JackDMenendez/dcl-paper-02-sm-derivation"
 license: MIT
 references:
@@ -20,3 +20,11 @@ references:
     doi: 10.5281/zenodo.20078529
     year: 2026
     notes: "Paper I of the A=1 Discrete Causal Lattice series. Paper II takes up Eq. (137), the central open conjecture stated in Paper I."
+  - type: article
+    title: "Optical-Axis Anisotropy on the A=1 Discrete Causal Lattice: Birefringence Cancellation and a Single-Domain No-Go"
+    authors:
+      - family-names: Menendez
+        given-names: Jack
+    doi: 10.5281/zenodo.21435952
+    year: 2026
+    notes: "Paper IV of the A=1 Discrete Causal Lattice series. Establishes the single-domain no-go that this paper's v2.0 revision notice records: the three-diagonal hop set predicts an observable optical axis that is not observed."

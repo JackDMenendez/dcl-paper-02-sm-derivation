@@ -248,6 +248,25 @@ Explicit $1/g^2$ prefactor for $SU(2)_W$, $SU(3)$ Wilson actions
     & \texttt{PART} \\
 
 \hline
+% ── v2.0: the single-domain no-go (Paper IV) ─────────────────────────
+% Mirrors the row added to Paper I's audit table at its v2.0.
+Single-domain gauge viability
+    & Three-diagonal hop set $\{V_1, V_2, V_3\}$, one domain
+      (omits the fourth cube body diagonal $V_4 = (1,1,-1)$).
+      This is the substrate on which every row above is computed
+    & Common-mode photon-speed anisotropy is $O(1)$ at mass
+      dimension four, not suppressed; matter sector likewise
+      excluded as constructed.  The optical axis is observable
+      but is not observed, so the geometry must change; the
+      successor architecture is not birefringent.
+      $\mathcal{A}=1$ is not falsified by this result
+    & Paper~IV~\cite{menendez2026opticalaxis}: referee M1/M2,
+      verified \nolinkurl{exp_05_matter_sector_order};
+      excluded by cavity / Michelson--Morley isotropy bounds.
+      See Paper~IV for the full account
+    & \texttt{FAIL} \\
+
+\hline
 % ── Central claim ───────────────────────────────────────────────────
 \textbf{Eq.~(137) of Paper~I:}
 $\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1) = SO(3,1) \times SU(3) \times SU(2) \times U(1)$
@@ -273,8 +292,9 @@ $\mathrm{Aut}(\mathcal{T}_\diamond^3, \mathcal{A}=1) = SO(3,1) \times SU(3) \tim
       Route~(a) and Phase~1.5 Route~(b))
     & Conjunction of all sub-claims above: 8 PASS (containment +
       structural foundations) + 3 PART (chirality alignment,
-      equality vs containment, $1/g^2$ ratio) + 1 FAIL (SM-$CP$
-      from antilinear modification).  Notes:
+      equality vs containment, $1/g^2$ ratio) + 2 FAIL (SM-$CP$
+      from antilinear modification; single-domain gauge
+      viability).  Notes:
       \nolinkurl{aut_centralizer_enumeration.md},
       \nolinkurl{mass_chirality_coupling.md},
       \nolinkurl{induced_gauge_action_nonabelian.md}

@@ -1,19 +1,26 @@
-Zenodo "Related Works" entries for Paper II v1.0
+Zenodo "Related Works" entries for Paper II v2.0
 =================================================
 
-Paper II cites four works in its bibliography.  Three of them have
+Paper II cites five works in its bibliography.  Four of them have
 clean resolvable identifiers (DOI or ISBN) and belong in Zenodo's
 "Related/alternate identifiers" section; each block below
 corresponds to one row.  Fields: Relation, Identifier, Scheme,
 Resource Type.
 
-The fourth, Sakharov (1968) "Vacuum quantum fluctuations in curved
+The fifth, Sakharov (1968) "Vacuum quantum fluctuations in curved
 space and the theory of gravitation" (Soviet Physics Doklady
 12:1040), has no native DOI and is intentionally NOT listed here.
-It remains in the paper's BibTeX bibliography as reference [3],
+It remains in the paper's BibTeX bibliography as reference [5],
 which is the authoritative scholarly record.  Zenodo's related-
 works graph is for harvesters and citation tooling; entries
 without resolvable identifiers add noise without value.
+
+NEW IN v2.0: Paper IV (the single-domain no-go) is added below as
+entry [1].  Because the v2.0 revision notice precedes the abstract
+and the bibliography is `unsrt` (numbered in citation order),
+Paper IV is now the paper's reference [1] and every other entry
+shifted down -- the numbering in this file follows the v2.0 build's
+generated bibliography.
 
 The "Relation" vocabulary follows DataCite (which Zenodo uses).
 Paper I is "Continues" because Paper II is the direct continuation
@@ -25,7 +32,23 @@ background / standard techniques.
 
 
 ---------------------------------------------------------------
-[1] Menendez (2026) "Geometry First" -- Paper I of the series
+[1] Menendez (2026) "Optical-Axis Anisotropy" -- Paper IV (NEW v2.0)
+---------------------------------------------------------------
+Relation:       References
+Identifier:     10.5281/zenodo.21435952
+Scheme:         DOI
+Resource Type:  Publication
+
+  This is the falsifying result that v2.0 records: the
+  single-domain three-diagonal hop set predicts an optical axis
+  that is observable but is not observed.  The version DOI is used
+  (not the concept DOI 10.5281/zenodo.21435951) to pin the exact
+  deposit establishing the result -- consistent with Paper I's
+  v2.0 choice and with this paper's revision notice.
+
+
+---------------------------------------------------------------
+[2] Menendez (2026) "Geometry First" -- Paper I of the series
 ---------------------------------------------------------------
 Relation:       Continues
 Identifier:     10.5281/zenodo.20078529
@@ -34,7 +57,7 @@ Resource Type:  Publication
 
 
 ---------------------------------------------------------------
-[2] Wilson (1974) "Confinement of quarks" -- Phys. Rev. D 10:2445
+[3] Wilson (1974) "Confinement of quarks" -- Phys. Rev. D 10:2445
 ---------------------------------------------------------------
 Relation:       References
 Identifier:     10.1103/PhysRevD.10.2445
@@ -43,7 +66,7 @@ Resource Type:  Publication / Journal article
 
 
 ---------------------------------------------------------------
-[3] Georgi (1999) "Lie Algebras in Particle Physics" -- book
+[4] Georgi (1999) "Lie Algebras in Particle Physics" -- book
 ---------------------------------------------------------------
 Relation:       References
 Identifier:     978-0-7382-0233-4
@@ -54,13 +77,16 @@ Resource Type:  Publication / Book
 ---------------------------------------------------------------
 Optional self-referencing entries (frequently useful)
 ---------------------------------------------------------------
-If a v1.1 or later is ever deposited that supersedes v1.0, add
-to the new deposit:
+v2.0 supersedes v1.01, so the v2.0 deposit carries:
 
     Relation:       IsNewVersionOf
-    Identifier:     <v1.0 Zenodo DOI, to be assigned at deposit>
+    Identifier:     10.5281/zenodo.20292158      (Paper II v1.01)
     Scheme:         DOI
     Resource Type:  Publication
+
+Zenodo sets this automatically when the deposit is created via
+"New version" on the existing record (the procedure this release
+followed).  Verify it is present rather than adding it by hand.
 
 If the GitHub source archive is deposited separately (e.g. via
 Zenodo's GitHub integration), link the two with:

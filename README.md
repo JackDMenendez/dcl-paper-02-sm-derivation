@@ -118,7 +118,7 @@ Same as Paper I:
 
 ```sh
 ./setup.sh                  # POSIX / MSYS2 UCRT64 on Windows
-./build.sh paper            # PDF -> build/Paper.pdf
+./build.sh paper            # PDF -> .build/dcl-paper-02-sm-derivation.pdf
 python audit_universe.py    # PASS/STUB roll-up against the seeded table
 ```
 
